@@ -20,12 +20,15 @@ export class StudentComponent implements OnInit{
     dob: '',
     age: 0
   }
+  p: number = 1;
+  itemsPerPage: number = 3;
+  // totalStudent = Object.keys(this.studentService.findAll()).length;
 
   constructor(private studentService: StudentServiceService) { }
 
   ngOnInit() {
     this.studentService.findAll().subscribe(students => {
-      this.students = students
+      this.students = students;
     });
 }
 
@@ -50,16 +53,23 @@ deleteStudent(id: number){
   this.ngOnInit();
 }
 
-
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
 
-
 addStudent(){
-  this.studentService.addNewStudent(this.myStudent).subscribe((student) => {
-    this.students = [student, ...this.students]
-  });
+  if (confirm("Are you sure the information is correct about student ?")){
+    this.studentService.addNewStudent(this.myStudent).subscribe((student) => {
+      this.students = [student, ...this.students]
+    });
+  }
   this.ngOnInit();
+}
+
+updateStudent(){
+  console.log("updateStudent called !");
+  // this.studentService.putStudent(this.id);
+
+
 }
 
 }

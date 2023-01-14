@@ -65,12 +65,11 @@
   <br />
 
   <!--! this division for show list data student from database    -->
-  <div class="card-deck">
+  <div class="card-deck container">
     <ul class="list-group">
       <li
-        *ngFor="let student of students | filter:searchStudent"
-        class="list-group-item list-group-item-action list-group-item-dark"
-      >
+        *ngFor="let student of students | filter:searchStudent | paginate: { itemsPerPage: itemsPerPage, currentPage: p }"
+        class="list-group-item list-group-item-action list-group-item-dark">
         Student ID : {{ student.id }}
         <br />
         Name : {{ student.name }}
@@ -86,12 +85,23 @@
           <button class="btn btn-sm btn-danger" (click)="deleteStudent(student.id)" style="margin-left: 10px">
             <i class="fa fa-trash"></i>
           </button>
-          <button class="btn btn-sm btn-warning" style="margin-left: 10px">
+          <button (click)="updateStudent()" class="btn btn-sm btn-warning" style="margin-left: 10px">
             <i class="fa fa-pencil"></i>
           </button>
         </div>
       </li>
     </ul>
+    <div>
+    </div>
   </div>
 </div>
+
+<div class="d-flex">
+  <ul class="list-inline mx-auto justify-content-center">
+    <pagination-controls (pageChange)="p = $event" class="alert"></pagination-controls>
+  </ul>
+</div>
+
+
+
 

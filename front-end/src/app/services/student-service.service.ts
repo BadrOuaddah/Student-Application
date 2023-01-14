@@ -28,8 +28,9 @@ export class StudentServiceService {
     return this.http.post<Student>(this.apiUrlSpring,student);
   }
 
-  // updateStudent(){
+  putStudent(id: number){
+    return this.http.put(this.apiUrlSpring + '/' + id, id);
   // write some codes...
-  // }
+  }
 
 }
