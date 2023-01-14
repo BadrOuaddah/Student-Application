@@ -29,4 +29,5 @@
 - [X] create confirm deletion
 - [ ] add auto-refresh when delete student or update it
 - [X] create pagination
+- [ ] items per page 
 - [ ] loading function
