@@ -70,10 +70,10 @@
 
 <!-- TODO: add div items per page -->
       <div class="mt-3 bg-primary" style="text-align: end; color: white;">
-        Items per Page:
-        <select (change)="$event">
-    <option *ngFor="let student of students" [ngValue]="page">
-      {{ page }}
+        Items per Page :
+        <select (change)="handlePageSizeChange($event)">
+    <option *ngFor="let itemsPerP of itemsPerPages" [ngValue]="itemsPerP">
+      {{ itemsPerP }}
     </option>
   </select>
 </div>

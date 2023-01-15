@@ -23,7 +23,7 @@ export class StudentComponent implements OnInit{
   }
   page: number = 1;
   itemsPerPage: number = 3;
-  itemsPerPages: number[] = [3, 6, 9];
+  itemsPerPages: number[] = [3, 5, 10, 25, 50, 100];
   count: number = 0;
 
   // TODO:add component or div Items Per Page
@@ -81,6 +81,15 @@ updateStudent(){
 
 
 // TODO: Add methods for pagination and items per page
+
+handlePageSizeChange(event: any): void {
+  this.itemsPerPage = event.target.value;
+  this.page = 1;
+  this.ngOnInit();
+}
+
+
+
 // getRequestParams(searchTitle, page, pageSize): any {
 //   // tslint:disable-next-line:prefer-const
 //   let params = {};
@@ -122,7 +131,7 @@ updateStudent(){
 // }
 
 // handlePageSizeChange(event): void {
-//   this.pageSize = event.target.value;
+//   this.itemsPerPage = event.target.value;
 //   this.page = 1;
 //   this.retrieveTutorials();
 // }
