@@ -22,6 +22,7 @@ export class StudentComponent implements OnInit{
   }
   p: number = 1;
   itemsPerPage: number = 3;
+  // TODO:add component or div Items Per Page
   // totalStudent = Object.keys(this.studentService.findAll()).length;
 
   constructor(private studentService: StudentServiceService) { }

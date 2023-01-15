@@ -67,6 +67,16 @@
   <!--! this division for show list data student from database    -->
   <div class="card-deck container">
     <ul class="list-group">
+
+      <!-- ! div pagination -->
+      <div style="color: white;" class="bg-primary">
+        <mat-paginator [length]="100"
+                    [pageSize]="10"
+                    [pageSizeOptions]="[5, 10, 25, 100]"
+                    aria-label="Select page">
+        </mat-paginator>
+      </div>
+
       <li
         *ngFor="let student of students | filter:searchStudent | paginate: { itemsPerPage: itemsPerPage, currentPage: p }"
         class="list-group-item list-group-item-action list-group-item-dark">
@@ -101,6 +111,8 @@
     <pagination-controls (pageChange)="p = $event" class="alert"></pagination-controls>
   </ul>
 </div>
+
+
 
 
 

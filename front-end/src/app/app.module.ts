@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     HttpClientModule,
     FormsModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
