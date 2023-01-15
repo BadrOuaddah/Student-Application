@@ -56,9 +56,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [X] create filter search
 - [X] create confirm deletion
 - [X] create pagination
+- [X] items per page 
 - [ ] create update student method
 - [ ] add auto-refresh when delete student or update it
-- [ ] items per page 
 - [ ] loading function
 - [ ] set navigation bar
 - [ ] create Home page
