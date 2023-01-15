@@ -53,10 +53,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - [X] create find all method or get method
 - [X] create delete student by id method
 - [X] create add student method
-- [ ] create update student method
 - [X] create filter search
 - [X] create confirm deletion
-- [ ] add auto-refresh when delete student or update it
 - [X] create pagination
+- [ ] create update student method
+- [ ] add auto-refresh when delete student or update it
 - [ ] items per page 
 - [ ] loading function
+- [ ] set navigation bar
+- [ ] create Home page
+- [ ] merge to racine website
