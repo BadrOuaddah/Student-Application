@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Student } from 'src/app/models/student';
 import { StudentServiceService } from 'src/app/services/student-service.service';
 
+
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -20,9 +21,14 @@ export class StudentComponent implements OnInit{
     dob: '',
     age: 0
   }
-  p: number = 1;
+  page: number = 1;
   itemsPerPage: number = 3;
+  itemsPerPages: number[] = [3, 6, 9];
+  count: number = 0;
+
   // TODO:add component or div Items Per Page
+
+
   // totalStudent = Object.keys(this.studentService.findAll()).length;
 
   constructor(private studentService: StudentServiceService) { }
@@ -67,10 +73,58 @@ addStudent(){
 }
 
 updateStudent(){
+  // TODO: add update method !
   console.log("updateStudent called !");
   // this.studentService.putStudent(this.id);
-
-
 }
+
+
+
+// TODO: Add methods for pagination and items per page
+// getRequestParams(searchTitle, page, pageSize): any {
+//   // tslint:disable-next-line:prefer-const
+//   let params = {};
+
+//   if (searchTitle) {
+//     params[`title`] = searchTitle;
+//   }
+
+//   if (page) {
+//     params[`page`] = page - 1;
+//   }
+
+//   if (pageSize) {
+//     params[`size`] = pageSize;
+//   }
+
+//   return params;
+// }
+
+// retrieveTutorials(): void {
+//   const params = this.getRequestParams(this.title, this.page, this.pageSize);
+
+//   this.tutorialService.getAll(params)
+//     .subscribe(
+//       response => {
+//         const { tutorials, totalItems } = response;
+//         this.tutorials = tutorials;
+//         this.count = totalItems;
+//         console.log(response);
+//       },
+//       error => {
+//         console.log(error);
+//       });
+// }
+
+// handlePageChange(event): void {
+//   this.page = event;
+//   this.retrieveTutorials();
+// }
+
+// handlePageSizeChange(event): void {
+//   this.pageSize = event.target.value;
+//   this.page = 1;
+//   this.retrieveTutorials();
+// }
 
 }
