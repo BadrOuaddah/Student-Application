@@ -48,6 +48,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+# BackEnd
+The programming language used is Java :coffee:
+and the Framework used is Spring :leaves: by IntelliJ IDEA :computer: .
+
+# SQL
+MySQL is an open-source relational database management system. As with other relational databases, MySQL stores data in tables made up of rows and columns. Users can define, manipulate, control, and query data using Structured Query Language, more commonly known as SQL
 
 # tasks carried out :
 - [X] create find all method or get method
