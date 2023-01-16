@@ -62,7 +62,8 @@ MySQL is an open-source relational database management system. As with other rel
 - [X] create filter search
 - [X] create confirm deletion
 - [X] create pagination
-- [X] items per page 
+- [X] items per page
+- [X] add Observable
 - [ ] create update student method
 - [ ] add auto-refresh when delete student or update it
 - [ ] loading function
