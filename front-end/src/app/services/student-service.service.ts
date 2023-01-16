@@ -28,8 +28,8 @@ export class StudentServiceService {
     return this.http.post<Student>(this.apiUrlSpring,student);
   }
 
-  putStudent(id: number){
-    return this.http.put(this.apiUrlSpring + '/' + id, id);
+  putStudent({ id, student }: { id: number; student: any; }){
+    return this.http.put(this.apiUrlSpring + '/' + id, id, student);
   // write some codes...
   }
 

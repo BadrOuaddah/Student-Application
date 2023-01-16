@@ -89,7 +89,7 @@ editStudent(student: Student){
 }
 
 updateStudent(){
-this.studentService.putStudent(this.id).subscribe(
+this.studentService.putStudent(this.student).subscribe(
   (student) => {
     this.resetStudent();
     this.showEditForm = true;
