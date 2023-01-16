@@ -56,7 +56,14 @@
       <input [(ngModel)]="myStudent.age" id="age" type="number" class="form-control" />
     </div>
     <div class="card-footer">
-      <button (click)="addStudent()" class="btn btn-success btn-block mx-sm-3">
+
+      <!-- Update button -->
+      <button *ngIf="showEditForm" (click)="updateStudent()" class="btn btn-warning btn-block mx-sm-3">
+        <i class="fa fa-refresh"> Update student </i>
+      </button>
+
+      <!-- Add button -->
+      <button *ngIf="!showEditForm" (click)="addStudent()" class="btn btn-success btn-block mx-sm-3">
         <i class="fa fa-graduation-cap"> Add new student </i>
       </button>
     </div>
@@ -77,18 +84,6 @@
     </option>
   </select>
 </div>
-      <!-- <div class="mt-3">
-        ...
-
-        Items per Page:
-        <select (change)="handlePageSizeChange($event)">
-    <option *ngFor="let size of pageSizes" [ngValue]="size">
-      {{ size }}
-    </option>
-  </select>
-</div> -->
-<!-- TODO: add div items per page -->
-
       <li
         *ngFor="let student of students | filter:searchStudent | paginate: { itemsPerPage: itemsPerPage, currentPage: page }"
         class="list-group-item list-group-item-action list-group-item-dark">
@@ -107,7 +102,7 @@
           <button class="btn btn-sm btn-danger" (click)="deleteStudent(student.id)" style="margin-left: 10px">
             <i class="fa fa-trash"></i>
           </button>
-          <button (click)="updateStudent()" class="btn btn-sm btn-warning" style="margin-left: 10px">
+          <button (click)="editStudent(student)" class="btn btn-sm btn-warning" style="margin-left: 10px">
             <i class="fa fa-pencil"></i>
           </button>
         </div>

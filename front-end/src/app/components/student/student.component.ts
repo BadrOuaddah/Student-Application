@@ -11,6 +11,7 @@ import { StudentServiceService } from 'src/app/services/student-service.service'
 export class StudentComponent implements OnInit{
 
   searchStudent:any;
+  showEditForm = false;
   showForm = false;
   students: any;
   student: any;
@@ -72,12 +73,29 @@ addStudent(){
   }
 }
 
-updateStudent(){
-  // TODO: add update method !
-  console.log("updateStudent called !");
+resetStudent(){
+  this.myStudent = {
+    name: '',
+    email: '',
+    dob: '',
+    age: 0
+  }
+}
+
+editStudent(student: Student){
+  this.myStudent = student;
+  this.showEditForm = true;
   // this.studentService.putStudent(this.id);
 }
 
+updateStudent(){
+this.studentService.putStudent(this.id).subscribe(
+  (student) => {
+    this.resetStudent();
+    this.showEditForm = true;
+  }
+)
+}
 
 
 // TODO: Add methods for pagination and items per page
@@ -87,53 +105,4 @@ handlePageSizeChange(event: any): void {
   this.page = 1;
   this.ngOnInit();
 }
-
-
-
-// getRequestParams(searchTitle, page, pageSize): any {
-//   // tslint:disable-next-line:prefer-const
-//   let params = {};
-
-//   if (searchTitle) {
-//     params[`title`] = searchTitle;
-//   }
-
-//   if (page) {
-//     params[`page`] = page - 1;
-//   }
-
-//   if (pageSize) {
-//     params[`size`] = pageSize;
-//   }
-
-//   return params;
-// }
-
-// retrieveTutorials(): void {
-//   const params = this.getRequestParams(this.title, this.page, this.pageSize);
-
-//   this.tutorialService.getAll(params)
-//     .subscribe(
-//       response => {
-//         const { tutorials, totalItems } = response;
-//         this.tutorials = tutorials;
-//         this.count = totalItems;
-//         console.log(response);
-//       },
-//       error => {
-//         console.log(error);
-//       });
-// }
-
-// handlePageChange(event): void {
-//   this.page = event;
-//   this.retrieveTutorials();
-// }
-
-// handlePageSizeChange(event): void {
-//   this.itemsPerPage = event.target.value;
-//   this.page = 1;
-//   this.retrieveTutorials();
-// }
-
 }

@@ -29,7 +29,6 @@ export class StudentServiceService {
   }
 
   putStudent(id: number){
-    // TODO: write some codes into putStudent method as a service !
     return this.http.put(this.apiUrlSpring + '/' + id, id);
   // write some codes...
   }
