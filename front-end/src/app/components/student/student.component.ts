@@ -68,8 +68,8 @@ addStudent(){
     this.studentService.addNewStudent(this.myStudent).subscribe((student) => {
       this.students = [student, ...this.students]
     });
+    this.ngOnInit();
   }
-  this.ngOnInit();
 }
 
 updateStudent(){
