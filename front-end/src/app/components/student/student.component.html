@@ -58,7 +58,7 @@
     <div class="card-footer">
 
       <!-- Update button -->
-      <button *ngIf="showEditForm" (click)="updateStudent()" class="btn btn-warning btn-block mx-sm-3">
+      <button *ngIf="showEditForm" (click)="updateStudent(student.id, student)" class="btn btn-warning btn-block mx-sm-3">
         <i class="fa fa-refresh"> Update student </i>
       </button>
 

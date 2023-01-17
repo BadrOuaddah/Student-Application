@@ -88,13 +88,14 @@ editStudent(student: Student){
   // this.studentService.putStudent(this.id);
 }
 
-updateStudent(){
-this.studentService.putStudent(this.student).subscribe(
-  (student) => {
-    this.resetStudent();
-    this.showEditForm = true;
-  }
-)
+updateStudent(id:number, student:Student){
+  this.studentService.putStudent(id, student).subscribe(
+    (student) => {
+      this.resetStudent();
+      this.showEditForm = true;
+    }
+    )
+    console.log(this.updateStudent);
 }
 
 
