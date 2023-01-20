@@ -13,10 +13,22 @@ export class StudentServiceService {
   apiUrlSpring = "http://localhost:8080/api/v1/student" ;
 
   constructor(private http:HttpClient) { }
+  private _index: number;
 
+  get index(): number{
+    return this._index;
+  }
+
+  set index(value: number) {
+    this._index = value;
+  }
 
   findAll(){
     return this.http.get(this.apiUrlSpring);
+  }
+
+  findStudentById(id:number){
+    return this.http.get(this.apiUrlSpring+ '/' + id);
   }
 
 

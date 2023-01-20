@@ -3,21 +3,25 @@
 <!-- ! division is for label of search -->
 
 <div class="container">
-<div class="row">
-  <div>
-        <i class="fa fa-search fa-lg"></i>
-        <span>
-          <input type="text" style="margin-left: 1em" [(ngModel)]="searchStudent" placeholder="Search...">
-        </span>
+  <div class="row">
+    <div>
+      <i class="fa fa-search fa-lg"></i>
+      <span>
+        <input
+          type="text"
+          style="margin-left: 1em"
+          [(ngModel)]="searchStudent"
+          placeholder="Search..."
+        />
+      </span>
     </div>
   </div>
 </div>
-<br>
+<br />
 
 <!-- ! division is for show form of adding student -->
 <div class="container col-12">
   <div class="row">
-
     <div class="col-md-6">
       <h3>List of Students :</h3>
     </div>
@@ -35,35 +39,53 @@
       <label for="name">
         <i class="fa fa-graduation-cap"> Name : </i>
       </label>
-      <input [(ngModel)]="myStudent.name" id="name" type="text" class="form-control" />
+      <input
+        [(ngModel)]="myStudent.name"
+        id="name"
+        type="text"
+        class="form-control"
+      />
 
       <!-- Email -->
       <label for="e-mail">
         <i class="fa fa-envelope"> E-mail : </i>
       </label>
-      <input [(ngModel)]="myStudent.email" id="e-mail" type="email" class="form-control" />
+      <input
+        [(ngModel)]="myStudent.email"
+        id="e-mail"
+        type="email"
+        class="form-control"
+      />
 
       <!-- Date of birthday -->
       <label for="dob">
         <i class="fa fa-birthday-cake"> Date of birthday : </i>
       </label>
-      <input [(ngModel)]="myStudent.dob" id="dob" type="date" class="form-control" />
+      <input
+        [(ngModel)]="myStudent.dob"
+        id="dob"
+        type="date"
+        class="form-control"
+      />
 
       <!-- Age -->
       <label for="age">
         <i class="fa fa-clock-o"> Age : </i>
       </label>
-      <input [(ngModel)]="myStudent.age" id="age" type="number" class="form-control" />
+      <input
+        [(ngModel)]="myStudent.age"
+        id="age"
+        type="number"
+        class="form-control"
+      />
     </div>
     <div class="card-footer">
-
-      <!-- Update button -->
-      <button *ngIf="showEditForm" (click)="updateStudent(student.id, student)" class="btn btn-warning btn-block mx-sm-3">
-        <i class="fa fa-refresh"> Update student </i>
-      </button>
-
       <!-- Add button -->
-      <button *ngIf="!showEditForm" (click)="addStudent()" class="btn btn-success btn-block mx-sm-3">
+      <button
+        *ngIf="!showEditForm"
+        (click)="addStudent()"
+        class="btn btn-success btn-block mx-sm-3"
+      >
         <i class="fa fa-graduation-cap"> Add new student </i>
       </button>
     </div>
@@ -74,19 +96,24 @@
   <!--! this division for show list data student from database    -->
   <div class="card-deck container">
     <ul class="list-group">
-
-<!-- TODO: add div items per page -->
-      <div class="mt-3 bg-primary" style="text-align: end; color: white;">
+      <!-- TODO: add div items per page -->
+      <div class="mt-3 bg-primary" style="text-align: end; color: white">
         Items per Page :
         <select (change)="handlePageSizeChange($event)">
-    <option *ngFor="let itemsPerP of itemsPerPages" [ngValue]="itemsPerP">
-      {{ itemsPerP }}
-    </option>
-  </select>
-</div>
+          <option *ngFor="let itemsPerP of itemsPerPages" [ngValue]="itemsPerP">
+            {{ itemsPerP }}
+          </option>
+        </select>
+      </div>
       <li
-        *ngFor="let student of students | filter:searchStudent | paginate: { itemsPerPage: itemsPerPage, currentPage: page }"
-        class="list-group-item list-group-item-action list-group-item-dark">
+        *ngFor="
+          let student of students
+            | filter : searchStudent
+            | paginate : { itemsPerPage: itemsPerPage, currentPage: page };
+          index as i
+        "
+        class="list-group-item list-group-item-action list-group-item-dark"
+      >
         Student ID : {{ student.id }}
         <br />
         Name : {{ student.name }}
@@ -99,11 +126,71 @@
         <br />
         <br />
         <div class="row-cols-6">
-          <button class="btn btn-sm btn-danger" (click)="deleteStudent(student.id)" style="margin-left: 10px">
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="deleteStudent(student.id)"
+            style="margin-left: 10px"
+          >
             <i class="fa fa-trash"></i>
           </button>
-          <button (click)="editStudent(student)" class="btn btn-sm btn-warning" style="margin-left: 10px">
+          <button
+            (click)="editStudent(student)"
+            class="btn btn-sm btn-warning"
+            style="margin-left: 10px"
+          >
             <i class="fa fa-pencil"></i>
+          </button>
+        </div>
+        <div class="form-group card-body" *ngIf="bool && student.name == myStudent.name" >
+          <!-- Name -->
+          <label for="name">
+            <i class="fa fa-graduation-cap"> Name : </i>
+          </label>
+          <input
+            [(ngModel)]="myStudent.name"
+            id="name"
+            type="text"
+            class="form-control"
+          />
+
+          <!-- Email -->
+          <label for="e-mail">
+            <i class="fa fa-envelope"> E-mail : </i>
+          </label>
+          <input
+            [(ngModel)]="myStudent.email"
+            id="e-mail"
+            type="email"
+            class="form-control"
+          />
+
+          <!-- Date of birthday -->
+          <label for="dob">
+            <i class="fa fa-birthday-cake"> Date of birthday : </i>
+          </label>
+          <input
+            [(ngModel)]="myStudent.dob"
+            id="dob"
+            type="date"
+            class="form-control"
+          />
+
+          <!-- Age -->
+          <label for="age">
+            <i class="fa fa-clock-o"> Age : </i>
+          </label>
+          <input
+            [(ngModel)]="myStudent.age"
+            id="age"
+            type="number"
+            class="form-control"
+          />
+          <button
+            *ngIf="showEditForm"
+            (click)="updateStudent(student.id, student)"
+            class="btn btn-warning btn-block mx-sm-3"
+          >
+            <i class="fa fa-refresh"> Update student </i>
           </button>
         </div>
       </li>
@@ -113,13 +200,9 @@
 
 <div class="d-flex">
   <ul class="list-inline mx-auto justify-content-center">
-    <pagination-controls (pageChange)="page = $event" class="alert"></pagination-controls>
+    <pagination-controls
+      (pageChange)="page = $event"
+      class="alert"
+    ></pagination-controls>
   </ul>
 </div>
-
-
-
-
-
-
-

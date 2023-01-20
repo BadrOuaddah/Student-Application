@@ -10,6 +10,7 @@ import { StudentServiceService } from 'src/app/services/student-service.service'
 })
 export class StudentComponent implements OnInit{
 
+  bool = false;
   searchStudent:any;
   showEditForm = false;
   showForm = false;
@@ -85,12 +86,13 @@ resetStudent(){
 editStudent(student: Student){
   this.myStudent = student;
   this.showEditForm = true;
+  this.bool = true;
   // this.studentService.putStudent(this.id);
 }
 
 updateStudent(id:number, student:Student){
   this.studentService.putStudent(id, student).subscribe(
-    (student) => {
+    () => {
       this.resetStudent();
       this.showEditForm = true;
     }
