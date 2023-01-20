@@ -3,6 +3,7 @@ package com.example.demo.student;
 import com.example.demo.exception.ApiRequestException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.yaml.snakeyaml.representer.BaseRepresenter;
 
@@ -46,17 +47,21 @@ public class StudentService {
     }
 
     public void updateStudent(long studentId, Student student){
-        Optional<Student> studentOptional = studentRepository.findStudentById(studentId);
-        if (studentOptional.isPresent()) {
-            Student s = studentOptional.get();
-            s.setName(student.getName());
-            s.setDob(student.getDob());
-            s.setEmail(student.getEmail());
-            studentRepository.save(s);
+        Student studentOptional = studentRepository.findStudentById(studentId);
+        if (studentOptional != null){
+            studentOptional.setName(student.getName());
+            studentOptional.setDob(student.getDob());
+            studentOptional.setEmail(student.getEmail());
+            studentRepository.save(studentOptional);
         }
-        if (studentOptional.isEmpty()){
+        if (studentOptional == null){
             throw new ApiRequestException();
         }
+    }
+
+    @Query("SELECT s FROM Student s WHERE s.id = ?1")
+    public Student findStudentById(long id) {
+        return studentRepository.findStudentById(id);
     }
     //README
         //Tools

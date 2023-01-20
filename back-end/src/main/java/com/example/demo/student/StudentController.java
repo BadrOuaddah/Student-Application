@@ -1,6 +1,7 @@
 package com.example.demo.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -20,6 +21,11 @@ public class StudentController {
     @GetMapping
     public List<Student> getStudents() {
         return studentService.getStudents();
+    }
+
+    @GetMapping
+    public Student findStudentById(long id) {
+        return studentService.findStudentById(id);
     }
 
     @PostMapping
