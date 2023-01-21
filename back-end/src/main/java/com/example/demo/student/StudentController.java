@@ -23,7 +23,7 @@ public class StudentController {
         return studentService.getStudents();
     }
 
-    @GetMapping
+    @GetMapping(path = "/{studentId}")
     public Student findStudentById(long id) {
         return studentService.findStudentById(id);
     }

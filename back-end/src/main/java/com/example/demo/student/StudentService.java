@@ -59,7 +59,7 @@ public class StudentService {
         }
     }
 
-    @Query("SELECT s FROM Student s WHERE s.id = ?1")
+//    @Query("SELECT s FROM Student s WHERE s.id = ?1")
     public Student findStudentById(long id) {
         return studentRepository.findStudentById(id);
     }
