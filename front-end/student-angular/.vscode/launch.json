@@ -11,7 +11,15 @@
     //   "preLaunchTask": "tsc: build - tsconfig.json",
     //   "outFiles": ["${workspaceFolder}/out/**/*.js"]
     // },
-
+      {
+        // ! debugger Angular Firefox
+        "type": "firefox",
+        "request": "launch",
+        "reAttach": true,
+        "name": "Launch localhost",
+        "url": "http://localhost:4200",
+        // "webRoot": "${workspaceFolder}"
+      },
     {
       "name": "ng serve",
       "type": "firefox",
@@ -33,16 +41,6 @@
         "module": "commonjs",
         "outDir": "out",
         "sourceMap": true
-      },
-
-      {
-        // ! debugger Angular Firefox
-        "type": "firefox",
-        "request": "launch",
-        "reAttach": true,
-        "name": "Launch localhost",
-        "url": "http://localhost:4200",
-        // "webRoot": "${workspaceFolder}"
       }
 
     //   {
