@@ -33,7 +33,46 @@
         "module": "commonjs",
         "outDir": "out",
         "sourceMap": true
+      },
+
+      {
+        // ! debugger Angular Firefox
+        "type": "firefox",
+        "request": "launch",
+        "reAttach": true,
+        "name": "Launch localhost",
+        "url": "http://localhost:4200",
+        // "webRoot": "${workspaceFolder}"
       }
+
+    //   {
+    // !   debugger Firefox index.html
+    //     "name": "Launch index.html",
+    //     "type": "firefox",
+    //     "request": "launch",
+    //     "reAttach": true,
+    //     "file": "${workspaceFolder}/index.html"
+    // },
+    // {
+    //     "name": "Launch localhost",
+    //     "type": "firefox",
+    //     "request": "launch",
+    //     "reAttach": true,
+    //     "url": "http://localhost/index.html",
+    //     "webRoot": "${workspaceFolder}"
+    // },
+    // {
+    //     "name": "Attach",
+    //     "type": "firefox",
+    //     "request": "attach"
+    // },
+    // {
+    //     "name": "Launch WebExtension",
+    //     "type": "firefox",
+    //     "request": "launch",
+    //     "reAttach": true,
+    //     "addonPath": "${workspaceFolder}"
+    // }
 
   ]
 }
