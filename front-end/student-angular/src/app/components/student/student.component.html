@@ -141,6 +141,9 @@
             <i class="fa fa-pencil"></i>
           </button>
         </div>
+        <div>
+
+        </div>
         <div class="form-group card-body" *ngIf="bool && student.name == myStudent.name" >
           <!-- Name -->
           <label for="name">
@@ -194,8 +197,9 @@
             <i class="fa fa-refresh"> Update student </i>
           </button>
 
-          <button (click)="showEditForm = !showEditForm" type="button" class="btn btn-outline-warning">
-            <i class="fa fa-close"> Close </i>
+          <!-- ? How to close edit form when click cancel button  -->
+          <button (click)="bool = !bool" type="button" class="btn btn-outline-warning">
+            <i class="fa fa-close" style="color: black;"> Close </i>
           </button>
           <!--
           <button
