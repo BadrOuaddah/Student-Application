@@ -28,7 +28,6 @@ export class StudentComponent implements OnInit{
   itemsPerPages: number[] = [3, 5, 10, 25, 50, 100];
   count: number = 0;
 
-  // TODO:add component or div Items Per Page
 
 
   // totalStudent = Object.keys(this.studentService.findAll()).length;
@@ -101,7 +100,6 @@ updateStudent(id:number, student:Student){
 }
 
 
-// TODO: Add methods for pagination and items per page
 
 handlePageSizeChange(event: any): void {
   this.itemsPerPage = event.target.value;
