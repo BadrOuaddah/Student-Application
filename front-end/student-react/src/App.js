@@ -21,7 +21,7 @@ const App = () => {
         <li>items</li>
       </ul>
       <div>
-        <a href="https://www.google.com/">click here for more...</a>
+        <a href="http://localhost:8080/api/v1/student">click here for more...</a>
       </div>
       <br />
         <ul>enter number :
