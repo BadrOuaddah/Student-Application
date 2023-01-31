@@ -1,5 +1,14 @@
-body{
+/* body{
     background-color: #282c34;
     color: #61dafb;
     text-align: center;
+} */
+body{
+    background-image: url(/public/photo-1439792675105-701e6a4ab6f0.jpg);
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #61dafb;
+    
+
 }
