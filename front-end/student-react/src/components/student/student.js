@@ -9,4 +9,4 @@ const student = () => {
   )
 }
 
-export default student
+export default student;

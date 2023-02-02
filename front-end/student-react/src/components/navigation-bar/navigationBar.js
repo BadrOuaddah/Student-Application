@@ -9,4 +9,4 @@ const navigationBar = () => {
   )
 }
 
-export default navigationBar
+export default navigationBar;
