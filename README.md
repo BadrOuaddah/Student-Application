@@ -138,10 +138,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - [X] create pagination
 - [X] items per page
 - [X] add Observable
-- [ ] create update student method
-- [ ] add auto-refresh when delete student or update it
+- [X] create update student method
+- [X] add auto-refresh when delete student or update it
 - [ ] loading function
 - [ ] set navigation bar
 - [ ] create Home page
 - [ ] merge to racine website
 - [ ] create student app with React Framework 
+- [ ] Implement first React API call
+- [ ] Consume the backend and display the students using the React framework
