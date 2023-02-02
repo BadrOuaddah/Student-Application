@@ -2,26 +2,27 @@ import React from "react";
 import "./App.css";
 import "bootstrap";
 const App = () => {
+  var name = "ahmed" ;
+  var score = 8 ;
+  let message = "";
+  const pi = 3.14;
+
+  if (score >= 10) {
+    message = "PASS";    
+  } else {
+    message = "FAILED";
+  }
   return (
     <div>
       <h1>Welcome to my first REACT App (JavaScript) &#128187;</h1>
       <p>
-        <h4>
-        loremDolore deserunt laboris pariatur nulla laboris amet officia esse
-        enim duis aliquip pariatur. In magna do culpa nostrud qui ea occaecat
-        est nisi ea. Mollit non duis id dolore ipsum officia ex mollit voluptate
-        ipsum dolor. Nisi incididunt ex Lorem culpa sit deserunt occaecat
-        consequat adipisicing.
-        Ea proident pariatur duis cupidatat reprehenderit eu ullamco eiusmod ad excepteur et veniam amet nulla.
-        </h4>
+        hello {name}
       </p>
-      <ul>
-        <li>items</li>
-        <li>items</li>
-        <li>items</li>
-      </ul>
+      <p>your score is : {score}</p>
+      <p>{message}</p>
+      <p>{pi}</p>
       <div>
-        <a href="http://localhost:8080/api/v1/student">click here for more...</a>
+        <a href="http://localhost:8080/api/v1/student">click here for show database</a>
       </div>
       <br />
         <ul>enter number :
