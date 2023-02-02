@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
 import "bootstrap";
-import student from "./components/student/student";
-import navigationBar from "./components/navigation-bar/navigationBar";
+import Student from "./components/Student/Student";
+import NavigationBar from "./components/Student/NavigationBar/NavigationBar";
 
-const App = () => {
+export function App() {
   // var name = "ahmed" ;
   // var score = 8 ;
   // let message = "";
@@ -16,7 +16,10 @@ const App = () => {
   // }
   return (
     <div>
+      <NavigationBar />
       <h1>Welcome to my first REACT App (JavaScript) &#128187;</h1>
+      <a href="http://localhost:8080/api/v1/student">click here for show database</a>
+      <Student />
       {/* 
       <p>
         hello {name}
