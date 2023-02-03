@@ -18,8 +18,8 @@ export function App() {
     <div>
       <NavigationBar />
       <h1>Welcome to my first REACT App (JavaScript) &#128187;</h1>
-      <a href="http://localhost:8080/api/v1/student">click here for show database</a>
       <Student />
+      <a href="http://localhost:8080/api/v1/student">click here for show database</a>
       {/* 
       <p>
         hello {name}
