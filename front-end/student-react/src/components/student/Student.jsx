@@ -1,17 +1,9 @@
-import React from 'react'
-import "./Student.css"
+import React, { Component } from 'react'
 
-function Student() {
-  return (
-    <div>Student
-      <div class="card text-dark bg-transparent">
-        <div class="card-body">
-          <h4 class="card-title">Title</h4>
-          <p class="card-text">Text</p>
-        </div>
-      </div>
-    </div>
-  )
+export default class Student extends Component {
+  render() {
+    return (
+      <div>Student component</div>
+    )
+  }
 }
-
-export default Student
