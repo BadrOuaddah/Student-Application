@@ -4,7 +4,7 @@ import "./NavigationBar.css";
 function NavigationBar() {
   return (
     <div>
-      <nav class="navbar navbar-expand-sm navbar-light bg-secondary">
+      <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation">
