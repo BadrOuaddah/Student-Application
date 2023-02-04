@@ -16,6 +16,10 @@ export default class Student extends Component {
       // private Integer age;
     }
   }
+
+  changeName = ()=>{
+    this.setState({name : 'ali'});
+  }
   render() {
     return (
       <div>
@@ -23,6 +27,7 @@ export default class Student extends Component {
         <h1>
           Hello {this.state.name}
         </h1>
+        <button onClick={this.changeName}>click here </button>
       </div>
     )
   }
