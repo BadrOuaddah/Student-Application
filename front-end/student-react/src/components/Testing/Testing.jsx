@@ -10,12 +10,14 @@ export default class Testing extends Component {
   render() {
     return (
       <div>
+        <div>
         <ul>
-          <li>{this.props.name}</li>
-          <li>{this.props.age}</li>
-          <li>{this.props.email}</li>
-          <li>{this.props.username}</li>
+          <li>Name : {this.props.name}</li>
+          <li>Age : {this.props.age}</li>
+          <li>Email : {this.props.email}</li>
+          <li>Username : {this.props.username}</li>
         </ul>
+        </div>
       </div>
     )
   };
