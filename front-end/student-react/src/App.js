@@ -2,7 +2,9 @@ import React from "react";
 import "./App.css";
 import "bootstrap";
 import Student from "./components/Student/Student";
-import NavigationBar from "./components/Student/NavigationBar/NavigationBar";
+import NavigationBar from "./components/NavigationBar/NavigationBar";
+import Testing from "./components/Testing/Testing";
+
 
 export function App() {
   // var name = "ahmed" ;
@@ -18,6 +20,7 @@ export function App() {
     <div>
       <NavigationBar />
       <h1>Welcome to my first REACT App (JavaScript) &#128187;</h1>
+      <Testing name="ahmed" age="24" email="ahmed@email.com" username="ahmed" />
       <Student />
       <a href="http://localhost:8080/api/v1/student">click here for show database</a>
       {/* 

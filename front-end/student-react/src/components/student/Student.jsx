@@ -9,6 +9,7 @@ export default class Student extends Component {
       email : '',
       dob : '',
       age : 0
+      // ! attributes of student from database
       // private Long id;
       // private String name;
       // private String email;
@@ -20,6 +21,7 @@ export default class Student extends Component {
   changeName = ()=>{
     this.setState({name : 'ali'});
   }
+
   render() {
     return (
       <div>
@@ -31,4 +33,6 @@ export default class Student extends Component {
       </div>
     )
   }
+  
 }
+
