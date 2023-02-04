@@ -31,7 +31,7 @@ export default class Student extends Component {
           return (
             <div>
               <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
                   <p>Id : {student.id}</p>
                   <p>Name : {student.name}</p>
                   <p>Email : {student.email}</p>
