@@ -25,64 +25,47 @@ export default class Student extends Component {
   // };
 
   render() {
-    return (
-      <div>
-        {this.state.students.map((student) => {
-          return (
-            <div>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-            </div>
-          );
-        })}
-      </div>
-    );
+    return <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Date of birthday</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row"></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td scope="row"></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>;
   }
 }
 
-
-// <div class="card bg-transparent">
-// <div class="card-body">
-// </div>
-// <ul class="list-group list-group-flush">
-//   <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
-//     <p>Id : {student.id}</p>
-//     <p>Name : {student.name}</p>
-//     <p>Email : {student.email}</p>
-//     <p>Date of birthday : {student.dob}</p>
-//     <p>Age : {student.age}</p>
-//   </li>
-// </ul>
-// </div>
-
+// {this.state.students.map((student) => {
+//   return (
+//     <div>
+//       {/* //! table from API   */}
+//        <p>Id : {student.id}</p>
+//        <p>Name : {student.name}</p>
+//        <p>Email : {student.email}</p>
+//        <p>Date of birthday : {student.dob}</p>
+//        <p>Age : {student.age}</p>
+//       {/* write some code ... */}
+//     </div>
+//   );
+// })}
 
 /* <h1>
     Hello {this.state.name}
