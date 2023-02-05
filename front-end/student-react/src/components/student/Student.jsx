@@ -25,36 +25,44 @@ export default class Student extends Component {
   // };
 
   render() {
-    return <div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Date of birthday</th>
-            <th>Age</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td scope="row"></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td scope="row"></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>;
+    return (
+      <div>
+        {this.state.students.map((student) => {
+          return (
+            <div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Date of birthday</th>
+                    <th>Age</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row"></td>
+                    <td>{student.id}</td>
+                    <td>{student.name}</td>
+                    <td>{student.email}</td>
+                    <td>{student.dob}</td>
+                    <td>{student.age}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          );
+        })}
+      </div>
+    );
   }
 }
 
 // {this.state.students.map((student) => {
 //   return (
+//   );
+// })}
 //     <div>
 //       {/* //! table from API   */}
 //        <p>Id : {student.id}</p>
@@ -64,8 +72,6 @@ export default class Student extends Component {
 //        <p>Age : {student.age}</p>
 //       {/* write some code ... */}
 //     </div>
-//   );
-// })}
 
 /* <h1>
     Hello {this.state.name}
