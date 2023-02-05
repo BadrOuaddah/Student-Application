@@ -32,6 +32,7 @@ function NavigationBar() {
           </form>
         </div>
       </nav>
+      <hr />
     </div>
   )
 }
