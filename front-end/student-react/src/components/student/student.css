@@ -1,0 +1,6 @@
+.solid-gray {
+    border: 2px solid;
+    border-color: gray;
+    border-radius: 12px;
+    padding: 5px;
+}

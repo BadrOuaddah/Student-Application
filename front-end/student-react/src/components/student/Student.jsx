@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Student.css";
 
 export default class Student extends Component {
   constructor(props) {
@@ -27,33 +28,40 @@ export default class Student extends Component {
   render() {
     return (
       <div>
-        {this.state.students.map((student) => {
-          return (
-            <div>
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Date of birthday</th>
-                    <th>Age</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td scope="row"></td>
-                    <td>{student.id}</td>
-                    <td>{student.name}</td>
-                    <td>{student.email}</td>
-                    <td>{student.dob}</td>
-                    <td>{student.age}</td>
-                  </tr>
-                </tbody>
-              </table>
+        <div class="container">
+          <div class="card row bg-transparent solid-gray">
+            <div class="card-body">
+              <h4 class="card-title">List of students</h4>
+              <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptates repellendus sit consequatur. Aperiam mollitia iure
+                nulla quae tempore. Impedit, laboriosam accusantium! Asperiores,
+                exercitationem consequuntur! Cupiditate commodi exercitationem
+                voluptates dolores facere!
+              </p>
             </div>
-          );
-        })}
+            <ul class="list-group list-group-flush">
+                {this.state.students.map((student) => {
+                  return (
+                    <div>
+
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Info of student
+    <span class="badge badge-primary"></span>
+  </li>
+</ul>
+                      <p>Id : {student.id}</p>
+                      <p>Name : {student.name}</p>
+                      <p>Email : {student.email}</p>
+                      <p>Date of birthday : {student.dob}</p>
+                      <p>Age : {student.age}</p>
+                    </div>
+                  );
+                })}
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }
