@@ -31,31 +31,21 @@ export default class Student extends Component {
         <div class="container">
           <div class="card row bg-transparent solid-gray">
             <div class="card-body">
-              <h4 class="card-title">List of students</h4>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptates repellendus sit consequatur. Aperiam mollitia iure
-                nulla quae tempore. Impedit, laboriosam accusantium! Asperiores,
-                exercitationem consequuntur! Cupiditate commodi exercitationem
-                voluptates dolores facere!
-              </p>
+              <h4 style={{textAlign : "center"}} class="card-title">List of students</h4>
+              <hr />
             </div>
             <ul class="list-group list-group-flush">
                 {this.state.students.map((student) => {
                   return (
                     <div>
-
-<ul class="list-group">
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Info of student
-    <span class="badge badge-primary"></span>
-  </li>
-</ul>
-                      <p>Id : {student.id}</p>
-                      <p>Name : {student.name}</p>
-                      <p>Email : {student.email}</p>
-                      <p>Date of birthday : {student.dob}</p>
-                      <p>Age : {student.age}</p>
+                      <ul className="list-group-item list-group-item-action list-group-item-secondary">
+                      <li>Id : {student.id}</li>
+                      <li>Name : {student.name}</li>
+                      <li>Email : {student.email}</li>
+                      <li>Date of birthday : {student.dob}</li>
+                      <li>Age : {student.age}</li>
+                      </ul>
+                      <br />
                     </div>
                   );
                 })}

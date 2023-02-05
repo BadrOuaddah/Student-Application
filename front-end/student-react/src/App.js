@@ -8,13 +8,10 @@ export function App() {
   return (
     <div>
       <NavigationBar />
-      <h1>Welcome to my first REACT App (JavaScript) &#128187;</h1>
+      <h1 style={{textAlign : "center"}}>Welcome to my first REACT App (JavaScript) &#128187;</h1>
       <br />
       <br />
       <Student />
-      <a href="http://localhost:8080/api/v1/student">
-        click here for show database
-      </a>
     </div>
   );
 }
