@@ -29,11 +29,16 @@ export default class Student extends Component {
     return (
       <div>
         <div class="container">
-          <div class="card row bg-transparent solid-gray">
+          <div class="col card row bg-transparent solid-gray">
             <div class="card-body">
               <h4 style={{ textAlign: "center" }} class="card-title">
                 List of students
               </h4>
+              <div className="row col-2">
+                <button className="btn btn-success">
+                  <span className="fa fa-plus"></span> ADD
+                </button>
+              </div>
               <hr />
             </div>
             <ul class="list-group list-group-flush">
@@ -47,9 +52,18 @@ export default class Student extends Component {
                       <li>Date of birthday : {student.dob}</li>
                       <li>Age : {student.age}</li>
                       <br />
-                      <button className="btn btn-danger">
-                        <span className="fa fa-trash"></span>
-                      </button>
+                      <div className="row col">
+                        <div className="col-2">
+                          <button className="btn btn-danger">
+                            <span className="fa fa-trash"></span> DELETE
+                          </button>
+                        </div>
+                        <div className="col-2">
+                          <button className="btn btn-warning">
+                            <span className="fa fa-refresh"></span> UPDATE
+                          </button>
+                        </div>
+                      </div>
                       {/* <button
                         type="button"
                         class="btn btn-default"
