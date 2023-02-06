@@ -31,24 +31,40 @@ export default class Student extends Component {
         <div class="container">
           <div class="card row bg-transparent solid-gray">
             <div class="card-body">
-              <h4 style={{textAlign : "center"}} class="card-title">List of students</h4>
+              <h4 style={{ textAlign: "center" }} class="card-title">
+                List of students
+              </h4>
               <hr />
             </div>
             <ul class="list-group list-group-flush">
-                {this.state.students.map((student) => {
-                  return (
-                    <div>
-                      <ul className="list-group-item list-group-item-action list-group-item-secondary">
+              {this.state.students.map((student) => {
+                return (
+                  <div>
+                    <ul className="list-group-item list-group-item-action list-group-item-secondary">
                       <li>Id : {student.id}</li>
                       <li>Name : {student.name}</li>
                       <li>Email : {student.email}</li>
                       <li>Date of birthday : {student.dob}</li>
                       <li>Age : {student.age}</li>
-                      </ul>
                       <br />
-                    </div>
-                  );
-                })}
+                      <button className="btn btn-danger">
+                        <span className="fa fa-trash"></span>
+                      </button>
+                      {/* <button
+                        type="button"
+                        class="btn btn-default"
+                        aria-label="Left Align"
+                      >
+                        <span
+                          class="fa fa-trash-o fa-lg"
+                          aria-hidden="true"
+                        ></span>
+                      </button> */}
+                    </ul>
+                    <br />
+                  </div>
+                );
+              })}
             </ul>
           </div>
         </div>
