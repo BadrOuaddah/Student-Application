@@ -17,6 +17,11 @@ export default class Student extends Component {
     this.setState ({students});
   })}
 
+  deleteStudent(id){
+    axios.delete(`http://localhost:8080/api/v1/student/`+{id})
+    .then(() => this.setState({ status: 'Delete successful' }));
+  }
+
   render() {
     return (
       <div>
@@ -46,7 +51,7 @@ export default class Student extends Component {
                       <br />
                       <div className="row col">
                         <div className="col-2">
-                          <button className="btn btn-danger">
+                          <button onClick={this.deleteStudent(student.id)} className="btn btn-danger">
                             {/* onClick={deleteStudent(student.id)} */}
                             <span className="fa fa-trash"></span> DELETE
                           </button>
