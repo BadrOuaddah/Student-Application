@@ -15,12 +15,16 @@ export default class Student extends Component {
     // private LocalDate dob;
     // private Integer age;
 
-    // *http Request
+    // *http Request : GET
     fetch("http://localhost:8080/api/v1/student")
       .then((response) => response.json())
       .then((json) => this.setState({ students: json }));
-  }
 
+      const deleteStudent = () =>{
+  
+      }
+    }
+    
   // changeName = () => {
   //   this.setState({ name: "ali" });
   // };
@@ -55,6 +59,7 @@ export default class Student extends Component {
                       <div className="row col">
                         <div className="col-2">
                           <button className="btn btn-danger">
+                          {/* onClick={deleteStudent(student.id)} */}
                             <span className="fa fa-trash"></span> DELETE
                           </button>
                         </div>
