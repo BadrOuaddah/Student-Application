@@ -10,12 +10,12 @@ export default class Student extends Component {
     };
 
     // ! attributes of student from database
-
     // *http Request : GET
-    fetch("http://localhost:8080/api/v1/student")
-      .then((response) => response.json())
-      .then((json) => this.setState({ students: json }));
-  }
+    axios.get(`http://localhost:8080/api/v1/student`)
+    .then(response => {
+  const students = response.data;
+    this.setState ({students});
+  })}
 
   render() {
     return (
