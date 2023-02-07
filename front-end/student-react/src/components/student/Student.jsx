@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Student.css";
+import axios from "axios";
 
 export default class Student extends Component {
   constructor(props) {
@@ -9,25 +10,12 @@ export default class Student extends Component {
     };
 
     // ! attributes of student from database
-    // private Long id;
-    // private String name;
-    // private String email;
-    // private LocalDate dob;
-    // private Integer age;
 
     // *http Request : GET
     fetch("http://localhost:8080/api/v1/student")
       .then((response) => response.json())
       .then((json) => this.setState({ students: json }));
-
-      const deleteStudent = () =>{
-  
-      }
-    }
-    
-  // changeName = () => {
-  //   this.setState({ name: "ali" });
-  // };
+  }
 
   render() {
     return (
@@ -59,7 +47,7 @@ export default class Student extends Component {
                       <div className="row col">
                         <div className="col-2">
                           <button className="btn btn-danger">
-                          {/* onClick={deleteStudent(student.id)} */}
+                            {/* onClick={deleteStudent(student.id)} */}
                             <span className="fa fa-trash"></span> DELETE
                           </button>
                         </div>
@@ -69,16 +57,6 @@ export default class Student extends Component {
                           </button>
                         </div>
                       </div>
-                      {/* <button
-                        type="button"
-                        class="btn btn-default"
-                        aria-label="Left Align"
-                      >
-                        <span
-                          class="fa fa-trash-o fa-lg"
-                          aria-hidden="true"
-                        ></span>
-                      </button> */}
                     </ul>
                     <br />
                   </div>
@@ -91,22 +69,3 @@ export default class Student extends Component {
     );
   }
 }
-
-// {this.state.students.map((student) => {
-//   return (
-//   );
-// })}
-//     <div>
-//       {/* //! table from API   */}
-//        <p>Id : {student.id}</p>
-//        <p>Name : {student.name}</p>
-//        <p>Email : {student.email}</p>
-//        <p>Date of birthday : {student.dob}</p>
-//        <p>Age : {student.age}</p>
-//       {/* write some code ... */}
-//     </div>
-
-/* <h1>
-    Hello {this.state.name}
-  </h1>
-  <button onClick={this.changeName}>click here </button> */
