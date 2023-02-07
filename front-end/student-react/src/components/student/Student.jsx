@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "./Student.css";
 import axios from "axios";
 
+
+const baseURL = "http://localhost:8080/api/v1/student";
+
 export default class Student extends Component {
   constructor(props) {
     super(props);
@@ -11,16 +14,17 @@ export default class Student extends Component {
 
     // ! attributes of student from database
     // *http Request : GET
-    axios.get(`http://localhost:8080/api/v1/student`)
+    axios.get(baseURL)
     .then(response => {
   const students = response.data;
     this.setState ({students});
   })}
 
-  deleteStudent(id){
-    axios.delete(`http://localhost:8080/api/v1/student/`+{id})
-    .then(() => this.setState({ status: 'Delete successful' }));
+  deleteStudent(){
+    console.log("hello")
   }
+
+
 
   render() {
     return (
@@ -51,8 +55,8 @@ export default class Student extends Component {
                       <br />
                       <div className="row col">
                         <div className="col-2">
-                          <button onClick={this.deleteStudent(student.id)} className="btn btn-danger">
-                            {/* onClick={deleteStudent(student.id)} */}
+                          <button onClick={this.deleteStudent()} className="btn btn-danger">
+                            {/* //TODO: onClick={deleteStudent(student.id)} */}
                             <span className="fa fa-trash"></span> DELETE
                           </button>
                         </div>
