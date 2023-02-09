@@ -26,9 +26,13 @@ export default class Student extends Component {
     });
   }
 
-  ShowForm() {
-    console.log("hello world !!!")
-  }
+  DeleteStudent(id,e) {
+    console.log("h3110 W0r1d!");
+    // axios.delete('http://localhost:8080/api/v1/student'+"/"+{id})
+    // .then(response => console.log(response));
+    // const posts = this.state.posts.filter(item => item.id !== id);  
+    // this.setState({ posts }); 
+    }
 
   //TODO: solved delete method bug !!!
   // deleteStudent(id) {
@@ -66,6 +70,7 @@ export default class Student extends Component {
                       <div className="row col">
                         <div className="col-2">
                           <button
+                            onClick={(e) =>this.DeleteStudent(student.id,e)}
                             className="btn btn-danger">
                             {/* //TODO: onClick={deleteStudent(student.id)} */}
                             <span className="fa fa-trash"></span> DELETE
@@ -83,11 +88,6 @@ export default class Student extends Component {
                 );
               })}
             </ul>
-            <div>
-              <button onClick={this.ShowForm}>
-                hello world
-              </button>
-            </div>
           </div>
         </div>
       </div>
