@@ -24,15 +24,13 @@ export default class Student extends Component {
     console.log("hello")
   }
 
-
-
   render() {
     return (
       <div>
-        <div class="container">
-          <div class="col card row bg-transparent solid-gray">
-            <div class="card-body">
-              <h4 style={{ textAlign: "center" }} class="card-title">
+        <div className="container">
+          <div className="col card row bg-transparent solid-gray">
+            <div className="card-body">
+              <h4 style={{ textAlign: "center" }} className="card-title">
                 List of students
               </h4>
               <div className="row col-2">
@@ -42,10 +40,10 @@ export default class Student extends Component {
               </div>
               <hr />
             </div>
-            <ul class="list-group list-group-flush">
+            <ul className="list-group list-group-flush">
               {this.state.students.map((student) => {
                 return (
-                  <div>
+                  <div key = {student.id}>
                     <ul className="list-group-item list-group-item-action list-group-item-secondary">
                       <li>Id : {student.id}</li>
                       <li>Name : {student.name}</li>
