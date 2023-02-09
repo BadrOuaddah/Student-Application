@@ -27,11 +27,11 @@ export default class Student extends Component {
   }
 
   DeleteStudent(id,e) {
-    console.log("h3110 W0r1d!");
-    // axios.delete('http://localhost:8080/api/v1/student'+"/"+{id})
-    // .then(response => console.log(response));
-    // const posts = this.state.posts.filter(item => item.id !== id);  
-    // this.setState({ posts }); 
+    axios.delete(`http://localhost:8080/api/v1/student/${id}`)
+    .then(response => console.log(response));
+
+    const students = this.state.students.filter(item => item.id !== id);  
+    this.setState({ students });  
     }
 
   //TODO: solved delete method bug !!!
