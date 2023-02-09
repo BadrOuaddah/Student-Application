@@ -7,15 +7,14 @@ const baseURL = "http://localhost:8080/api/v1/student";
 
 export default class Student extends Component {
   
+  
   constructor(props) {
     super(props);
     this.state = {
       students: [],
     };
 
-    function ShowForm() {
-      console.log("hello world !!!")
-    }
+
 
     // const [showForm, setShowForm] = useState(false);
 
@@ -27,11 +26,15 @@ export default class Student extends Component {
     });
   }
 
-  //TODO: solved delete method bug !!!
-  deleteStudent(id) {
-    axios.delete('http://localhost:8080/api/v1/student/{id}').then(response => console.log(response));
-    console.log(Response.data);
+  ShowForm() {
+    console.log("hello world !!!")
   }
+
+  //TODO: solved delete method bug !!!
+  // deleteStudent(id) {
+  //   axios.delete('http://localhost:8080/api/v1/student/{id}').then(response => console.log(response));
+  //   console.log(Response.data);
+  // }
 
   render() {
     return (
@@ -63,7 +66,6 @@ export default class Student extends Component {
                       <div className="row col">
                         <div className="col-2">
                           <button
-                            onClick={this.deleteStudent(student.id)}
                             className="btn btn-danger">
                             {/* //TODO: onClick={deleteStudent(student.id)} */}
                             <span className="fa fa-trash"></span> DELETE
@@ -82,7 +84,7 @@ export default class Student extends Component {
               })}
             </ul>
             <div>
-              <button>
+              <button onClick={this.ShowForm}>
                 hello world
               </button>
             </div>
