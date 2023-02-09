@@ -1,27 +1,36 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 import "./Student.css";
 import axios from "axios";
-
+// import { click } from "@testing-library/user-event/dist/click";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
 export default class Student extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
       students: [],
     };
 
-    // ! attributes of student from database
-    // *http Request : GET
-    axios.get(baseURL)
-    .then(response => {
-  const students = response.data;
-    this.setState ({students});
-  })}
+    function ShowForm() {
+      console.log("hello world !!!")
+    }
 
-  deleteStudent(){
-    console.log("hello")
+    // const [showForm, setShowForm] = useState(false);
+
+
+    // *http Request : GET
+    axios.get(baseURL).then((response) => {
+      const students = response.data;
+      this.setState({ students });
+    });
+  }
+
+  //TODO: solved delete method bug !!!
+  deleteStudent(id) {
+    axios.delete('http://localhost:8080/api/v1/student/{id}').then(response => console.log(response));
+    console.log(Response.data);
   }
 
   render() {
@@ -43,7 +52,7 @@ export default class Student extends Component {
             <ul className="list-group list-group-flush">
               {this.state.students.map((student) => {
                 return (
-                  <div key = {student.id}>
+                  <div key={student.id}>
                     <ul className="list-group-item list-group-item-action list-group-item-secondary">
                       <li>Id : {student.id}</li>
                       <li>Name : {student.name}</li>
@@ -53,7 +62,9 @@ export default class Student extends Component {
                       <br />
                       <div className="row col">
                         <div className="col-2">
-                          <button onClick={this.deleteStudent()} className="btn btn-danger">
+                          <button
+                            onClick={this.deleteStudent(student.id)}
+                            className="btn btn-danger">
                             {/* //TODO: onClick={deleteStudent(student.id)} */}
                             <span className="fa fa-trash"></span> DELETE
                           </button>
@@ -70,6 +81,11 @@ export default class Student extends Component {
                 );
               })}
             </ul>
+            <div>
+              <button>
+                hello world
+              </button>
+            </div>
           </div>
         </div>
       </div>
