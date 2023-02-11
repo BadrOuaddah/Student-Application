@@ -33,6 +33,11 @@ export default class Student extends Component {
     this.setState({ students });  
     }
 
+  ShowEditForm(){
+    //TODO: Add POST Method 
+    console.log("hello world");
+  }
+
   render() {
     return (
       <div>
@@ -43,7 +48,7 @@ export default class Student extends Component {
                 List of students
               </h4>
               <div className="row col-2">
-                <button className="btn btn-success">
+                <button onClick={() => this.ShowEditForm()} className="btn btn-success">
                   <span className="fa fa-plus"></span> ADD
                 </button>
               </div>
