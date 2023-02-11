@@ -1,7 +1,7 @@
 import React, { Component} from "react";
 import "./Student.css";
 import axios from "axios";
-// import { click } from "@testing-library/user-event/dist/click";
+import ShowEditForm from "../ShowEditForm/ShowEditForm";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
@@ -29,16 +29,14 @@ export default class Student extends Component {
   DeleteStudent(id,e) {
     axios.delete(`http://localhost:8080/api/v1/student/${id}`)
     .then(response => console.log(response));
-
     const students = this.state.students.filter(item => item.id !== id);  
     this.setState({ students });  
     }
 
-  //TODO: solved delete method bug !!!
-  // deleteStudent(id) {
-  //   axios.delete('http://localhost:8080/api/v1/student/{id}').then(response => console.log(response));
-  //   console.log(Response.data);
-  // }
+  ShowEditForm(){
+    //TODO: Add POST Method 
+    console.log("hello world");
+  }
 
   render() {
     return (
@@ -50,9 +48,13 @@ export default class Student extends Component {
                 List of students
               </h4>
               <div className="row col-2">
-                <button className="btn btn-success">
+                <button onClick={() => this.ShowEditForm()} className="btn btn-success">
                   <span className="fa fa-plus"></span> ADD
                 </button>
+              </div>
+              <br />
+              <div>
+              <ShowEditForm />
               </div>
               <hr />
             </div>
