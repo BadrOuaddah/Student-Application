@@ -27,6 +27,7 @@ export default function ShowEditForm() {
             <input type="number" className="form-control" placeholder="Age" />
           </div>
         </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
   );

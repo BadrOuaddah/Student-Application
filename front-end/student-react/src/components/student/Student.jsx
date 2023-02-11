@@ -3,6 +3,7 @@ import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
 
+
 const baseURL = "http://localhost:8080/api/v1/student";
 
 export default class Student extends Component {
@@ -33,10 +34,10 @@ export default class Student extends Component {
     this.setState({ students });  
     }
 
-  ShowEditForm(){
-    //TODO: Add POST Method 
-    console.log("hello world");
+  ShowEditForm(){ 
+    console.log("Edit Form showed !");
   }
+
 
   render() {
     return (
