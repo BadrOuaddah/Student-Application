@@ -1,4 +1,4 @@
-import React, { Component} from "react";
+import React, { Component, useState} from "react";
 import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
@@ -15,9 +15,9 @@ export default class Student extends Component {
       students: [],
     };
 
-
-
     // const [showForm, setShowForm] = useState(false);
+
+    // const [show, setShow] = useState();
 
 
     // *http Request : GET
@@ -34,7 +34,7 @@ export default class Student extends Component {
     this.setState({ students });  
     }
 
-  ShowEditForm(){ 
+  ButtonToShowEditForm(){ 
     console.log("Edit Form showed !");
   }
 
@@ -49,7 +49,7 @@ export default class Student extends Component {
                 List of students
               </h4>
               <div className="row col-2">
-                <button onClick={() => this.ShowEditForm()} className="btn btn-success">
+                <button onClick={() => this.ButtonToShowEditForm()} className="btn btn-success">
                   <span className="fa fa-plus"></span> ADD
                 </button>
               </div>
@@ -75,7 +75,6 @@ export default class Student extends Component {
                           <button
                             onClick={(e) =>this.DeleteStudent(student.id,e)}
                             className="btn btn-danger">
-                            {/* //TODO: onClick={deleteStudent(student.id)} */}
                             <span className="fa fa-trash"></span> DELETE
                           </button>
                         </div>

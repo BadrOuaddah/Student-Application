@@ -4,6 +4,7 @@ import "./ShowEditForm.css";
 export default function ShowEditForm() {
   return (
     <div>
+      <div className="boxShadow">
       <form>
         <div className="form-row">
           <div className="col">
@@ -27,8 +28,13 @@ export default function ShowEditForm() {
             <input type="number" className="form-control" placeholder="Age" />
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <br />
+        <div className="center">
+        <button type="submit" className="btn btn-primary">Submit</button>
+        </div>
+        <br />
       </form>
+      </div>
     </div>
   );
 }
