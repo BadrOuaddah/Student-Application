@@ -1,7 +1,8 @@
-import React, { Component, useState} from "react";
+import React, { Component} from "react";
 import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
+import Pagination from "../Pagination/Pagination";
 
 
 const baseURL = "http://localhost:8080/api/v1/student";
