@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import "bootstrap";
-import Student from "./components/Student/Student";
+import Student from "./components/Student/Student.jsx";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 
 export function App() {

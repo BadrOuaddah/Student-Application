@@ -3,6 +3,7 @@ import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
 
+
 const baseURL = "http://localhost:8080/api/v1/student";
 
 export default class Student extends Component {
@@ -11,12 +12,12 @@ export default class Student extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      students: [],
+      students: []
     };
 
-
-
     // const [showForm, setShowForm] = useState(false);
+
+    // const [show, setShow] = useState();
 
 
     // *http Request : GET
@@ -33,10 +34,10 @@ export default class Student extends Component {
     this.setState({ students });  
     }
 
-  ShowEditForm(){
-    //TODO: Add POST Method 
-    console.log("hello world");
+  ButtonToShowEditForm(){ 
+    console.log("Edit Form showed !");
   }
+
 
   render() {
     return (
@@ -48,7 +49,7 @@ export default class Student extends Component {
                 List of students
               </h4>
               <div className="row col-2">
-                <button onClick={() => this.ShowEditForm()} className="btn btn-success">
+                <button onClick={() => this.ButtonToShowEditForm()} className="btn btn-success">
                   <span className="fa fa-plus"></span> ADD
                 </button>
               </div>
@@ -74,7 +75,6 @@ export default class Student extends Component {
                           <button
                             onClick={(e) =>this.DeleteStudent(student.id,e)}
                             className="btn btn-danger">
-                            {/* //TODO: onClick={deleteStudent(student.id)} */}
                             <span className="fa fa-trash"></span> DELETE
                           </button>
                         </div>
