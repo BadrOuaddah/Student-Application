@@ -13,6 +13,8 @@ export default class ShowEditForm extends Component {
     };
   };
 
+  // TODO: solve a bug POST method
+  //! solve a bug POST method
   AddStudent(){
     const nameInput = document.getElementById("name_id");
     const emailInput = document.getElementById("email_id");
