@@ -29,6 +29,7 @@ export default class ShowEditForm extends Component {
       const age = ageInput.value;
 
       axios.post(baseURL,{
+        // ? Use this values to insert/add new student 
         name:name,
         email:email,
         dob:dob,
@@ -36,6 +37,7 @@ export default class ShowEditForm extends Component {
       }).then(() =>{
         const students = this.state.students;
         this.setState({students});
+        
       })
     })
 
