@@ -22,9 +22,9 @@
         },
 
         {
-            "type": "msedge",
+            "type": "firefox",
             "request": "launch",
-            "name": "Edge",
+            "name": "firefox",
             "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}"
         }

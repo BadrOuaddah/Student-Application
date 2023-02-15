@@ -1,7 +1,7 @@
 import React from "react";
 import App from "./App";
 import ReactDOM from "react-dom/client";
-import PaginatedItems from "./components/Pagination/Pagination";
+// import PaginatedItems from "./components/Pagination/Pagination";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
