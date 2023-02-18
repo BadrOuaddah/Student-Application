@@ -4,8 +4,8 @@ import axios from "axios";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 export default function ShowEditForm() {
+
   const [student, setStudent] = useState({
-    id:0,
     name: "",
     email: "",
     dob: "",
@@ -16,15 +16,16 @@ export default function ShowEditForm() {
     setStudent({...student, [event.target.name]: event.target.event})
   };
 
-  function handleSubmit(event){
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    axios.post(baseURL,{student}).then(response => console.log(response))
+    await axios.post(baseURL,{student}).then(response => console.log(response)).catch(err => console.log(err))
+    // axios.post(baseURL,student)
   }
 
   return (
     <div>
       <div className="boxShadow">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(event) => handleSubmit(event)}>
           <div className="form-row">
             <div className="col">
               <i className="fa fa-user-circle" aria-hidden="true"></i> Name :

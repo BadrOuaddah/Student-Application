@@ -51,7 +51,7 @@ public class StudentConfig {
 
             );
             repository.saveAll(
-                    List.of()
+                    List.of(mariam, alex, youssef, ali, zakaria)
             );
         };
     }
