@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
-import PaginatedItems from "../Pagination/Pagination";
+// import PaginatedItems from "../Pagination/Pagination";
 const baseURL = "http://localhost:8080/api/v1/student";
 
 export default class Student extends Component {
@@ -73,9 +73,6 @@ Items({ currentItems }) {
             <ul className="list-group list-group-flush">
               {this.state.students.map((student) => {
                 return (
-
-
-
                   <div key={student.id}>
                     <ul className="list-group-item list-group-item-action list-group-item-secondary">
                       <li>Id : {student.id}</li>
@@ -108,7 +105,7 @@ Items({ currentItems }) {
           </div>
           <div>
             {/* //! PAGINATION */}
-            <PaginatedItems />
+            {/* <PaginatedItems /> */}
           </div>
         </div>
       </div>
