@@ -1,4 +1,4 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
@@ -6,17 +6,14 @@ import PaginatedItems from "../Pagination/Pagination";
 const baseURL = "http://localhost:8080/api/v1/student";
 
 export default class Student extends Component {
-  
-  
   constructor(props) {
     super(props);
     this.state = {
-      students: []
+      students: [],
     };
 
     // const [showForm, setShowForm] = useState(false);
     // const [show, setShow] = useState();
-
 
     // *http Request : GET
     axios.get(baseURL).then((response) => {
@@ -25,17 +22,30 @@ export default class Student extends Component {
     });
   }
 
-  DeleteStudent(id,e) {
-    axios.delete(`http://localhost:8080/api/v1/student/${id}`)
-    .then(response => console.log(response));
-    const students = this.state.students.filter(item => item.id !== id);  
-    this.setState({ students });  
-    }
+  DeleteStudent(id, e) {
+    axios
+      .delete(`http://localhost:8080/api/v1/student/${id}`)
+      .then((response) => console.log(response));
+    const students = this.state.students.filter((item) => item.id !== id);
+    this.setState({ students });
+  }
 
-  ButtonToShowEditForm(){ 
+  ButtonToShowEditForm() {
     console.log("Edit Form showed !");
   }
 
+Items({ currentItems }) {
+    return (
+      <div className="items">
+        {currentItems &&
+          currentItems.map((student) => (
+            <div>
+              <h3>Item #{student}</h3>
+            </div>
+          ))}
+      </div>
+    );
+  }
 
   render() {
     return (
@@ -47,19 +57,25 @@ export default class Student extends Component {
                 List of students
               </h4>
               <div className="row col-2">
-                <button onClick={() => this.ButtonToShowEditForm()} className="btn btn-success">
+                <button
+                  onClick={() => this.ButtonToShowEditForm()}
+                  className="btn btn-success"
+                >
                   <span className="fa fa-plus"></span> ADD
                 </button>
               </div>
               <br />
               <div>
-              <ShowEditForm />
+                <ShowEditForm />
               </div>
               <hr />
             </div>
             <ul className="list-group list-group-flush">
               {this.state.students.map((student) => {
                 return (
+
+
+
                   <div key={student.id}>
                     <ul className="list-group-item list-group-item-action list-group-item-secondary">
                       <li>Id : {student.id}</li>
@@ -71,8 +87,9 @@ export default class Student extends Component {
                       <div className="row col">
                         <div className="col-2">
                           <button
-                            onClick={(e) =>this.DeleteStudent(student.id,e)}
-                            className="btn btn-danger">
+                            onClick={(e) => this.DeleteStudent(student.id, e)}
+                            className="btn btn-danger"
+                          >
                             <span className="fa fa-trash"></span> DELETE
                           </button>
                         </div>
@@ -89,11 +106,10 @@ export default class Student extends Component {
               })}
             </ul>
           </div>
-
-              <div>
-              <PaginatedItems />
-              </div>
-
+          <div>
+            {/* //! PAGINATION */}
+            <PaginatedItems />
+          </div>
         </div>
       </div>
     );

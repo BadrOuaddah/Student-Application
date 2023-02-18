@@ -1,8 +1,5 @@
 import ReactPaginate from "https://cdn.skypack.dev/react-paginate@7.1.3";
-import React, {
-  useEffect,
-  useState,
-} from 'react';
+import React, { useEffect, useState } from "react";
 // import ReactDOM from "https://cdn.skypack.dev/react-dom@17.0.1";
 import "./Pagination.css";
 
@@ -73,10 +70,10 @@ function PaginatedItems({ itemsPerPage }) {
   );
 }
 
+export default PaginatedItems;
+
 // Add a <div id="container"> to your HTML to see the componend rendered.
 // ReactDOM.render(
 //   <PaginatedItems itemsPerPage={4} />,
 //   document.getElementById("container")
 // );
-
-export default PaginatedItems;
