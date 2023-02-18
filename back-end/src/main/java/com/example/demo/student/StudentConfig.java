@@ -50,8 +50,48 @@ public class StudentConfig {
                     LocalDate.of(1997, Month.MAY, 5)
 
             );
+
+            Student ahmed = new Student(
+
+                    "Ahmed",
+                    "Ahmed@gmail.com",
+                    LocalDate.of(1994, Month.JANUARY, 10)
+
+            );
+
+            Student mohammed = new Student(
+
+                    "Mohammed",
+                    "Mohammed@gmail.com",
+                    LocalDate.of(1995, Month.MAY, 5)
+
+            );
+
+            Student ayman = new Student(
+
+                    "Ayman",
+                    "Ayman@gmail.com",
+                    LocalDate.of(1994, Month.JULY, 15)
+
+            );
+
+            Student yassine = new Student(
+
+                    "Yassine",
+                    "Yassine@gmail.com",
+                    LocalDate.of(1987, Month.SEPTEMBER, 7)
+
+            );
+
+            Student yahya = new Student(
+
+                    "Yahya",
+                    "Yahya@gmail.com",
+                    LocalDate.of(1997, Month.APRIL, 2)
+
+            );
             repository.saveAll(
-                    List.of(mariam, alex, youssef, ali, zakaria)
+                    List.of(mariam, alex, youssef, ali, zakaria, ahmed, mohammed, ayman, yassine, yahya)
             );
         };
     }
