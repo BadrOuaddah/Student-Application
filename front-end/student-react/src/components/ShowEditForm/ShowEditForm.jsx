@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ShowEditForm.css";
+import axios from "axios";
 
+const baseURL = "http://localhost:8080/api/v1/student";
 export default function ShowEditForm() {
+  const [student, setStudent] = useState({
+    id:0,
+    name: "",
+    email: "",
+    dob: "",
+    age: 0,
+  });
 
-    
-    
-    const handleInput = (event) => {
+  const handleInput = (event) => {
+    setStudent({...student, [event.target.name]: event.target.event})
+  };
 
-    }
+  function handleSubmit(event){
+    event.preventDefault()
+    axios.post(baseURL,{student}).then(response => console.log(response))
+  }
 
   return (
     <div>
       <div className="boxShadow">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-row">
             <div className="col">
               <i className="fa fa-user-circle" aria-hidden="true"></i> Name :
@@ -40,12 +52,12 @@ export default function ShowEditForm() {
             <div className="col">
               <i className="fa fa-birthday-cake" aria-hidden="true"></i> Date of
               birthday :
-              <input 
-              type="date" 
-              onChange={handleInput}
-              className="form-control" 
-              id="dob_id"
-               />
+              <input
+                type="date"
+                onChange={handleInput}
+                className="form-control"
+                id="dob_id"
+              />
             </div>
             <div className="col">
               <i className="fa fa-user-plus" aria-hidden="true"></i> Age :
