@@ -27,11 +27,19 @@ export default function ShowEditForm() {
       name,email,dob,age
     }
 
-    setStudent({...student})
+    setStudent({...student, [event.target.name]: event.target.event})
   };
 
   const handleSubmit = async (event) => {
-    await axios.post(baseURL,this)
+    await axios.post(baseURL,student).then(() =>{
+      const students = this.state.students;
+      this.setState({students});
+    })
+
+    // then(() =>{
+    //   const students = this.state.students;
+    //   this.setState({students});
+
     // event.preventDefault()
     // await axios.post(baseURL,{student}).then(response => console.log(response)).catch(err => console.log(err))
   }
