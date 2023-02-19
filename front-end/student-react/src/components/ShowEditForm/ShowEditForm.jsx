@@ -13,13 +13,27 @@ export default function ShowEditForm() {
   });
 
   const handleInput = (event) => {
-    setStudent({...student, [event.target.name]: event.target.event})
+    const nameInput = document.getElementById("name_id");
+    const emailInput = document.getElementById("email_id");
+    const dateOfBirthdayInput = document.getElementById("dob_id");
+    const ageInput = document.getElementById("age_id");
+
+    const name = nameInput.value;
+    const email = emailInput.value;
+    const dob = dateOfBirthdayInput.value;
+    const age = ageInput.value;
+    
+    const student = {
+      name,email,dob,age
+    }
+
+    setStudent({...student})
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
-    await axios.post(baseURL,{student}).then(response => console.log(response)).catch(err => console.log(err))
-    // axios.post(baseURL,student)
+    await axios.post(baseURL,this)
+    // event.preventDefault()
+    // await axios.post(baseURL,{student}).then(response => console.log(response)).catch(err => console.log(err))
   }
 
   return (
@@ -32,7 +46,7 @@ export default function ShowEditForm() {
               <input
                 type="text"
                 className="form-control"
-                onChange={handleInput}
+                // onChange={handleInput}
                 placeholder="Name"
                 id="name_id"
               />
@@ -41,7 +55,7 @@ export default function ShowEditForm() {
               <i className="fa fa-envelope" aria-hidden="true"></i> Email :
               <input
                 type="email"
-                onChange={handleInput}
+                // onChange={handleInput}
                 className="form-control"
                 placeholder="Email"
                 id="email_id"
@@ -55,7 +69,7 @@ export default function ShowEditForm() {
               birthday :
               <input
                 type="date"
-                onChange={handleInput}
+                // onChange={handleInput}
                 className="form-control"
                 id="dob_id"
               />
@@ -64,7 +78,7 @@ export default function ShowEditForm() {
               <i className="fa fa-user-plus" aria-hidden="true"></i> Age :
               <input
                 type="number"
-                onChange={handleInput}
+                // onChange={handleInput}
                 className="form-control"
                 placeholder="Age"
                 id="age_id"
@@ -73,7 +87,7 @@ export default function ShowEditForm() {
           </div>
           <br />
           <div className="center">
-            <button type="submit" className="btn btn-primary" id="submit_id">
+            <button onClick={handleInput} type="submit" className="btn btn-primary" id="submit_id">
               Submit
             </button>
           </div>
