@@ -27,6 +27,7 @@ export default function ShowEditForm() {
       name,email,dob,age
     }
 
+    //! bug
     setStudent({...student, [event.target.name]: event.target.event})
   };
 
