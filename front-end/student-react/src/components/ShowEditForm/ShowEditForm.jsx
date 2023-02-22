@@ -35,7 +35,7 @@ export default class ShowEditForm extends Component {
       dob:dob,
       age:age
     })
-    this.setState({ [event.target.name]: event.target.value });
+    // this.setState({ [event.target.name]: event.target.value });
   };
 
   submitHandler = (event) => {
