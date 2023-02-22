@@ -3,6 +3,7 @@ import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
 // import PaginatedItems from "../Pagination/Pagination";
+import ShowUpdateForm from "../ShowUpdateForm/ShowUpdateForm";
 const baseURL = "http://localhost:8080/api/v1/student";
 
 export default class Student extends Component {
@@ -96,6 +97,8 @@ Items({ currentItems }) {
                           </button>
                         </div>
                       </div>
+                      <br />
+                      <ShowUpdateForm />
                     </ul>
                     <br />
                   </div>

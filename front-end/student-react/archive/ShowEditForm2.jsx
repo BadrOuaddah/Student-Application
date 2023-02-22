@@ -12,29 +12,7 @@ export default function ShowEditForm() {
     age: 0,
   });
 
-  // const handleInput = (event) => {
-  //   const nameInput = document.getElementById("name_id");
-  //   const emailInput = document.getElementById("email_id");
-  //   const dateOfBirthdayInput = document.getElementById("dob_id");
-  //   const ageInput = document.getElementById("age_id");
-
-  //   const name = nameInput.value;
-  //   const email = emailInput.value;
-  //   const dob = dateOfBirthdayInput.value;
-  //   const age = ageInput.value;
-    
-  //   const studentArray = {
-  //     name,email,dob,age
-  //   }
-
-  //   const student = JSON.stringify(studentArray)
-
-
-  //   //! bug
-  //   setStudent({...student, [event.target.name]: event.target.event})
- // };
-  const handleSubmit = async (event) => {
-
+  const handleInput = (event) => {
     const nameInput = document.getElementById("name_id");
     const emailInput = document.getElementById("email_id");
     const dateOfBirthdayInput = document.getElementById("dob_id");
@@ -49,22 +27,16 @@ export default function ShowEditForm() {
       name,email,dob,age
     }
 
-    // const student = JSON.stringify(studentArray)
+    const student = JSON.stringify(studentArray)
 
 
     //! bug
-    // setStudent({...student, [event.target.name]: event.target.event})
+    setStudent({...student, [event.target.name]: event.target.event})
+  };
+
+  const handleSubmit = async (event) => {
     
-    axios.post(baseURL,{
-      name: "basim",
-      email: "basim@email",
-      dob: "2000-01-05",
-      age: 1,
-    },{headers: {'Content-Type': 'application/json'}}).then((response) => {
-      console.log(response);
-    }, (error) => {
-      console.log(error);
-    });
+    axios.post(baseURL,{student})
     
     
     
@@ -83,12 +55,10 @@ export default function ShowEditForm() {
     // await axios.post(baseURL,{student}).then(response => console.log(response)).catch(err => console.log(err))
   }
 
-
   return (
     <div>
       <div className="boxShadow">
-        <form>
-        {/* onSubmit={(event) => handleSubmit(event)} */}
+        <form onSubmit={(event) => handleSubmit(event)}>
           <div className="form-row">
             <div className="col">
               <i className="fa fa-user-circle" aria-hidden="true"></i> Name :
@@ -136,7 +106,7 @@ export default function ShowEditForm() {
           </div>
           <br />
           <div className="center">
-            <button onClick={handleSubmit} type="submit" className="btn btn-primary" id="submit_id">
+            <button onClick={handleInput} type="submit" className="btn btn-primary" id="submit_id">
               Submit
             </button>
           </div>
