@@ -29,8 +29,13 @@ export default class ShowEditForm extends Component {
     //   dob,
     //   age,
     // };
-
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({
+      name:name,
+      email:email,
+      dob:dob,
+      age:age
+    })
+    // this.setState({ [event.target.name]: event.target.value });
   };
 
   submitHandler = (event) => {
@@ -52,7 +57,7 @@ export default class ShowEditForm extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  onChange={this.changeHandler}
+                  // onChange={this.changeHandler}
                   placeholder="Name"
                   // value={name}
                   id="name_id"
@@ -62,7 +67,7 @@ export default class ShowEditForm extends Component {
                 <i className="fa fa-envelope" aria-hidden="true"></i> Email :
                 <input
                   type="email"
-                  onChange={this.changeHandler}
+                  // onChange={this.changeHandler}
                   className="form-control"
                   placeholder="Email"
                   // value={email}
@@ -77,7 +82,7 @@ export default class ShowEditForm extends Component {
                 of birthday :
                 <input
                   type="date"
-                  onChange={this.changeHandler}
+                  // onChange={this.changeHandler}
                   className="form-control"
                   // value={dob}
                   id="dob_id"
@@ -87,7 +92,7 @@ export default class ShowEditForm extends Component {
                 <i className="fa fa-user-plus" aria-hidden="true"></i> Age :
                 <input
                   type="number"
-                  onChange={this.changeHandler}
+                  // onChange={this.changeHandler}
                   className="form-control"
                   placeholder="Age"
                   // value={age}
@@ -98,7 +103,7 @@ export default class ShowEditForm extends Component {
             <br />
             <div className="center">
               <button
-                // onClick={handleSubmit}
+                onClick={this.changeHandler}
                 type="submit"
                 className="btn btn-primary"
                 // id="submit_id"
