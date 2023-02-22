@@ -4,7 +4,6 @@ import axios from "axios";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 export default function ShowEditForm() {
-
   const [student, setStudent] = useState({
     name: "",
     email: "",
@@ -12,7 +11,27 @@ export default function ShowEditForm() {
     age: 0,
   });
 
-  const handleInput = (event) => {
+  // const handleInput = (event) => {
+  //   const nameInput = document.getElementById("name_id");
+  //   const emailInput = document.getElementById("email_id");
+  //   const dateOfBirthdayInput = document.getElementById("dob_id");
+  //   const ageInput = document.getElementById("age_id");
+
+  //   const name = nameInput.value;
+  //   const email = emailInput.value;
+  //   const dob = dateOfBirthdayInput.value;
+  //   const age = ageInput.value;
+
+  //   const studentArray = {
+  //     name,email,dob,age
+  //   }
+
+  //   const student = JSON.stringify(studentArray)
+
+  //   //! bug
+  //   setStudent({...student, [event.target.name]: event.target.event})
+  // };
+  const handleSubmit = async (event) => {
     const nameInput = document.getElementById("name_id");
     const emailInput = document.getElementById("email_id");
     const dateOfBirthdayInput = document.getElementById("dob_id");
@@ -22,43 +41,55 @@ export default function ShowEditForm() {
     const email = emailInput.value;
     const dob = dateOfBirthdayInput.value;
     const age = ageInput.value;
-    
+
     const studentArray = {
-      name,email,dob,age
-    }
+      name,
+      email,
+      dob,
+      age,
+    };
 
-    const student = JSON.stringify(studentArray)
-
+    const studentJSON = JSON.stringify(studentArray);
 
     //! bug
-    setStudent({...student, [event.target.name]: event.target.event})
-  };
+    // setStudent({...student, [event.target.name]: event.target.event})
 
-  const handleSubmit = async (event) => {
-    
-    axios.post(baseURL,{student})
-    
-    
-    
+    // Send a POST request
+    axios({
+      method: "post",
+      url: baseURL,
+      data: {
+        studentJSON,
+      },
+    });
+
+    // axios.post(baseURL,{
+    //   studentJSON
+    // },{headers: {'Content-Type': 'application/json'}}).then((response) => {
+    //   console.log(response);
+    // }, (error) => {
+    //   console.log(error);
+    // });
+
     // axios.post(baseURL,{student
     // }).then(() =>{
     //   const students = event;
     //   this.setState({students});
     // })
 
-
     // then(() =>{
-      //   const students = this.state.students;
+    //   const students = this.state.students;
     //   this.setState({students});
 
     // event.preventDefault()
     // await axios.post(baseURL,{student}).then(response => console.log(response)).catch(err => console.log(err))
-  }
+  };
 
   return (
     <div>
       <div className="boxShadow">
-        <form onSubmit={(event) => handleSubmit(event)}>
+        <form>
+          {/* onSubmit={(event) => handleSubmit(event)} */}
           <div className="form-row">
             <div className="col">
               <i className="fa fa-user-circle" aria-hidden="true"></i> Name :
@@ -106,7 +137,12 @@ export default function ShowEditForm() {
           </div>
           <br />
           <div className="center">
-            <button onClick={handleInput} type="submit" className="btn btn-primary" id="submit_id">
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className="btn btn-primary"
+              id="submit_id"
+            >
               Submit
             </button>
           </div>
