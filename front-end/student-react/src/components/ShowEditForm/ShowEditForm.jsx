@@ -2,45 +2,42 @@ import axios from "axios";
 import React, { Component } from "react";
 
 const baseURL = "http://localhost:8080/api/v1/student";
-const nameInput = document.getElementById("name_id");
-const emailInput = document.getElementById("email_id");
-const dateOfBirthdayInput = document.getElementById("dob_id");
-const ageInput = document.getElementById("age_id");
-const name = nameInput.value;
-const email = emailInput.value;
-const dob = dateOfBirthdayInput.value;
-const age = ageInput.value;
-const studentArray = {
-  name,
-  email,
-  dob,
-  age,
-};
 
 export default class ShowEditForm extends Component {
-  
-  
-
-  constructor(props){
-    super(props)
-    this.state ={
+  constructor(props) {
+    super(props);
+    this.state = {
       name: "",
       email: "",
       dob: "",
       age: 0,
-    }
+    };
   }
-
 
   changeHandler = (event) => {
-    this.setState({[event.target.name]: event.target.value})
-  }
+    const nameInput = document.getElementById("name_id");
+    const emailInput = document.getElementById("email_id");
+    const dateOfBirthdayInput = document.getElementById("dob_id");
+    const ageInput = document.getElementById("age_id");
+    const name = nameInput.value;
+    const email = emailInput.value;
+    const dob = dateOfBirthdayInput.value;
+    const age = ageInput.value;
+    // const studentArray = {
+    //   name,
+    //   email,
+    //   dob,
+    //   age,
+    // };
+
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   submitHandler = (event) => {
     event.preventDefault();
     console.log(this.state);
-    axios.post(baseURL,this.state);
-  }
+    axios.post(baseURL, this.state);
+  };
 
   render() {
     // const { name, email, dob, age} = this.state
