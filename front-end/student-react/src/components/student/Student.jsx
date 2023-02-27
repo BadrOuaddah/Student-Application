@@ -91,11 +91,6 @@ Items({ currentItems }) {
                             <span className="fa fa-trash"></span> DELETE
                           </button>
                         </div>
-                        <div className="col-2">
-                          <button className="btn btn-warning">
-                            <span className="fa fa-refresh"></span> UPDATE
-                          </button>
-                        </div>
                       </div>
                       <br />
                       <ShowUpdateForm />

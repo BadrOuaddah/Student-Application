@@ -42,6 +42,7 @@ export default class ShowEditForm extends Component {
     event.preventDefault();
     console.log(this.state);
     axios.post(baseURL, this.state);
+    window.location.reload(false);    
   };
 
   render() {
