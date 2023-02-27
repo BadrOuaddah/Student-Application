@@ -8,6 +8,16 @@ export default function ShowUpdateForm() {
     setIsShown((current) => !current);
   };
 
+
+  
+  // DeleteStudent(id, e) {
+  //   axios
+  //     .delete(`http://localhost:8080/api/v1/student/${id}`)
+  //     .then((response) => console.log(response));
+  //   const students = this.state.students.filter((item) => item.id !== id);
+  //   this.setState({ students });
+  // }
+
   return (
     <div>
       <button className="btn btn-warning" onClick={handleClick}>
