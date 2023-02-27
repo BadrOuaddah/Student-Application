@@ -35,6 +35,10 @@ export default class Student extends Component {
     console.log("Edit Form showed !");
   }
 
+  PutStudent(id) {
+    axios.put(`http://localhost:8080/api/v1/student/${id}`);
+  }
+
 Items({ currentItems }) {
     return (
       <div className="items">
@@ -82,8 +86,7 @@ Items({ currentItems }) {
                       <li>Date of birthday : {student.dob}</li>
                       <li>Age : {student.age}</li>
                       <br />
-                      <div className="row col">
-                        <div className="col-2">
+                        <div>
                           <button
                             onClick={(e) => this.DeleteStudent(student.id, e)}
                             className="btn btn-danger"
@@ -91,7 +94,6 @@ Items({ currentItems }) {
                             <span className="fa fa-trash"></span> DELETE
                           </button>
                         </div>
-                      </div>
                       <br />
                       <ShowUpdateForm />
                     </ul>
