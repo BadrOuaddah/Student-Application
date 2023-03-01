@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
@@ -15,6 +15,8 @@ export default class Student extends Component {
 
     // const [showForm, setShowForm] = useState(false);
     // const [show, setShow] = useState();
+
+
 
     // *http Request : GET
     axios.get(baseURL).then((response) => {
@@ -35,9 +37,7 @@ export default class Student extends Component {
     console.log("Edit Form showed !");
   }
 
-  PutStudent(id) {
-    axios.put(`http://localhost:8080/api/v1/student/${id}`);
-  }
+
 
 Items({ currentItems }) {
     return (
@@ -63,7 +63,7 @@ Items({ currentItems }) {
               </h4>
               <div className="row col-2">
                 <button
-                  onClick={() => this.ButtonToShowEditForm()}
+                  // onClick={() => this.ButtonToShowEditForm()}
                   className="btn btn-success"
                 >
                   <span className="fa fa-plus"></span> ADD

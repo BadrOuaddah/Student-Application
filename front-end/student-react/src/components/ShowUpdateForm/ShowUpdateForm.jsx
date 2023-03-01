@@ -1,12 +1,33 @@
 import React, { useState } from "react";
 import "./ShowUpdateForm.css";
+import axios from "axios";
+import Student from "../Student/Student";
 
+const baseURL = "http://localhost:8080/api/v1/student";
 export default function ShowUpdateForm() {
   const [isShown, setIsShown] = useState(false);
+  const [put, setPut] = React.useState(null);
 
   const handleClick = (event) => {
     setIsShown((current) => !current);
   };
+
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setPut(response.data);
+    });
+  }, []);
+
+
+  function PutStudent(id) {
+    const student = axios.get(`http://localhost:8080/api/v1/student/${id}`).then(r => r.data)
+    axios.put(`http://localhost:8080/api/v1/student/${id}`,{
+      name:student.name,
+      email:student.email,
+      dob:student.dob,
+      age:student.age
+    })
+  }
 
 
   
@@ -52,7 +73,7 @@ export default function ShowUpdateForm() {
               id=""
               className="btn btn-primary"
               type="button"
-              value="OK"
+              value="UPDATE"
             />
           </div>
         </div>
