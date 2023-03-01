@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
@@ -15,6 +15,7 @@ export default class Student extends Component {
 
     // const [showForm, setShowForm] = useState(false);
     // const [show, setShow] = useState();
+
 
     // *http Request : GET
     axios.get(baseURL).then((response) => {
@@ -64,8 +65,7 @@ Items({ currentItems }) {
               <div className="row col-2">
                 <button
                   onClick={() => this.ButtonToShowEditForm()}
-                  className="btn btn-success"
-                >
+                  className="btn btn-success">
                   <span className="fa fa-plus"></span> ADD
                 </button>
               </div>
