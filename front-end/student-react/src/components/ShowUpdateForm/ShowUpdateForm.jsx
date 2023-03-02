@@ -57,6 +57,7 @@ export default function ShowUpdateForm() {
   //     email:student.email,
   //     dob:student.dob,
   //     age:student.age
+  
   //   })
   // }
   return (
@@ -70,6 +71,7 @@ export default function ShowUpdateForm() {
         <div>
           <div>
             <div className="card text-left">
+              {/* filter */}
             {student.map((student, index) =>{
               return(
               <div className="card-body colorCard" key={index}>
