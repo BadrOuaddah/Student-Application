@@ -9,7 +9,7 @@ export function App() {
     <div>
       <NavigationBar />
       <h1 style={{ textAlign: "center" }}>
-        Welcome to my first REACT App (JavaScript) &#128187;
+        Welcome to my student App (React) &#128187;
       </h1>
       <br />
       <br />

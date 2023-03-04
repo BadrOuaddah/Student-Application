@@ -87,16 +87,16 @@ export default function ShowUpdateForm(theStudent) {
               return(
               <div className="card-body colorCard" key={index}>
                 Name:
-                <input className="form-control" type="text" value={student.name} onChange={(e) =>setName(e.target.value)}/>
+                <input className="form-control" type="text" value={student.name} />
                 <br />
                 Email:
-                <input className="form-control" type="text" value={student.email} onChange={(e) =>setEmail(e.target.value)}/>
+                <input className="form-control" type="text" value={student.email} />
                 <br />
                 Date of birthday
-                <input className="form-control" type="date" value={student.dob} onChange={(e) =>setDob(e.target.value)}/>
+                <input className="form-control" type="date" value={student.dob} />
                 <br />
                 Age:
-                <input className="form-control" type="text" value={student.age} onChange={(e) =>setAge(e.target.value)}/>
+                <input className="form-control" type="text" value={student.age} />
                 <br />
                 <div>
                   <button>UPDATE</button>
