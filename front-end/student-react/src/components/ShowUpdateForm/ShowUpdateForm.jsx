@@ -4,14 +4,15 @@ import axios from "axios";
 import Student from "../Student/Student";
 
 const baseURL = "http://localhost:8080/api/v1/student";
-export default function ShowUpdateForm() {
- 
+export default function ShowUpdateForm(theStudent) {
+  const id = theStudent.id;
+
   const [isShown, setIsShown] = useState(false);
   const [student, setStudent] = useState([]);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [dob, setDob] = useState("");
-  const [age, setAge] = useState(0);
+  const [name, setName] = useState(theStudent.name);
+  const [email, setEmail] = useState(theStudent.email);
+  const [dob, setDob] = useState(theStudent.dob);
+  const [age, setAge] = useState(theStudent.age);
   const [studentId, setStudentId] = useState(null);
 
   const studentUpdate = {name,email,dob,age};
