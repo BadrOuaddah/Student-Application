@@ -45,6 +45,11 @@ export default function ShowUpdateForm(theStudent) {
     setIsShown((current) => !current);
   };
 
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    studentUpdate(id,studentUpdate)
+  }
+
   // ! function to use set put variable 
   // React.useEffect(() => {
   //   axios.get(baseURL).then((response) => {
@@ -73,6 +78,7 @@ export default function ShowUpdateForm(theStudent) {
       <br />
       {isShown && (
         <div>
+          <form onSubmit={handleSubmit}>
           <div>
             <div className="card text-left">
               {/* filter */}
@@ -100,6 +106,7 @@ export default function ShowUpdateForm(theStudent) {
             })}
             </div>
           </div>
+          </form>
           <br />
         </div>
       )}
