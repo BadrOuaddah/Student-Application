@@ -76,21 +76,21 @@ export default function ShowUpdateForm(theStudent) {
           <div>
             <div className="card text-left">
               {/* filter */}
-            {student.map((student, index) =>{
+            {theStudent.map((student, index) =>{
                const id = studentId;
               return(
               <div className="card-body colorCard" key={index}>
                 Name:
-                <input className="form-control" type="text" value={student.name} />
+                <input className="form-control" type="text" value={student.name} onChange={(e) =>setName(e.target.value)}/>
                 <br />
                 Email:
-                <input className="form-control" type="text" value={student.email} />
+                <input className="form-control" type="text" value={student.email} onChange={(e) =>setEmail(e.target.value)}/>
                 <br />
                 Date of birthday
-                <input className="form-control" type="date" value={student.dob} />
+                <input className="form-control" type="date" value={student.dob} onChange={(e) =>setDob(e.target.value)}/>
                 <br />
                 Age:
-                <input className="form-control" type="text" value={student.age}/>
+                <input className="form-control" type="text" value={student.age} onChange={(e) =>setAge(e.target.value)}/>
                 <br />
                 <div>
                   <button>UPDATE</button>
