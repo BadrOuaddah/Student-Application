@@ -5,6 +5,7 @@ import Student from "../Student/Student";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 export default function ShowUpdateForm() {
+ 
   const [isShown, setIsShown] = useState(false);
   const [student, setStudent] = useState([]);
   const [name, setName] = useState("");
@@ -12,6 +13,8 @@ export default function ShowUpdateForm() {
   const [dob, setDob] = useState("");
   const [age, setAge] = useState(0);
   const [studentId, setStudentId] = useState(null);
+
+  const studentUpdate = {name,email,dob,age};
 
   useEffect(() => {
     getStudent();
@@ -73,6 +76,7 @@ export default function ShowUpdateForm() {
             <div className="card text-left">
               {/* filter */}
             {student.map((student, index) =>{
+               const id = studentId;
               return(
               <div className="card-body colorCard" key={index}>
                 Name:
