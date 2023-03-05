@@ -35,20 +35,40 @@ export default function CRUD() {
   return (
     <div>
       <table>
-            <tr>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>PRICE</th>
-            </tr>
+        <tr>
+          <th>ID</th>
+          <th>NAME</th>
+          <th>PRICE</th>
+        </tr>
         {lists.map((current) => (
-            <tr>
-              <td>{current.id}</td>
-              <td>{current.name}</td>
-              <td>{current.price}</td>
-            </tr>
-       
+          <tr>
+            <td>{current.id}</td>
+            <td>{current.name}</td>
+            <td>{current.price}</td>
+            <td>
+              <button type="button" className="btn btn-warning space">
+                EDIT
+              </button>
+              <button type="button" className="btn btn-danger ">
+                DELETE
+              </button>
+            </td>
+          </tr>
         ))}
       </table>
     </div>
   );
+
+function EditList(){
+  return(
+    <tr>
+      <td><input type="text" name="name" /></td>
+      <td><input type="number" name="price" /></td>
+      <td><button type="submit">UPDATE</button></td>
+    </tr>
+  );
+} 
+ 
+ 
+
 }
