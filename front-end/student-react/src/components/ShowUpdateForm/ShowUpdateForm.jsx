@@ -4,14 +4,18 @@ import axios from "axios";
 import Student from "../Student/Student";
 
 const baseURL = "http://localhost:8080/api/v1/student";
-export default function ShowUpdateForm() {
+export default function ShowUpdateForm(theStudent) {
+  const id = theStudent.id;
+
   const [isShown, setIsShown] = useState(false);
   const [student, setStudent] = useState([]);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [dob, setDob] = useState("");
-  const [age, setAge] = useState(0);
+  const [name, setName] = useState(theStudent.name);
+  const [email, setEmail] = useState(theStudent.email);
+  const [dob, setDob] = useState(theStudent.dob);
+  const [age, setAge] = useState(theStudent.age);
   const [studentId, setStudentId] = useState(null);
+
+  const studentUpdate = {name,email,dob,age};
 
   useEffect(() => {
     getStudent();
@@ -41,6 +45,11 @@ export default function ShowUpdateForm() {
     setIsShown((current) => !current);
   };
 
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    studentUpdate(id,studentUpdate)
+  }
+
   // ! function to use set put variable 
   // React.useEffect(() => {
   //   axios.get(baseURL).then((response) => {
@@ -69,10 +78,12 @@ export default function ShowUpdateForm() {
       <br />
       {isShown && (
         <div>
+          <form onSubmit={handleSubmit}>
           <div>
             <div className="card text-left">
               {/* filter */}
-            {student.map((student, index) =>{
+            {theStudent.map((student, index) =>{
+               const id = studentId;
               return(
               <div className="card-body colorCard" key={index}>
                 Name:
@@ -85,7 +96,7 @@ export default function ShowUpdateForm() {
                 <input className="form-control" type="date" value={student.dob} />
                 <br />
                 Age:
-                <input className="form-control" type="text" value={student.age}/>
+                <input className="form-control" type="text" value={student.age} />
                 <br />
                 <div>
                   <button>UPDATE</button>
@@ -95,6 +106,7 @@ export default function ShowUpdateForm() {
             })}
             </div>
           </div>
+          </form>
           <br />
         </div>
       )}
