@@ -15,10 +15,10 @@ export function App() {
       </h1>
       <br />
       <br />
-      {/* <Student /> */}
-      <div>
+      <Student />
+      {/* <div>
         <CRUD />
-      </div>
+      </div> */}
     </div>
   );
 }

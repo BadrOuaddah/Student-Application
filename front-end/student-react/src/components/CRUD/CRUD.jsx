@@ -61,11 +61,20 @@ export default function CRUD() {
       </table>
       </form>
     </div>
+    
   );
 
   
 function handleEdit(id){
   setUpadateState(id)
+  function handleInput(event){
+    const name = event.target.name;
+    const value = event.target.value;
+    const newList = lists.map((li) =>(
+      li.id === updateState ? {...li, name: value}: li
+    ))
+    setList(newList)
+  }
 
 }
 function handleSubmit(event){

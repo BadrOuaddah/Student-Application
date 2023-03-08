@@ -93,7 +93,7 @@ Items({ currentItems }) {
                           </button>
                         </div>
                       <br />
-                      <ShowUpdateForm theStudent ={student} />
+                      <ShowUpdateForm />
                     </ul>
                     <br />
                   </div>

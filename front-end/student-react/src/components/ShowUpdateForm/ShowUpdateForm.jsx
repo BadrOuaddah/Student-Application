@@ -1,116 +1,183 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./ShowUpdateForm.css";
 import axios from "axios";
-import Student from "../Student/Student";
 
 const baseURL = "http://localhost:8080/api/v1/student";
-export default function ShowUpdateForm(theStudent) {
-  const id = theStudent.id;
-
+export default function ShowEditForm() {
   const [isShown, setIsShown] = useState(false);
-  const [student, setStudent] = useState([]);
-  const [name, setName] = useState(theStudent.name);
-  const [email, setEmail] = useState(theStudent.email);
-  const [dob, setDob] = useState(theStudent.dob);
-  const [age, setAge] = useState(theStudent.age);
-  const [studentId, setStudentId] = useState(null);
+  const [student, setStudent] = useState({
+    name: "",
+    email: "",
+    dob: "",
+    age: 0,
+  });
 
-  const studentUpdate = {name,email,dob,age};
 
-  useEffect(() => {
-    getStudent();
-  },[])
-  function getStudent(){
-    fetch(baseURL).then((response) =>{
-      response.json().then((result) =>{
-        setStudent(result);
-        setName(setStudent[0].name);
-        setEmail(setStudent[0].email);
-        setDob(setStudent[0].dob);
-        setAge(setStudent[0].age);
-        setStudentId(setStudent[0].studentId);
-      })
-    })
-  }
+  const handleClick = event => {
+    // 👇️ toggle shown state
+    setIsShown(current => !current);
+  };
+  
 
-  function selectStudent(id){
-    let item =student[id];
-    setName(item.name);
-    setEmail(item.email);
-    setDob(item.dob);
-    setAge(item.age);
-  }
+  // const handleInput = (event) => {
+  //   const nameInput = document.getElementById("name_id");
+  //   const emailInput = document.getElementById("email_id");
+  //   const dateOfBirthdayInput = document.getElementById("dob_id");
+  //   const ageInput = document.getElementById("age_id");
 
-  const handleClick = (event) => {
-    setIsShown((current) => !current);
+  //   const name = nameInput.value;
+  //   const email = emailInput.value;
+  //   const dob = dateOfBirthdayInput.value;
+  //   const age = ageInput.value;
+
+  //   const studentArray = {
+  //     name,email,dob,age
+  //   }
+
+  //   const student = JSON.stringify(studentArray)
+
+  //   //! bug
+  //   setStudent({...student, [event.target.name]: event.target.event})
+  // };
+  const handleSubmit = async (event) => {
+    const nameInput = document.getElementById("name_id");
+    const emailInput = document.getElementById("email_id");
+    const dateOfBirthdayInput = document.getElementById("dob_id");
+    const ageInput = document.getElementById("age_id");
+
+    const name = nameInput.value;
+    const email = emailInput.value;
+    const dob = dateOfBirthdayInput.value;
+    const age = ageInput.value;
+
+    const studentArray = {
+      name,
+      email,
+      dob,
+      age,
+    };
+
+    const studentJSON = JSON.stringify(studentArray);
+
+    //! bug
+    // setStudent({...student, [event.target.name]: event.target.event})
+
+    // Send a POST request
+    axios({
+      method: "post",
+      url: baseURL,
+      data: {
+        studentJSON,
+      },
+    });
+
+    // axios.post(baseURL,{
+    //   studentJSON
+    // },{headers: {'Content-Type': 'application/json'}}).then((response) => {
+    //   console.log(response);
+    // }, (error) => {
+    //   console.log(error);
+    // });
+
+    // axios.post(baseURL,{student
+    // }).then(() =>{
+    //   const students = event;
+    //   this.setState({students});
+    // })
+
+    // then(() =>{
+    //   const students = this.state.students;
+    //   this.setState({students});
+
+    // event.preventDefault()
+    // await axios.post(baseURL,{student}).then(response => console.log(response)).catch(err => console.log(err))
   };
 
-  const handleSubmit = (e) =>{
-    e.preventDefault();
-    studentUpdate(id,studentUpdate)
-  }
-
-  // ! function to use set put variable 
-  // React.useEffect(() => {
-  //   axios.get(baseURL).then((response) => {
-  //     setPut(response.data);
-  //   });
-  // }, []);
-
-
-  // ! function to update student 
-  // function PutStudent(id) {
-  //   const student = axios.get(`http://localhost:8080/api/v1/student/${id}`).then(r => r.data)
-  //   axios.put(`http://localhost:8080/api/v1/student/${id}`,{
-  //     name:student.name,
-  //     email:student.email,
-  //     dob:student.dob,
-  //     age:student.age
-  
-  //   })
-  // }
   return (
     <div>
       <button className="btn btn-warning" onClick={handleClick}>
-        <span className="fa fa-refresh"></span> UPDATE
+      <span className="fa fa-refresh"></span> UPDATE
       </button>
-      <br />
-      <br />
-      {
-        <div>
-          <form>
-          {/* onSubmit={handleSubmit} */}
-          <div>
-            <div className="card text-left">
-              {/* filter */}
-            {theStudent.map((student, index) =>{
-               const id = studentId;
-              return(
-              <div className="card-body colorCard" key={index}>
-                Name:
-                <input className="form-control" type="text" value={student.name} />
-                <br />
-                Email:
-                <input className="form-control" type="text" value={student.email} />
-                <br />
-                Date of birthday
-                <input className="form-control" type="date" value={student.dob} />
-                <br />
-                Age:
-                <input className="form-control" type="text" value={student.age} />
-                <br />
-                <div>
-                  <button>UPDATE</button>
-                </div>
-              </div>
-              )
-            })}
+       {isShown && (
+         <div className="boxShadow">
+        <br />
+        <form>
+          {/* onSubmit={(event) => handleSubmit(event)} */}
+          <div className="form-row">
+            <div className="col">
+              <i className="fa fa-user-circle" aria-hidden="true"></i> Name :
+              <input
+                type="text"
+                className="form-control"
+                // onChange={handleInput}
+                placeholder="Name"
+                id="name_id"
+              />
+            </div>
+            <div className="col">
+              <i className="fa fa-envelope" aria-hidden="true"></i> Email :
+              <input
+                type="email"
+                // onChange={handleInput}
+                className="form-control"
+                placeholder="Email"
+                id="email_id"
+              />
             </div>
           </div>
-          </form>
           <br />
-        </div>
-      }
+          <div className="form-row">
+            <div className="col">
+              <i className="fa fa-birthday-cake" aria-hidden="true"></i> Date of
+              birthday :
+              <input
+                type="date"
+                // onChange={handleInput}
+                className="form-control"
+                id="dob_id"
+              />
+            </div>
+            <div className="col">
+              <i className="fa fa-user-plus" aria-hidden="true"></i> Age :
+              <input
+                type="number"
+                // onChange={handleInput}
+                className="form-control"
+                placeholder="Age"
+                id="age_id"
+              />
+            </div>
+          </div>
+          <br />
+          <div className="center">
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className="btn btn-primary"
+              id="submit_id"
+            >
+              Submit
+            </button>
+          </div>
+          <br />
+        </form>
+      </div>
+       )}
     </div>
   );
+
+
+
+
+
+function editStudent(){
+  
+
+  return(
+  <div></div>
+  )
+}
+
+
+
 }
