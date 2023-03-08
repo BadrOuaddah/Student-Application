@@ -76,9 +76,10 @@ export default function ShowUpdateForm(theStudent) {
       </button>
       <br />
       <br />
-      {isShown && (
+      {
         <div>
-          <form onSubmit={handleSubmit}>
+          <form>
+          {/* onSubmit={handleSubmit} */}
           <div>
             <div className="card text-left">
               {/* filter */}
@@ -109,7 +110,7 @@ export default function ShowUpdateForm(theStudent) {
           </form>
           <br />
         </div>
-      )}
+      }
     </div>
   );
 }

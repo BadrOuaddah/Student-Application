@@ -3,6 +3,8 @@ import "./App.css";
 import "bootstrap";
 import Student from "./components/Student/Student.jsx";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
+import CRUD from "./components/CRUD/CRUD";
+
 
 export function App() {
   return (
@@ -13,7 +15,10 @@ export function App() {
       </h1>
       <br />
       <br />
-      <Student />
+      {/* <Student /> */}
+      <div>
+        <CRUD />
+      </div>
     </div>
   );
 }
