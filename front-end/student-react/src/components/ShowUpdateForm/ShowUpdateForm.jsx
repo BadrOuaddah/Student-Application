@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./ShowUpdateForm.css";
 import axios from "axios";
+import Student from "../Student/Student";
+
 
 const baseURL = "http://localhost:8080/api/v1/student";
 export default function ShowEditForm() {
@@ -14,9 +16,13 @@ export default function ShowEditForm() {
 
 
   const handleClick = event => {
-    // 👇️ toggle shown state
     setIsShown(current => !current);
   };
+
+  //TODO: ADD FETCH TO IMPORT DATA FROM DATABASE AND SHOW IT INTO isShown DIV
+  StudentAPI(){
+    fetch(baseURL)
+  }
   
 
   // const handleInput = (event) => {
@@ -49,13 +55,14 @@ export default function ShowEditForm() {
     const email = emailInput.value;
     const dob = dateOfBirthdayInput.value;
     const age = ageInput.value;
-
+    
     const studentArray = {
       name,
       email,
       dob,
       age,
     };
+
 
     const studentJSON = JSON.stringify(studentArray);
 
