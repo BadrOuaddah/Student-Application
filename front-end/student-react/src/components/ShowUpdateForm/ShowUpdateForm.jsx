@@ -129,18 +129,18 @@ export default function ShowEditForm() {
       <span className="fa fa-refresh"></span> UPDATE
       </button>
        {isShown && (
-
-         <div key={student.id} className="boxShadow">
+         <div className="boxShadow">
         <br />
         <form>
-          {/* onSubmit={(event) => handleSubmit(event)} */}
+        {student.map(std =>(
+        <li key={std.id}>
           <div className="form-row">
             <div className="col">
               <i className="fa fa-user-circle" aria-hidden="true"></i> Name :
               <input
                 type="text"
                 className="form-control"
-                value={Student}
+                value={std.name}
                 // onChange={handleInput}
                 placeholder="Name"
                 id="name_id"
@@ -150,7 +150,7 @@ export default function ShowEditForm() {
               <i className="fa fa-envelope" aria-hidden="true"></i> Email :
               <input
                 type="email"
-                value={student.email}
+                value={std.email}
                 // onChange={handleInput}
                 className="form-control"
                 placeholder="Email"
@@ -165,7 +165,7 @@ export default function ShowEditForm() {
               birthday :
               <input
                 type="date"
-                value={student.dob}
+                value={std.dob}
                 // onChange={handleInput}
                 className="form-control"
                 id="dob_id"
@@ -175,7 +175,7 @@ export default function ShowEditForm() {
               <i className="fa fa-user-plus" aria-hidden="true"></i> Age :
               <input
                 type="number"
-                value={student.age}
+                value={std.age}
                 // onChange={handleInput}
                 className="form-control"
                 placeholder="Age"
@@ -194,6 +194,9 @@ export default function ShowEditForm() {
               Submit
             </button>
           </div>
+        </li>
+      ))}
+          {/* onSubmit={(event) => handleSubmit(event)} */}
           <br />
         </form>
       </div>
