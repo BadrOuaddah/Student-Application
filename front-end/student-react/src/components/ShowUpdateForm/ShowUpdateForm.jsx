@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ShowUpdateForm.css";
 import axios from "axios";
 import Student from "../Student/Student";
@@ -7,12 +7,19 @@ import Student from "../Student/Student";
 const baseURL = "http://localhost:8080/api/v1/student";
 export default function ShowEditForm() {
   const [isShown, setIsShown] = useState(false);
-  const [student, setStudent] = useState({
-    name: "",
-    email: "",
-    dob: "",
-    age: 0,
-  });
+  const [student, setStudent] = useState([]);
+  useEffect(
+    () => {
+      const getStudentAPI= async () => {
+       axios.get(baseURL).then((response)=>{
+          const studentJSON = response.data  //* GET in form JSON
+          setStudent(studentJSON);
+          console.log(studentJSON);
+        });
+      }
+      getStudentAPI();
+    },[]
+  )
   // const [student, setStudent] = useState({
   //   student:[]
   // });
@@ -26,9 +33,9 @@ export default function ShowEditForm() {
 
   
   //TODO: ADD FETCH TO IMPORT DATA FROM DATABASE AND SHOW IT INTO isShown DIV
-  const getStudentAPI = event => {
-   setStudent()
-  };
+  // const getStudentAPI = event => {
+  //  setStudent()
+  // };
   
 
   // function getStudentAPI(){
@@ -123,7 +130,7 @@ export default function ShowEditForm() {
       </button>
        {isShown && (
 
-         <div className="boxShadow">
+         <div key={student.id} className="boxShadow">
         <br />
         <form>
           {/* onSubmit={(event) => handleSubmit(event)} */}
@@ -133,7 +140,7 @@ export default function ShowEditForm() {
               <input
                 type="text"
                 className="form-control"
-                value={student.name}
+                value={Student}
                 // onChange={handleInput}
                 placeholder="Name"
                 id="name_id"
