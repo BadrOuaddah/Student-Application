@@ -13,16 +13,30 @@ export default function ShowEditForm() {
     dob: "",
     age: 0,
   });
+  // const [student, setStudent] = useState({
+  //   student:[]
+  // });
 
+
+ 
 
   const handleClick = event => {
     setIsShown(current => !current);
   };
 
+  
   //TODO: ADD FETCH TO IMPORT DATA FROM DATABASE AND SHOW IT INTO isShown DIV
-  StudentAPI(){
-    fetch(baseURL)
-  }
+  const getStudentAPI = event => {
+   setStudent()
+  };
+  
+
+  // function getStudentAPI(){
+  //   const [studentAPI, setStudentAPI] = useState();
+  //   fetch(baseURL).then((response) => response.json())
+  //   this.setStudentAPI
+  // }
+
   
 
   // const handleInput = (event) => {
@@ -98,14 +112,17 @@ export default function ShowEditForm() {
 
     // event.preventDefault()
     // await axios.post(baseURL,{student}).then(response => console.log(response)).catch(err => console.log(err))
+    
   };
 
   return (
+
     <div>
       <button className="btn btn-warning" onClick={handleClick}>
       <span className="fa fa-refresh"></span> UPDATE
       </button>
        {isShown && (
+
          <div className="boxShadow">
         <br />
         <form>
@@ -116,6 +133,7 @@ export default function ShowEditForm() {
               <input
                 type="text"
                 className="form-control"
+                value={student.name}
                 // onChange={handleInput}
                 placeholder="Name"
                 id="name_id"
@@ -125,6 +143,7 @@ export default function ShowEditForm() {
               <i className="fa fa-envelope" aria-hidden="true"></i> Email :
               <input
                 type="email"
+                value={student.email}
                 // onChange={handleInput}
                 className="form-control"
                 placeholder="Email"
@@ -139,6 +158,7 @@ export default function ShowEditForm() {
               birthday :
               <input
                 type="date"
+                value={student.dob}
                 // onChange={handleInput}
                 className="form-control"
                 id="dob_id"
@@ -148,6 +168,7 @@ export default function ShowEditForm() {
               <i className="fa fa-user-plus" aria-hidden="true"></i> Age :
               <input
                 type="number"
+                value={student.age}
                 // onChange={handleInput}
                 className="form-control"
                 placeholder="Age"
@@ -179,12 +200,10 @@ export default function ShowEditForm() {
 
 function editStudent(){
   
-
   return(
   <div></div>
   )
 }
-
 
 
 }
