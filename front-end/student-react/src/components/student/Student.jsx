@@ -62,8 +62,7 @@ Items({ currentItems }) {
               <div className="row col-2">
                 <button
                   // onClick={() => this.ButtonToShowEditForm()}
-                  className="btn btn-success"
-                >
+                  className="btn btn-success">
                   <span className="fa fa-plus"></span> ADD
                 </button>
               </div>
@@ -93,7 +92,7 @@ Items({ currentItems }) {
                           </button>
                         </div>
                       <br />
-                      <ShowUpdateForm theStudent ={student} />
+                      <ShowUpdateForm student={student}/>
                     </ul>
                     <br />
                   </div>
