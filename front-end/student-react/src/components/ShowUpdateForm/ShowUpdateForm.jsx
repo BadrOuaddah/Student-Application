@@ -4,7 +4,10 @@ import axios from "axios";
 import Student from "../Student/Student";
 
 const baseURL = "http://localhost:8080/api/v1/student";
+
 export default function ShowEditForm({ student: { name, email, dob, age } }) {
+
+
   const [isShown, setIsShown] = useState(false);
   const [updateState, setUpadateState] = useState(-1);
   const [student, setStudent] = useState([]);
@@ -132,8 +135,8 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder={name}
-                    // value={name}
+                    value={name}
+                    // placeholder={name}
                     // onChange={handleInput}
                     id="name_id"
                   />
@@ -142,10 +145,10 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
                   <i className="fa fa-envelope" aria-hidden="true"></i> Email :
                   <input
                     type="email"
-                    // value={email}
+                    value={email}
                     // onChange={handleInput}
+                    // placeholder={email}
                     className="form-control"
-                    placeholder={email}
                     id="email_id"
                   />
                 </div>
@@ -157,9 +160,9 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
                   Date of birthday :
                   <input
                     type="date"
-                    // value={dob}
+                    value={dob}
                     // onChange={handleInput}
-                    placeholder={dob}
+                    // placeholder={dob}
                     className="form-control"
                     id="dob_id"
                   />
@@ -168,10 +171,10 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
                   <i className="fa fa-user-plus" aria-hidden="true"></i> Age :
                   <input
                     type="number"
-                    // value={age}
+                    value={age}
                     // onChange={handleInput}
+                    // placeholder={age}
                     className="form-control"
-                    placeholder={age}
                     id="age_id"
                   />
                 </div>
