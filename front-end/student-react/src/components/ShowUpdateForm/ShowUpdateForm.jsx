@@ -135,7 +135,7 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
                   <input
                     type="text"
                     className="form-control"
-                    value={name}
+                    defaultValue={name}
                     // placeholder={name}
                     // onChange={handleInput}
                     id="name_id"
@@ -145,7 +145,7 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
                   <i className="fa fa-envelope" aria-hidden="true"></i> Email :
                   <input
                     type="email"
-                    value={email}
+                    defaultValue={email}
                     // onChange={handleInput}
                     // placeholder={email}
                     className="form-control"
@@ -160,7 +160,7 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
                   Date of birthday :
                   <input
                     type="date"
-                    value={dob}
+                    defaultValue={dob}
                     // onChange={handleInput}
                     // placeholder={dob}
                     className="form-control"
@@ -171,7 +171,7 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
                   <i className="fa fa-user-plus" aria-hidden="true"></i> Age :
                   <input
                     type="number"
-                    value={age}
+                    defaultValue={age}
                     // onChange={handleInput}
                     // placeholder={age}
                     className="form-control"
@@ -199,34 +199,34 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
   );
 
   // ! EDIT LIST !!!
-  function EditStudentList({ current, setStudent, student }) {
-    function handleInput(event) {
-      const name = event.target.name;
-      const value = event.value;
-      const newList = student.map((st) =>
-        st.id === current.id ? { ...st, name: value } : st
-      );
-      setStudent(newList);
-    }
+  // function EditStudentList({ current, setStudent, student }) {
+  //   function handleInput(event) {
+  //     const name = event.target.name;
+  //     const value = event.value;
+  //     const newList = student.map((st) =>
+  //       st.id === current.id ? { ...st, name: value } : st
+  //     );
+  //     setStudent(newList);
+  //   }
 
-    return (
-      <tr>
-        <td>
-          <input
-            type="text"
-            name="name"
-            onChange={handleInput}
-            value={current.name}
-          />
-        </td>
-        <td>
-          <input type="number" name="price" value={current.price} />
-        </td>
-        <td>
-          <button type="submit">UPDATE</button>
-        </td>
-      </tr>
-    );
-  }
+  //   return (
+  //     <tr>
+  //       <td>
+  //         <input
+  //           type="text"
+  //           name="name"
+  //           onChange={handleInput}
+  //           value={current.name}
+  //         />
+  //       </td>
+  //       <td>
+  //         <input type="number" name="price" value={current.price} />
+  //       </td>
+  //       <td>
+  //         <button type="submit">UPDATE</button>
+  //       </td>
+  //     </tr>
+  //   );
+  // }
   // ! EDIT LIST !!!
 }
