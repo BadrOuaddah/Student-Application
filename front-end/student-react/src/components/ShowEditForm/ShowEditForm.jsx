@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
@@ -30,25 +30,37 @@ export default class ShowEditForm extends Component {
     //   age,
     // };
     this.setState({
-      name:name,
-      email:email,
-      dob:dob,
-      age:age
-    })
+      name: name,
+      email: email,
+      dob: dob,
+      age: age,
+    });
     // this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleClickToShowAddStudentForm = (event) => {
+    const [isShownAddStuden, setIsShownAddStudent] = useState(false);
+    setIsShownAddStudent((current) => !current);
   };
 
   submitHandler = (event) => {
     event.preventDefault();
     console.log(this.state);
     axios.post(baseURL, this.state);
-    window.location.reload(false);    
+    window.location.reload(false);
   };
 
   render() {
     // const { name, email, dob, age} = this.state
     return (
       <div>
+        <div className="row col-2">
+          <button className="btn btn-success" onClick={this.handleClickToShowAddStudentForm}>
+            <span className="fa fa-plus"></span> ADD
+          </button>
+        </div>
+        <br />
+        {this.isShownAddStuden && (<div>
         <div className="boxShadow">
           <form onSubmit={this.submitHandler}>
             {/* onSubmit={(event) => handleSubmit(event)} */}
@@ -115,6 +127,7 @@ export default class ShowEditForm extends Component {
             <br />
           </form>
         </div>
+        </div>)}
       </div>
     );
   }
