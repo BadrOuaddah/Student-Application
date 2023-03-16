@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ShowUpdateForm.css";
 import axios from "axios";
-import Student from "../Student/Student";
+// import Student from "../Student/Student";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 

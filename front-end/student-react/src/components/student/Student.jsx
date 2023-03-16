@@ -59,13 +59,6 @@ Items({ currentItems }) {
               <h4 style={{ textAlign: "center" }} className="card-title">
                 List of students
               </h4>
-              <div className="row col-2">
-                <button
-                  // onClick={() => this.ButtonToShowEditForm()}
-                  className="btn btn-success">
-                  <span className="fa fa-plus"></span> ADD
-                </button>
-              </div>
               <br />
               <div>
                 <ShowEditForm />
