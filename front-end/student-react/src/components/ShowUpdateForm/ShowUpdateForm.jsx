@@ -1,46 +1,55 @@
 import React, { useEffect, useState } from "react";
 import "./ShowUpdateForm.css";
 import axios from "axios";
-// import Student from "../Student/Student";
 
-const baseURL = "http://localhost:8080/api/v1/student";
-
-export default function ShowEditForm({ student: { name, email, dob, age } }) {
-
-
+export default function ShowEditForm({ student: { id,name, email, dob, age } }) {
   const [isShown, setIsShown] = useState(false);
-  const [updateState, setUpadateState] = useState(-1);
   const [student, setStudent] = useState([]);
-  useEffect(() => {
-    const getStudentAPI = async () => {
-      axios.get(baseURL).then((response) => {
-        const studentJSON = response.data; //* GET in form JSON
-        setStudent(studentJSON);
-        console.log(studentJSON);
-      });
-    };
-    getStudentAPI();
-  }, []);
-  // const [student, setStudent] = useState({
-  //   student:[]
-  // });
-
+  const [putStudent, setPutStudent] =useState([]);
   const handleClick = (event) => {
     setIsShown((current) => !current);
   };
 
-  //TODO: ADD FETCH TO IMPORT DATA FROM DATABASE AND SHOW IT INTO isShown DIV
-  // const getStudentAPI = event => {
-  //  setStudent()
-  // };
 
-  // function getStudentAPI(){
-  //   const [studentAPI, setStudentAPI] = useState();
-  //   fetch(baseURL).then((response) => response.json())
-  //   this.setStudentAPI
+
+  useEffect(() => {
+    const studentUpdated = { id:id, name: name , email: email, dob:dob, age:age };
+    axios.put(`http://localhost:8080/api/v1/student/${id}`, studentUpdated)
+        .then(response => {
+          setPutStudent(response.data)
+          console.log(response);
+        });
+}, []);
+
+
+  //! GET method to show data of student
+  // useEffect(() => {
+  //   const getStudentAPI = async () => {
+  //     axios.get(baseURL).then((response) => {
+  //       const studentJSON = response.data; //* GET in form JSON
+  //       setStudent(studentJSON);
+  //       console.log(studentJSON);
+  //     });
+  //   };
+  //   getStudentAPI();
+  // }, []);
+
+  //! PUT method to input value into data student 
+  // const handleInput = (id,e) => {
+  //   const nameInput = document.getElementById("name_id");
+  //   const emailInput = document.getElementById("email_id");
+  //   const dateOfBirthdayInput = document.getElementById("dob_id");
+  //   const ageInput = document.getElementById("age_id");
+
+  //   const name = nameInput.value;
+  //   const email = emailInput.value;
+  //   const dob = dateOfBirthdayInput.value;
+  //   const age = ageInput.value;
   // }
 
-  // const handleInput = (event) => {
+
+  //! Confirm data to insert into student table of database 
+  // const handleSubmit = async (id, event) => {
   //   const nameInput = document.getElementById("name_id");
   //   const emailInput = document.getElementById("email_id");
   //   const dateOfBirthdayInput = document.getElementById("dob_id");
@@ -51,75 +60,24 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
   //   const dob = dateOfBirthdayInput.value;
   //   const age = ageInput.value;
 
-  //   const studentArray = {
-  //     name,email,dob,age
-  //   }
-
-  //   const student = JSON.stringify(studentArray)
-
-  //   //! bug
-  //   setStudent({...student, [event.target.name]: event.target.event})
+  //   axios
+  //     .post(baseURL, {
+  //       name: name,
+  //       email: email,
+  //       dob: dob,
+  //       age: age,
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
   // };
-  const handleSubmit = async (event) => {
-    const nameInput = document.getElementById("name_id");
-    const emailInput = document.getElementById("email_id");
-    const dateOfBirthdayInput = document.getElementById("dob_id");
-    const ageInput = document.getElementById("age_id");
 
-    const name = nameInput.value;
-    const email = emailInput.value;
-    const dob = dateOfBirthdayInput.value;
-    const age = ageInput.value;
-
-    const studentArray = {
-      name,
-      email,
-      dob,
-      age,
-    };
-
-    const studentJSON = JSON.stringify(studentArray);
-
-    //! bug
-    // setStudent({...student, [event.target.name]: event.target.event})
-
-    // Send a POST request
-    axios({
-      method: "post",
-      url: baseURL,
-      data: {
-        studentJSON,
-      },
-    });
-
-    // axios.post(baseURL,{
-    //   studentJSON
-    // },{headers: {'Content-Type': 'application/json'}}).then((response) => {
-    //   console.log(response);
-    // }, (error) => {
-    //   console.log(error);
-    // });
-
-    // axios.post(baseURL,{student
-    // }).then(() =>{
-    //   const students = event;
-    //   this.setState({students});
-    // })
-
-    // then(() =>{
-    //   const students = this.state.students;
-    //   this.setState({students});
-
-    // event.preventDefault()
-    // await axios.post(baseURL,{student}).then(response => console.log(response)).catch(err => console.log(err))
-  };
 
   return (
     <div>
-      {/* {student.map((std)=>(
-        <div>
-          updateState === std.id ? <EditStudentList/> :
-        </div>))} */}
       <button className="btn btn-warning" onClick={handleClick}>
         <span className="fa fa-refresh"></span> UPDATE
       </button>
@@ -130,16 +88,24 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
             <div>
               <div className="form-row">
                 <div className="col">
-                  <i className="fa fa-user-circle" aria-hidden="true"></i> Name
-                  :
+                  <i className="fa fa-id-card" aria-hidden="true"></i> ID :
+                  <input
+                    type="text"
+                    className="form-control"
+                    defaultValue={id}
+                    // placeholder={name}
+                    // onChange={handleInput}
+                    id="idOfId"/>
+                </div>
+                <div className="col">
+                  <i className="fa fa-user-circle" aria-hidden="true"></i> Name :
                   <input
                     type="text"
                     className="form-control"
                     defaultValue={name}
                     // placeholder={name}
                     // onChange={handleInput}
-                    id="name_id"
-                  />
+                    id="name_id"/>
                 </div>
                 <div className="col">
                   <i className="fa fa-envelope" aria-hidden="true"></i> Email :
@@ -149,8 +115,7 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
                     // onChange={handleInput}
                     // placeholder={email}
                     className="form-control"
-                    id="email_id"
-                  />
+                    id="email_id"/>
                 </div>
               </div>
               <br />
@@ -164,8 +129,7 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
                     // onChange={handleInput}
                     // placeholder={dob}
                     className="form-control"
-                    id="dob_id"
-                  />
+                    id="dob_id"/>
                 </div>
                 <div className="col">
                   <i className="fa fa-user-plus" aria-hidden="true"></i> Age :
@@ -175,18 +139,16 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
                     // onChange={handleInput}
                     // placeholder={age}
                     className="form-control"
-                    id="age_id"
-                  />
+                    id="age_id"/>
                 </div>
               </div>
               <br />
               <div className="center">
                 <button
-                  onClick={handleSubmit}
+                 onClick={() => setPutStudent(name,email,dob,age)}
                   type="submit"
                   className="btn btn-primary"
-                  id="submit_id"
-                >
+                  id="submit_id">
                   Submit
                 </button>
               </div>
@@ -197,36 +159,4 @@ export default function ShowEditForm({ student: { name, email, dob, age } }) {
       )}
     </div>
   );
-
-  // ! EDIT LIST !!!
-  // function EditStudentList({ current, setStudent, student }) {
-  //   function handleInput(event) {
-  //     const name = event.target.name;
-  //     const value = event.value;
-  //     const newList = student.map((st) =>
-  //       st.id === current.id ? { ...st, name: value } : st
-  //     );
-  //     setStudent(newList);
-  //   }
-
-  //   return (
-  //     <tr>
-  //       <td>
-  //         <input
-  //           type="text"
-  //           name="name"
-  //           onChange={handleInput}
-  //           value={current.name}
-  //         />
-  //       </td>
-  //       <td>
-  //         <input type="number" name="price" value={current.price} />
-  //       </td>
-  //       <td>
-  //         <button type="submit">UPDATE</button>
-  //       </td>
-  //     </tr>
-  //   );
-  // }
-  // ! EDIT LIST !!!
 }
