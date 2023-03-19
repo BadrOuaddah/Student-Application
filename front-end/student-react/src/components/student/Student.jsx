@@ -13,10 +13,6 @@ export default class Student extends Component {
       students: [],
     };
 
-    // const [showForm, setShowForm] = useState(false);
-    // const [show, setShow] = useState();
-
-    // *http Request : GET
     axios.get(baseURL).then((response) => {
       const students = response.data;
       this.setState({ students });
