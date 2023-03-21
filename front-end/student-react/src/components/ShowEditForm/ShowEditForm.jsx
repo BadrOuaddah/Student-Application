@@ -13,7 +13,6 @@ export default class ShowEditForm extends Component {
       age: 0,
     };
   }
-  
 
   changeHandler = (event) => {
     const nameInput = document.getElementById("name_id");
@@ -38,6 +37,12 @@ export default class ShowEditForm extends Component {
     });
     // this.setState({ [event.target.name]: event.target.value });
   };
+
+  //! button to show edit or form 
+  // handleClickToShowAddStudentForm = () =>{
+  //   const [isShownAddStuden, setIsShownAddStudent] = useState(false);
+  //   setIsShownAddStudent((current) => !current);
+  // };
 
   submitHandler = (event) => {
     event.preventDefault();
@@ -112,16 +117,17 @@ export default class ShowEditForm extends Component {
               <button
                 onClick={this.changeHandler}
                 type="submit"
+                className="btn btn-primary"
                 // id="submit_id"
-                className="btn btn-primary">
+              >
                 Submit
               </button>
             </div>
             <br />
           </form>
         </div>
+       
       </div>
     );
   }
 }
-
