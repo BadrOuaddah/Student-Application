@@ -38,10 +38,11 @@ export default class ShowEditForm extends Component {
     // this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleClickToShowAddStudentForm = () =>{
-    const [isShownAddStuden, setIsShownAddStudent] = useState(false);
-    setIsShownAddStudent((current) => !current);
-  };
+  //! button to show edit or form 
+  // handleClickToShowAddStudentForm = () =>{
+  //   const [isShownAddStuden, setIsShownAddStudent] = useState(false);
+  //   setIsShownAddStudent((current) => !current);
+  // };
 
   submitHandler = (event) => {
     event.preventDefault();
@@ -54,12 +55,11 @@ export default class ShowEditForm extends Component {
     return (
       <div>
         <div className="row col-2">
-          <button className="btn btn-success" onClick={this.handleClickToShowAddStudentForm}>
+          <button className="btn btn-success">
             <span className="fa fa-plus"></span> ADD
           </button>
         </div>
         <br />
-        {this.handleClickToShowAddStudentForm.isShownAddStuden && (<div>
         <div className="boxShadow">
           <form onSubmit={this.submitHandler}>
             {/* onSubmit={(event) => handleSubmit(event)} */}
@@ -126,7 +126,7 @@ export default class ShowEditForm extends Component {
             <br />
           </form>
         </div>
-        </div>)}
+       
       </div>
     );
   }
