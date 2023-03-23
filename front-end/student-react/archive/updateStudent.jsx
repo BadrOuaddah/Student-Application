@@ -3,6 +3,7 @@ import "./ShowUpdateForm.css";
 import axios from "axios";
 
 export default function ShowEditForm({ student: { id,name, email, dob, age } }) {
+  const baseURL = "http://localhost:8080/api/v1/student";
   const [isShown, setIsShown] = useState(false);
   const [student, setStudent] = useState([]);
   const [putStudent, setPutStudent] =useState([]);
@@ -12,62 +13,19 @@ export default function ShowEditForm({ student: { id,name, email, dob, age } }) 
 
 
 
-  useEffect(() => {
-    const studentUpdated = { id:id, name: name , email: email, dob:dob, age:age };
-    axios.put(`http://localhost:8080/api/v1/student/${id}`, studentUpdated)
-        .then(response => {
-          setPutStudent(response.data)
-          console.log(response);
-        });
-}, []);
+//   useEffect(() => {
+//     const studentUpdated = { id:id, name: name , email: email, dob:dob, age:age };
+//     axios.put(`http://localhost:8080/api/v1/student/${id}`, studentUpdated)
+//         .then(response => {
+//           setPutStudent(response.data)
+//           console.log(response);
+//         });
+// }, []);
 
 
+// function updateHandle(){
 
-updateHandler =(event) =>{
-  const nameInput = document.getElementById("name_id");
-  const emailInput = document.getElementById("email_id");
-  const dateOfBirthdayInput = document.getElementById("dob_id");
-  const ageInput = document.getElementById("age_id");
-  const name = nameInput.value;
-  const email = emailInput.value;
-  const dob = dateOfBirthdayInput.value;
-  const age = ageInput.value;
-}
-
-// ! button add 
-// changeHandler = (event) => {
-//   const nameInput = document.getElementById("name_id");
-//   const emailInput = document.getElementById("email_id");
-//   const dateOfBirthdayInput = document.getElementById("dob_id");
-//   const ageInput = document.getElementById("age_id");
-//   const name = nameInput.value;
-//   const email = emailInput.value;
-//   const dob = dateOfBirthdayInput.value;
-//   const age = ageInput.value;
-
-//   this.setState({
-//     name: name,
-//     email: email,
-//     dob: dob,
-//     age: age,
-//   });
-//   // this.setState({ [event.target.name]: event.target.value });
-// };
-
-// //! button to show edit or form 
-// // handleClickToShowAddStudentForm = () =>{
-// //   const [isShownAddStuden, setIsShownAddStudent] = useState(false);
-// //   setIsShownAddStudent((current) => !current);
-// // };
-
-// submitHandler = (event) => {
-//   event.preventDefault();
-//   console.log(this.state);
-//   axios.post(baseURL, this.state);
-//   window.location.reload(false);
-// };
-
-
+// }
   //! GET method to show data of student
   // useEffect(() => {
   //   const getStudentAPI = async () => {
@@ -81,18 +39,47 @@ updateHandler =(event) =>{
   // }, []);
 
   //! PUT method to input value into data student 
-  // const handleInput = (id,e) => {
-  //   const nameInput = document.getElementById("name_id");
-  //   const emailInput = document.getElementById("email_id");
-  //   const dateOfBirthdayInput = document.getElementById("dob_id");
-  //   const ageInput = document.getElementById("age_id");
+  // handleInput = (e) => {
+  //   const nameInput = document.getElementById("updateName_id");
+  //   const emailInput = document.getElementById("updateEmail_id");
+  //   const dateOfBirthdayInput = document.getElementById("updateDob_id");
+  //   const ageInput = document.getElementById("updateAge_id");
 
   //   const name = nameInput.value;
   //   const email = emailInput.value;
   //   const dob = dateOfBirthdayInput.value;
   //   const age = ageInput.value;
+
+  //   const studentUpdated = { id:id, name: name , email: email, dob:dob, age:age };
+  //   axios.put(baseURL+ '/' + id, studentUpdated)
+  //       .then(response => {
+  //         setPutStudent(response.data)
+  //         console.log(response);
+  //       });
   // }
 
+// *code from Github
+//   updateEmployee = (e) => {
+//     e.preventDefault();
+//     let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId};
+//     console.log('employee => ' + JSON.stringify(employee));
+//     console.log('id => ' + JSON.stringify(this.state.id));
+//     EmployeeService.updateEmployee(employee, this.state.id).then( res => {
+//         this.props.history.push('/employees');
+//     });
+// }
+
+// changeFirstNameHandler= (event) => {
+//     this.setState({firstName: event.target.value});
+// }
+
+// changeLastNameHandler= (event) => {
+//     this.setState({lastName: event.target.value});
+// }
+
+// changeEmailHandler= (event) => {
+//     this.setState({emailId: event.target.value});
+// }
 
   //! Confirm data to insert into student table of database 
   // const handleSubmit = async (id, event) => {
@@ -191,8 +178,8 @@ updateHandler =(event) =>{
               <br />
               <div className="center">
                 <button
-                //  onClick={() => setPutStudent(name,email,dob,age)}
-                onClick={this.updateHandler}
+                // onSubmit={handleInput}
+                //  onClick={() => handleInput()}
                   type="submit"
                   className="btn btn-primary"
                   id="submit_id">
