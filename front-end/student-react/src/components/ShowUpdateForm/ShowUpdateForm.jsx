@@ -5,8 +5,15 @@ import axios from "axios";
 export default function ShowEditForm({ student: { id,name, email, dob, age } }) {
   const baseURL = "http://localhost:8080/api/v1/student";
   const [isShown, setIsShown] = useState(false);
-  const [student, setStudent] = useState([]);
-  const [putStudent, setPutStudent] =useState([]);
+  const [updateStudent, setUpdateStudent] = useState({
+    name:name,
+    email:email,
+    dob:dob,
+    age:age
+  });
+  // const [putStudent, setPutStudent] =useState([]);
+
+  // * handleClick to show update student form
   const handleClick = (event) => {
     setIsShown((current) => !current);
   };
@@ -58,7 +65,14 @@ export default function ShowEditForm({ student: { id,name, email, dob, age } }) 
   //       });
   // }
 
-// *code from Github
+
+  function updateSudent(e){
+    e.preventDefault();
+  }
+
+
+
+// *Code from Github
 //   updateEmployee = (e) => {
 //     e.preventDefault();
 //     let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId};
