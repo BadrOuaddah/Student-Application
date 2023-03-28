@@ -1,8 +1,8 @@
-import React, { Component} from "react";
+import React, { Component,useEffect, useState } from "react";
+import ReactPaginate from "https://cdn.skypack.dev/react-paginate@7.1.3";
 import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
-// import PaginatedItems from "../Pagination/Pagination";
 import ShowUpdateForm from "../ShowUpdateForm/ShowUpdateForm";
 const baseURL = "http://localhost:8080/api/v1/student";
 
@@ -31,9 +31,7 @@ export default class Student extends Component {
     console.log("Edit Form showed !");
   }
 
-
-
-Items({ currentItems }) {
+  Items({ currentItems }) {
     return (
       <div className="items">
         {currentItems &&
@@ -72,16 +70,16 @@ Items({ currentItems }) {
                       <li>Date of birthday : {student.dob}</li>
                       <li>Age : {student.age}</li>
                       <br />
-                        <div>
-                          <button
-                            onClick={(e) => this.DeleteStudent(student.id, e)}
-                            className="btn btn-danger"
-                          >
-                            <span className="fa fa-trash"></span> DELETE
-                          </button>
-                        </div>
+                      <div>
+                        <button
+                          onClick={(e) => this.DeleteStudent(student.id, e)}
+                          className="btn btn-danger"
+                        >
+                          <span className="fa fa-trash"></span> DELETE
+                        </button>
+                      </div>
                       <br />
-                      <ShowUpdateForm student={student}/>
+                      <ShowUpdateForm student={student} />
                     </ul>
                     <br />
                   </div>
@@ -89,12 +87,37 @@ Items({ currentItems }) {
               })}
             </ul>
           </div>
+          <br />
           <div>
-            {/* //! PAGINATION */}
-            {/* <PaginatedItems /> */}
+            <Pagination/>
           </div>
         </div>
       </div>
     );
   }
+}
+
+function Pagination() {
+  return <div>
+    <ReactPaginate
+    nextLabel="next >"
+    // onPageChange={handlePageClick}
+    pageRangeDisplayed={3}
+    marginPagesDisplayed={2}
+    // pageCount={pageCount}
+    previousLabel="< previous"
+    pageClassName="page-item"
+    pageLinkClassName="page-link"
+    previousClassName="page-item"
+    previousLinkClassName="page-link"
+    nextClassName="page-item"
+    nextLinkClassName="page-link"
+    breakLabel="..."
+    breakClassName="page-item"
+    breakLinkClassName="page-link"
+    containerClassName="pagination"
+    activeClassName="active"
+    renderOnZeroPageCount={null}
+    />
+  </div>;
 }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Component } from "react";
+import React, { Component} from "react";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
@@ -74,7 +74,11 @@ export default class ShowEditForm extends Component {
               <div className="col">
                 <i className="fa fa-birthday-cake" aria-hidden="true"></i> Date
                 of birthday :
-                <input type="date" className="form-control" id="dob_id" />
+                <input
+                  type="date"
+                  className="form-control"
+                  id="dob_id"
+                />
               </div>
               <div className="col">
                 <i className="fa fa-user-plus" aria-hidden="true"></i> Age :
@@ -104,6 +108,11 @@ export default class ShowEditForm extends Component {
   }
 }
 
-function AddStudent() {
-  return <div>AddStudent is ready !</div>;
+function AddStudent(){
+  return(
+    <div>
+      AddStudent is ready !
+    </div>
+  )
+
 }
