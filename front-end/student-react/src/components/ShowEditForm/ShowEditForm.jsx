@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
@@ -23,26 +23,13 @@ export default class ShowEditForm extends Component {
     const email = emailInput.value;
     const dob = dateOfBirthdayInput.value;
     const age = ageInput.value;
-    // const studentArray = {
-    //   name,
-    //   email,
-    //   dob,
-    //   age,
-    // };
     this.setState({
       name: name,
       email: email,
       dob: dob,
       age: age,
     });
-    // this.setState({ [event.target.name]: event.target.value });
   };
-
-  //! button to show edit or form 
-  // handleClickToShowAddStudentForm = () =>{
-  //   const [isShownAddStuden, setIsShownAddStudent] = useState(false);
-  //   setIsShownAddStudent((current) => !current);
-  // };
 
   submitHandler = (event) => {
     event.preventDefault();
@@ -62,16 +49,13 @@ export default class ShowEditForm extends Component {
         <br />
         <div className="boxShadow">
           <form onSubmit={this.submitHandler}>
-            {/* onSubmit={(event) => handleSubmit(event)} */}
             <div className="form-row">
               <div className="col">
                 <i className="fa fa-user-circle" aria-hidden="true"></i> Name :
                 <input
                   type="text"
                   className="form-control"
-                  // onChange={this.changeHandler}
                   placeholder="Name"
-                  // value={name}
                   id="name_id"
                 />
               </div>
@@ -79,10 +63,8 @@ export default class ShowEditForm extends Component {
                 <i className="fa fa-envelope" aria-hidden="true"></i> Email :
                 <input
                   type="email"
-                  // onChange={this.changeHandler}
                   className="form-control"
                   placeholder="Email"
-                  // value={email}
                   id="email_id"
                 />
               </div>
@@ -92,22 +74,14 @@ export default class ShowEditForm extends Component {
               <div className="col">
                 <i className="fa fa-birthday-cake" aria-hidden="true"></i> Date
                 of birthday :
-                <input
-                  type="date"
-                  // onChange={this.changeHandler}
-                  className="form-control"
-                  // value={dob}
-                  id="dob_id"
-                />
+                <input type="date" className="form-control" id="dob_id" />
               </div>
               <div className="col">
                 <i className="fa fa-user-plus" aria-hidden="true"></i> Age :
                 <input
                   type="number"
-                  // onChange={this.changeHandler}
                   className="form-control"
                   placeholder="Age"
-                  // value={age}
                   id="age_id"
                 />
               </div>
@@ -118,7 +92,6 @@ export default class ShowEditForm extends Component {
                 onClick={this.changeHandler}
                 type="submit"
                 className="btn btn-primary"
-                // id="submit_id"
               >
                 Submit
               </button>
@@ -126,8 +99,11 @@ export default class ShowEditForm extends Component {
             <br />
           </form>
         </div>
-       
       </div>
     );
   }
+}
+
+function AddStudent() {
+  return <div>AddStudent is ready !</div>;
 }
