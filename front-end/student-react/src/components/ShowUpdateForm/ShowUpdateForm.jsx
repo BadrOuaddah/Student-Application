@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./ShowUpdateForm.css";
 import { useState } from "react";
+import axios from "axios";
+
+
+const baseURL = "http://localhost:8080/api/v1/student";
 
 export default function ShowUpdateForm({ name, email, dob, age }) {
   const [isShown, setIsShown] = useState(false);
@@ -29,18 +33,44 @@ class UpdateStudent extends Component {
       age: props.age,
     };
   }
+
   handleNameChange = (event) => {
     this.setState({name : event.target.value });
   }
+
   handleEmailChange = (event) => {
     this.setState({email : event.target.value });
   }
+
   handleDobChange = (event) => {
     this.setState({dob : event.target.value });
   }
+
   handleAgeChange = (event) => {
     this.setState({age : event.target.value });
   }
+
+  handleUpdate = (event) => {
+    const name = this.state.name;
+    const email = this.state.email;
+    const dob = this.state.dob;
+    const age = this.state.age;
+    console.log("handleUpdate is working !");
+    axios.post(baseURL, {
+      name: name,
+      email: email,
+      dob: dob,
+      age:age
+    })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div>
@@ -107,8 +137,7 @@ class UpdateStudent extends Component {
           <br />
               <div className="center">
                 <button
-                  // onSubmit={handleInput}
-                  //  onClick={() => handleInput()}
+                  onClick={this.handleUpdate}
                   type="submit"
                   className="btn btn-primary"
                   id="confirm_id"
