@@ -6,7 +6,7 @@ import axios from "axios";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
-export default function ShowUpdateForm({ name, email, dob, age }) {
+export default function ShowUpdateForm({ id, name, email, dob, age }) {
   const [isShown, setIsShown] = useState(false);
   const handleClick = (event) => {
     setIsShown((current) => !current);
@@ -17,7 +17,7 @@ export default function ShowUpdateForm({ name, email, dob, age }) {
         <span className="fa fa-refresh"></span> UPDATE
       </button>
       {isShown && (
-        <UpdateStudent name={name} email={email} dob={dob} age={age} />
+        <UpdateStudent id={id} name={name} email={email} dob={dob} age={age} />
       )}
     </div>
   );
@@ -27,6 +27,7 @@ class UpdateStudent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id:props.id,
       name: props.name,
       email: props.email,
       dob: props.dob,
@@ -50,13 +51,16 @@ class UpdateStudent extends Component {
     this.setState({age : event.target.value });
   }
 
+  
   handleUpdate = (event) => {
     const name = this.state.name;
     const email = this.state.email;
     const dob = this.state.dob;
     const age = this.state.age;
+    const id = this.state.id;
     console.log("handleUpdate is working !");
-    axios.post(baseURL, {
+    // ! problem of axios POST method
+    axios.put(`http://localhost:8080/api/v1/student/${id}`, {
       name: name,
       email: email,
       dob: dob,
@@ -69,6 +73,8 @@ class UpdateStudent extends Component {
       console.log(error);
     });
     event.preventDefault();
+
+    window.location.reload();
   }
 
   render() {
@@ -126,6 +132,7 @@ class UpdateStudent extends Component {
                 </div>
               </div>
               <br />
+                # {this.state.id} <br />
               <ul style={{listStyle: "initial"}}>
               <li>
                 <b>
