@@ -96,15 +96,24 @@ class UpdateStudent extends Component {
                 </div>
               </div>
               <br />
+              <ul style={{listStyle: "initial"}}>
+              <li>
+                <b>
+              The student name is {this.state.name} has {this.state.age} year and (his/her) email is {this.state.email}.
+                </b>
+              </li>
+              </ul>
+          <br />
+          <br />
               <div className="center">
                 <button
                   // onSubmit={handleInput}
                   //  onClick={() => handleInput()}
                   type="submit"
                   className="btn btn-primary"
-                  id="submit_id"
+                  id="confirm_id"
                 >
-                  Submit
+                  Confirm
                 </button>
               </div>
             </div>
