@@ -12,23 +12,31 @@ export default class Student extends Component {
     this.state = {
       students: []
     };
+  }
 
+  componentDidMount() {
+    this.getStudents();
+  }
+
+  getStudents() {
     axios.get(baseURL).then((response) => {
       const students = response.data;
       this.setState({ students });
     });
   }
 
-  DeleteStudent(id, e) {
-    axios
-      .delete(`http://localhost:8080/api/v1/student/${id}`)
-      .then((response) => console.log(response));
-    const students = this.state.students.filter((item) => item.id !== id);
-    this.setState({ students });
+  deleteStudent(id, e) {
+    axios.delete(`${baseURL}/${id}`).then((response) => {
+      console.log(response);
+      this.getStudents();
+    });
   }
 
-  ButtonToShowEditForm() {
-    console.log("Edit Form showed !");
+  updateStudent(student, e) {
+    axios.put(`${baseURL}/${student.id}`, student).then((response) => {
+      console.log(response);
+      this.getStudents();
+    });
   }
 
   render() {
@@ -59,14 +67,19 @@ export default class Student extends Component {
                       <br />
                       <div>
                         <button
-                          onClick={(e) => this.DeleteStudent(student.id, e)}
+                          onClick={(e) => this.deleteStudent(student.id, e)}
                           className="btn btn-danger"
                         >
                           <span className="fa fa-trash"></span> DELETE
                         </button>
                       </div>
                       <br />
-                      <ShowUpdateForm {...student} />
+                      <ShowUpdateForm
+                        {...student}
+                        onUpdate={(updatedStudent) =>
+                          this.updateStudent(updatedStudent)
+                        }
+                      />
                     </ul>
                     <div>
                       <h3>Item #{student.id}</h3>
@@ -78,6 +91,16 @@ export default class Student extends Component {
             </ul>
           </div>
           <br />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+          }}
+        >
+          <ul>{/* <Pagination /> */}</ul>
         </div>
       </div>
     );

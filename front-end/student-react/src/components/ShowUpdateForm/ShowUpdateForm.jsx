@@ -74,7 +74,7 @@ class UpdateStudent extends Component {
     });
     event.preventDefault();
 
-    window.location.reload();
+    // window.location.reload();
   }
 
   render() {
