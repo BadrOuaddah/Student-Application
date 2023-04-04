@@ -1,47 +1,42 @@
-import React, { Component,useEffect, useState } from "react";
-import ReactPaginate from "https://cdn.skypack.dev/react-paginate@7.1.3";
+import React, { Component } from "react";
 import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
 import ShowUpdateForm from "../ShowUpdateForm/ShowUpdateForm";
+
 const baseURL = "http://localhost:8080/api/v1/student";
 
 export default class Student extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      students: [],
+      students: []
     };
+  }
 
+  componentDidMount() {
+    this.getStudents();
+  }
+
+  getStudents() {
     axios.get(baseURL).then((response) => {
       const students = response.data;
       this.setState({ students });
     });
   }
 
-  DeleteStudent(id, e) {
-    axios
-      .delete(`http://localhost:8080/api/v1/student/${id}`)
-      .then((response) => console.log(response));
-    const students = this.state.students.filter((item) => item.id !== id);
-    this.setState({ students });
+  deleteStudent(id, e) {
+    axios.delete(`${baseURL}/${id}`).then((response) => {
+      console.log(response);
+      this.getStudents();
+    });
   }
 
-  ButtonToShowEditForm() {
-    console.log("Edit Form showed !");
-  }
-
-  Items({ currentItems }) {
-    return (
-      <div className="items">
-        {currentItems &&
-          currentItems.map((student) => (
-            <div>
-              <h3>Item #{student}</h3>
-            </div>
-          ))}
-      </div>
-    );
+  updateStudent(student, e) {
+    axios.put(`${baseURL}/${student.id}`, student).then((response) => {
+      console.log(response);
+      this.getStudents();
+    });
   }
 
   render() {
@@ -72,15 +67,23 @@ export default class Student extends Component {
                       <br />
                       <div>
                         <button
-                          onClick={(e) => this.DeleteStudent(student.id, e)}
+                          onClick={(e) => this.deleteStudent(student.id, e)}
                           className="btn btn-danger"
                         >
                           <span className="fa fa-trash"></span> DELETE
                         </button>
                       </div>
                       <br />
-                      <ShowUpdateForm student={student} />
+                      <ShowUpdateForm
+                        {...student}
+                        onUpdate={(updatedStudent) =>
+                          this.updateStudent(updatedStudent)
+                        }
+                      />
                     </ul>
+                    <div>
+                      <h3>Item #{student.id}</h3>
+                    </div>
                     <br />
                   </div>
                 );
@@ -88,36 +91,18 @@ export default class Student extends Component {
             </ul>
           </div>
           <br />
-          <div>
-            <Pagination/>
-          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+          }}
+        >
+          <ul>{/* <Pagination /> */}</ul>
         </div>
       </div>
     );
   }
-}
-
-function Pagination() {
-  return <div>
-    <ReactPaginate
-    nextLabel="next >"
-    // onPageChange={handlePageClick}
-    pageRangeDisplayed={3}
-    marginPagesDisplayed={2}
-    // pageCount={pageCount}
-    previousLabel="< previous"
-    pageClassName="page-item"
-    pageLinkClassName="page-link"
-    previousClassName="page-item"
-    previousLinkClassName="page-link"
-    nextClassName="page-item"
-    nextLinkClassName="page-link"
-    breakLabel="..."
-    breakClassName="page-item"
-    breakLinkClassName="page-link"
-    containerClassName="pagination"
-    activeClassName="active"
-    renderOnZeroPageCount={null}
-    />
-  </div>;
 }
