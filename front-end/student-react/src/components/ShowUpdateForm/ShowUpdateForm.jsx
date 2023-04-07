@@ -3,14 +3,22 @@ import "./ShowUpdateForm.css";
 import { useState } from "react";
 import axios from "axios";
 
-
 const baseURL = "http://localhost:8080/api/v1/student";
 
 export default function ShowUpdateForm({ id, name, email, dob, age }) {
   const [isShown, setIsShown] = useState(false);
+
+  //! Refreesh
+  // const [refreshCount, setRefreshCount] = useState(0);
+  // const handleRefresh = () => {
+  //   setRefreshCount(refreshCount + 1);
+  // };
+  //! Refresh
+
   const handleClick = (event) => {
     setIsShown((current) => !current);
   };
+
   return (
     <div>
       <button className="btn btn-warning" onClick={handleClick}>
@@ -27,7 +35,7 @@ class UpdateStudent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id:props.id,
+      id: props.id,
       name: props.name,
       email: props.email,
       dob: props.dob,
@@ -35,47 +43,80 @@ class UpdateStudent extends Component {
     };
   }
 
+
   handleNameChange = (event) => {
-    this.setState({name : event.target.value });
-  }
+    this.setState({ name: event.target.value });
+  };
 
   handleEmailChange = (event) => {
-    this.setState({email : event.target.value });
-  }
+    this.setState({ email: event.target.value });
+  };
 
   handleDobChange = (event) => {
-    this.setState({dob : event.target.value });
-  }
+    this.setState({ dob: event.target.value });
+  };
 
   handleAgeChange = (event) => {
-    this.setState({age : event.target.value });
-  }
+    this.setState({ age: event.target.value });
+  };
 
-  
   handleUpdate = (event) => {
     const name = this.state.name;
     const email = this.state.email;
     const dob = this.state.dob;
     const age = this.state.age;
     const id = this.state.id;
-    console.log("handleUpdate is working !");
-    // ! problem of axios POST method
+  
     axios.put(`http://localhost:8080/api/v1/student/${id}`, {
       name: name,
       email: email,
       dob: dob,
-      age:age
+      age: age,
     })
-    .then(response => {
+    .then((response) => {
       console.log(response.data);
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
     });
+    
     event.preventDefault();
+    this.handleRefresh(); // call handleRefresh function here
+  };
+  
+  handleRefresh = () => {
+    // do whatever you need to do to refresh the component
+    axios.get(`http://localhost:8080/api/v1/students`)
+    .then((response) => {
+      this.setState({students: response.data});
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
+  
 
-    // window.location.reload();
-  }
+  // handleUpdate = (event) => {
+  //   const name = this.state.name;
+  //   const email = this.state.email;
+  //   const dob = this.state.dob;
+  //   const age = this.state.age;
+  //   const id = this.state.id;
+  //   axios
+  //     .put(`http://localhost:8080/api/v1/student/${id}`, {
+  //       name: name,
+  //       email: email,
+  //       dob: dob,
+  //       age: age,
+  //     })
+  //     .then((response) => {
+  //       console.log(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  //   event.preventDefault();
+  // };
 
   render() {
     return (
@@ -131,17 +172,17 @@ class UpdateStudent extends Component {
                   />
                 </div>
               </div>
-              <br />
-                # {this.state.id} <br />
-              <ul style={{listStyle: "initial"}}>
-              <li>
-                <b>
-              The student name is {this.state.name} has {this.state.age} year and (his/her) email is {this.state.email}.
-                </b>
-              </li>
+              <br /># {this.state.id} <br />
+              <ul style={{ listStyle: "initial" }}>
+                <li>
+                  <b>
+                    The student name is {this.state.name} has {this.state.age}{" "}
+                    year and (his/her) email is {this.state.email}.
+                  </b>
+                </li>
               </ul>
-          <br />
-          <br />
+              <br />
+              <br />
               <div className="center">
                 <button
                   onClick={this.handleUpdate}

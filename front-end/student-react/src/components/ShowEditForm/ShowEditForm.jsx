@@ -107,12 +107,3 @@ export default class ShowEditForm extends Component {
     );
   }
 }
-
-function AddStudent(){
-  return(
-    <div>
-      AddStudent is ready !
-    </div>
-  )
-
-}
