@@ -3,6 +3,7 @@ import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
 import ShowUpdateForm from "../ShowUpdateForm/ShowUpdateForm";
+import Pagination from "../Pagination/Pagination";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
@@ -11,6 +12,8 @@ export default class Student extends Component {
     super(props);
     this.state = {
       students: [],
+      currentPage: 1,
+      totalPages: 0,
     };
   }
 
@@ -32,12 +35,12 @@ export default class Student extends Component {
     });
   }
 
-  updateStudent(student, e) {
-    axios.put(`${baseURL}/${student.id}`, student).then((response) => {
-      console.log(response);
-      this.getStudents();
-    });
-  }
+  // updateStudent(student, e) {
+  //   axios.put(`${baseURL}/${student.id}`, student).then((response) => {
+  //     console.log(response);
+  //     this.getStudents(); // call getStudents() after updating the student
+  //   });
+  // }
 
   render() {
     return (
@@ -76,9 +79,9 @@ export default class Student extends Component {
                       <br />
                       <ShowUpdateForm
                         {...student}
-                        onUpdate={(updatedStudent) =>
-                          this.updateStudent(updatedStudent)
-                        }
+                        // onUpdate={(updatedStudent) =>
+                        //   this.updateStudent(updatedStudent)
+                        // }
                       />
                     </ul>
                     <div>
@@ -100,9 +103,18 @@ export default class Student extends Component {
             height: "100%",
           }}
         >
-          <ul>{/* <Pagination /> */}</ul>
+          <ul>
+            <Pagination
+              currentPage={this.state.currentPage}
+              totalPages={this.state.totalPages}
+              onChangePage={(page) => this.getStudents(page)}
+            />
+          </ul>
         </div>
       </div>
     );
   }
 }
+
+
+

@@ -5,15 +5,16 @@ import axios from "axios";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
-export default function ShowUpdateForm({ id, name, email, dob, age }) {
+// onUpdate
+export default function ShowUpdateForm({ id, name, email, dob, age}) {
+  const updatedStudent = {
+    id,
+    name,
+    email,
+    dob,
+    age
+  };
   const [isShown, setIsShown] = useState(false);
-
-  //! Refreesh
-  // const [refreshCount, setRefreshCount] = useState(0);
-  // const handleRefresh = () => {
-  //   setRefreshCount(refreshCount + 1);
-  // };
-  //! Refresh
 
   const handleClick = (event) => {
     setIsShown((current) => !current);
@@ -25,6 +26,7 @@ export default function ShowUpdateForm({ id, name, email, dob, age }) {
         <span className="fa fa-refresh"></span> UPDATE
       </button>
       {isShown && (
+        // onUpdate={onUpdate}
         <UpdateStudent id={id} name={name} email={email} dob={dob} age={age} />
       )}
     </div>
@@ -39,10 +41,12 @@ class UpdateStudent extends Component {
       name: props.name,
       email: props.email,
       dob: props.dob,
-      age: props.age,
+      age: props.age
     };
-  }
 
+    // *** Add onUpdate into constructor ***
+    // this.onUpdate = props.onUpdate;
+  }
 
   handleNameChange = (event) => {
     this.setState({ name: event.target.value });
@@ -66,7 +70,7 @@ class UpdateStudent extends Component {
     const dob = this.state.dob;
     const age = this.state.age;
     const id = this.state.id;
-  
+
     axios.put(`http://localhost:8080/api/v1/student/${id}`, {
       name: name,
       email: email,
@@ -75,49 +79,34 @@ class UpdateStudent extends Component {
     })
     .then((response) => {
       console.log(response.data);
+      this.props.onUpdate();
     })
     .catch((error) => {
       console.log(error);
     });
     
     event.preventDefault();
-    this.handleRefresh(); // call handleRefresh function here
-  };
-  
-  handleRefresh = () => {
-    // do whatever you need to do to refresh the component
-    axios.get(`http://localhost:8080/api/v1/students`)
-    .then((response) => {
-      this.setState({students: response.data});
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  };
-  
+    // this.handleRefresh();
 
-  // handleUpdate = (event) => {
-  //   const name = this.state.name;
-  //   const email = this.state.email;
-  //   const dob = this.state.dob;
-  //   const age = this.state.age;
-  //   const id = this.state.id;
+    // *** Call onUpdate() method into handleUpdate ***
+    // this.props.onUpdate();
+  };
+  
+  // handleRefresh = () => {
   //   axios
-  //     .put(`http://localhost:8080/api/v1/student/${id}`, {
-  //       name: name,
-  //       email: email,
-  //       dob: dob,
-  //       age: age,
-  //     })
+  //     .get(`http://localhost:8080/api/v1/student/${this.state.id}`)
   //     .then((response) => {
-  //       console.log(response.data);
+  //       this.setState({
+  //         name: response.data.name,
+  //         email: response.data.email,
+  //         dob: response.data.dob,
+  //         age: response.data.age,
+  //       });
   //     })
   //     .catch((error) => {
   //       console.log(error);
   //     });
-  //   event.preventDefault();
   // };
-
   render() {
     return (
       <div>
