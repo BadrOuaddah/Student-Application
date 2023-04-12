@@ -3,7 +3,7 @@ import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
 import ShowUpdateForm from "../ShowUpdateForm/ShowUpdateForm";
-import Pagination from "../Pagination/Pagination";
+// import Pagination from "../Pagination/Pagination";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
@@ -22,15 +22,6 @@ export default class Student extends Component {
     this.getStudents();
   }
 
-  // getStudents = () => {
-  //   axios.get(`${baseURL}?page=${this.state.currentPage}&size=${this.state.pageSize}`).then((response) => {
-  //     const students = response.data.content;
-  //     const totalPages = response.data.totalPages;
-  //     this.setState({ students, totalPages });
-  //   });
-  // }
-
-  //* getStudents function before Add pagination  
   getStudents() {
     axios.get(baseURL).then((response) => {
       const students = response.data;
@@ -45,9 +36,7 @@ export default class Student extends Component {
     });
   }
 
-  //!axios update
   updateStudent(newStudent,id) {
-    // console.log("id of student is" + id + " and updateStudent is called "+ newStudent.email)
     axios.put(`${baseURL}/${id}`, newStudent)
     .then(response => {
       console.log(response);

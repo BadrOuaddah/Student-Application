@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./ShowUpdateForm.css";
 import { useState } from "react";
-import axios from "axios";
 
 export default function ShowUpdateForm({ id, name, email, dob, age, onUpdate }) {
   const [isShown, setIsShown] = useState(false);
@@ -133,9 +132,14 @@ class UpdateStudent extends Component {
                   onClick={this.handleUpdate}
                   type="submit"
                   className="btn btn-primary"
-                  id="confirm_id"
-                >
+                  id="confirm_id" >
                   Confirm
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  id="cancel_id" >
+                  Cancel
                 </button>
               </div>
             </div>
