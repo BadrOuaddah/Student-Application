@@ -1,13 +1,8 @@
-import React, { useState }from "react";
+import React from "react";
 import "./App.css";
 import "bootstrap";
 import Student from "./components/Student/Student.jsx";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
-import { useEffect } from "react";
-import axios from "axios";
-
-const baseURL = "http://localhost:8080/api/v1/student";
-
 
 export function App() {
   return (

@@ -3,21 +3,13 @@ import "./ShowUpdateForm.css";
 import { useState } from "react";
 import axios from "axios";
 
-const baseURL = "http://localhost:8080/api/v1/student";
-
-export default function ShowUpdateForm({ id, name, email, dob, age }) {
+export default function ShowUpdateForm({ id, name, email, dob, age, onUpdate }) {
   const [isShown, setIsShown] = useState(false);
-
-  //! Refreesh
-  // const [refreshCount, setRefreshCount] = useState(0);
-  // const handleRefresh = () => {
-  //   setRefreshCount(refreshCount + 1);
-  // };
-  //! Refresh
 
   const handleClick = (event) => {
     setIsShown((current) => !current);
   };
+
 
   return (
     <div>
@@ -25,10 +17,11 @@ export default function ShowUpdateForm({ id, name, email, dob, age }) {
         <span className="fa fa-refresh"></span> UPDATE
       </button>
       {isShown && (
-        <UpdateStudent id={id} name={name} email={email} dob={dob} age={age} />
+        <UpdateStudent id={id} name={name} email={email} dob={dob} age={age} onUpdate={onUpdate} />
       )}
     </div>
   );
+  
 }
 
 class UpdateStudent extends Component {
@@ -42,7 +35,6 @@ class UpdateStudent extends Component {
       age: props.age,
     };
   }
-
 
   handleNameChange = (event) => {
     this.setState({ name: event.target.value });
@@ -66,57 +58,10 @@ class UpdateStudent extends Component {
     const dob = this.state.dob;
     const age = this.state.age;
     const id = this.state.id;
-  
-    axios.put(`http://localhost:8080/api/v1/student/${id}`, {
-      name: name,
-      email: email,
-      dob: dob,
-      age: age,
-    })
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-    
-    event.preventDefault();
-    this.handleRefresh(); // call handleRefresh function here
-  };
-  
-  handleRefresh = () => {
-    // do whatever you need to do to refresh the component
-    axios.get(`http://localhost:8080/api/v1/students`)
-    .then((response) => {
-      this.setState({students: response.data});
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  };
-  
 
-  // handleUpdate = (event) => {
-  //   const name = this.state.name;
-  //   const email = this.state.email;
-  //   const dob = this.state.dob;
-  //   const age = this.state.age;
-  //   const id = this.state.id;
-  //   axios
-  //     .put(`http://localhost:8080/api/v1/student/${id}`, {
-  //       name: name,
-  //       email: email,
-  //       dob: dob,
-  //       age: age,
-  //     })
-  //     .then((response) => {
-  //       console.log(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  //   event.preventDefault();
-  // };
+    event.preventDefault();
+    this.props.onUpdate({name,email,dob,age},id);
+  };
 
   render() {
     return (

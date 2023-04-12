@@ -3,6 +3,7 @@ import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
 import ShowUpdateForm from "../ShowUpdateForm/ShowUpdateForm";
+import Pagination from "../Pagination/Pagination";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
@@ -11,6 +12,9 @@ export default class Student extends Component {
     super(props);
     this.state = {
       students: [],
+      pageSize: 5,
+      currentPage: 1,
+      totalPages: 0
     };
   }
 
@@ -18,6 +22,15 @@ export default class Student extends Component {
     this.getStudents();
   }
 
+  // getStudents = () => {
+  //   axios.get(`${baseURL}?page=${this.state.currentPage}&size=${this.state.pageSize}`).then((response) => {
+  //     const students = response.data.content;
+  //     const totalPages = response.data.totalPages;
+  //     this.setState({ students, totalPages });
+  //   });
+  // }
+
+  //* getStudents function before Add pagination  
   getStudents() {
     axios.get(baseURL).then((response) => {
       const students = response.data;
@@ -32,12 +45,19 @@ export default class Student extends Component {
     });
   }
 
-  updateStudent(student, e) {
-    axios.put(`${baseURL}/${student.id}`, student).then((response) => {
+  //!axios update
+  updateStudent(newStudent,id) {
+    // console.log("id of student is" + id + " and updateStudent is called "+ newStudent.email)
+    axios.put(`${baseURL}/${id}`, newStudent)
+    .then(response => {
       console.log(response);
       this.getStudents();
+    })
+    .catch(error => {
+      console.log(error);
     });
   }
+  
 
   render() {
     return (
@@ -74,16 +94,10 @@ export default class Student extends Component {
                         </button>
                       </div>
                       <br />
-                      <ShowUpdateForm
-                        {...student}
-                        onUpdate={(updatedStudent) =>
-                          this.updateStudent(updatedStudent)
-                        }
-                      />
+                      <ShowUpdateForm {...student}  onUpdate={(updatedStudent,id) =>
+                         this.updateStudent(updatedStudent,id)
+                         } />
                     </ul>
-                    <div>
-                      <h3>Item #{student.id}</h3>
-                    </div>
                     <br />
                   </div>
                 );
@@ -91,16 +105,9 @@ export default class Student extends Component {
             </ul>
           </div>
           <br />
-        </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "100%",
-          }}
-        >
-          <ul>{/* <Pagination /> */}</ul>
+          <div>
+            {/* <Pagination/> */}
+          </div>
         </div>
       </div>
     );
