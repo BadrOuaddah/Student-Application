@@ -84,8 +84,7 @@ export default class Student extends Component {
                       </div>
                       <br />
                       <ShowUpdateForm {...student}  onUpdate={(updatedStudent,id) =>
-                         this.updateStudent(updatedStudent,id)
-                         } />
+                         this.updateStudent(updatedStudent,id)} />
                     </ul>
                     <br />
                   </div>

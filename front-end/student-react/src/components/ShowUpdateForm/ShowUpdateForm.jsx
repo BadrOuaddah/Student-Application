@@ -4,10 +4,16 @@ import { useState } from "react";
 
 export default function ShowUpdateForm({ id, name, email, dob, age, onUpdate }) {
   const [isShown, setIsShown] = useState(false);
+  const [isConfirmed, setIsConfirmed] = useState(false);
+ 
 
   const handleClick = (event) => {
-    setIsShown((current) => !current);
+    if (!isConfirmed) {
+      setIsShown((current) => !current);
+    }
   };
+  
+  
 
 
   return (
@@ -16,7 +22,7 @@ export default function ShowUpdateForm({ id, name, email, dob, age, onUpdate }) 
         <span className="fa fa-refresh"></span> UPDATE
       </button>
       {isShown && (
-        <UpdateStudent id={id} name={name} email={email} dob={dob} age={age} onUpdate={onUpdate} />
+        <UpdateStudent id={id} name={name} email={email} dob={dob} age={age} onUpdate={onUpdate} onClose={() => setIsShown(false)} />
       )}
     </div>
   );
@@ -60,6 +66,7 @@ class UpdateStudent extends Component {
 
     event.preventDefault();
     this.props.onUpdate({name,email,dob,age},id);
+    this.props.onClose();
   };
 
   render() {
@@ -134,12 +141,6 @@ class UpdateStudent extends Component {
                   className="btn btn-primary"
                   id="confirm_id" >
                   Confirm
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-danger"
-                  id="cancel_id" >
-                  Cancel
                 </button>
               </div>
             </div>
