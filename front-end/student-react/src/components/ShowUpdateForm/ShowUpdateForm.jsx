@@ -3,22 +3,13 @@ import "./ShowUpdateForm.css";
 import { useState } from "react";
 import axios from "axios";
 
-const baseURL = "http://localhost:8080/api/v1/student";
-
-// onUpdate
-export default function ShowUpdateForm({ id, name, email, dob, age}) {
-  const updatedStudent = {
-    id,
-    name,
-    email,
-    dob,
-    age
-  };
+export default function ShowUpdateForm({ id, name, email, dob, age, onUpdate }) {
   const [isShown, setIsShown] = useState(false);
 
   const handleClick = (event) => {
     setIsShown((current) => !current);
   };
+
 
   return (
     <div>
@@ -26,11 +17,11 @@ export default function ShowUpdateForm({ id, name, email, dob, age}) {
         <span className="fa fa-refresh"></span> UPDATE
       </button>
       {isShown && (
-        // onUpdate={onUpdate}
-        <UpdateStudent id={id} name={name} email={email} dob={dob} age={age} />
+        <UpdateStudent id={id} name={name} email={email} dob={dob} age={age} onUpdate={onUpdate} />
       )}
     </div>
   );
+  
 }
 
 class UpdateStudent extends Component {
@@ -41,11 +32,8 @@ class UpdateStudent extends Component {
       name: props.name,
       email: props.email,
       dob: props.dob,
-      age: props.age
+      age: props.age,
     };
-
-    // *** Add onUpdate into constructor ***
-    // this.onUpdate = props.onUpdate;
   }
 
   handleNameChange = (event) => {
@@ -71,42 +59,10 @@ class UpdateStudent extends Component {
     const age = this.state.age;
     const id = this.state.id;
 
-    axios.put(`http://localhost:8080/api/v1/student/${id}`, {
-      name: name,
-      email: email,
-      dob: dob,
-      age: age,
-    })
-    .then((response) => {
-      console.log(response.data);
-      this.props.onUpdate();
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-    
     event.preventDefault();
-    // this.handleRefresh();
-
-    // *** Call onUpdate() method into handleUpdate ***
-    // this.props.onUpdate();
+    this.props.onUpdate({name,email,dob,age},id);
   };
-  
-  // handleRefresh = () => {
-  //   axios
-  //     .get(`http://localhost:8080/api/v1/student/${this.state.id}`)
-  //     .then((response) => {
-  //       this.setState({
-  //         name: response.data.name,
-  //         email: response.data.email,
-  //         dob: response.data.dob,
-  //         age: response.data.age,
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+
   render() {
     return (
       <div>

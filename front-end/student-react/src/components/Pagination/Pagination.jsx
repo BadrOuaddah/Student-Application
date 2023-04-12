@@ -1,47 +1,40 @@
-import React from "react";
+import React, { Component } from 'react';
+import '../Pagination/Pagination.css';
 
-
-export default function Pagination({ currentPage, totalPages, onChangePage }) {
-  const pageNumbers = [...Array(totalPages).keys()].map((n) => n + 1);
-
-  return (
-    <nav>
-      <ul className="pagination">
-        <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-          <button
-            className="page-link"
-            onClick={() => onChangePage(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
-        </li>
-        {pageNumbers.map((page) => (
-          <li
-            key={page}
-            className={`page-item ${currentPage === page ? 'active' : ''}`}
-          >
-            <button
-              className="page-link"
-              onClick={() => onChangePage(page)}
-              disabled={currentPage === page}
-            >
-              {page}
-            </button>
-          </li>
-        ))}
-        <li
-          className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}
-        >
-          <button
-            className="page-link"
-            onClick={() => onChangePage(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
-        </li>
-      </ul>
-    </nav>
-  );
+export default class Pagination extends Component {
+  render() {
+    const { students, currentPage, totalPages } = this.state;
+    const pageNumbers = [];
+  
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(i);
+    }
+  
+    return (
+      <div>
+        ...
+        <ul className="list-group list-group-flush">
+          {students.map((student) => {
+            return (
+              <div key={student.id}>
+                ...
+              </div>
+            );
+          })}
+        </ul>
+        <nav>
+          <ul className="pagination">
+            {pageNumbers.map((number) => {
+              return (
+                <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
+                  <button onClick={() => this.setState({ currentPage: number })} className="page-link">{number}</button>
+                </li>
+              )
+            })}
+          </ul>
+        </nav>
+      </div>
+    );
+  }
+  
 }
