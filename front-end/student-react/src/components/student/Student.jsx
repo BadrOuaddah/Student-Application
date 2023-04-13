@@ -3,7 +3,7 @@ import "./Student.css";
 import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
 import ShowUpdateForm from "../ShowUpdateForm/ShowUpdateForm";
-// import Pagination from "../Pagination/Pagination";
+import Pagination from "../Pagination/Pagination";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
@@ -86,6 +86,7 @@ export default class Student extends Component {
                       <ShowUpdateForm {...student}  onUpdate={(updatedStudent,id) =>
                          this.updateStudent(updatedStudent,id)} />
                     </ul>
+                    <h3>Item #{student.id}</h3>
                     <br />
                   </div>
                 );
@@ -94,8 +95,9 @@ export default class Student extends Component {
           </div>
           <br />
           <div>
-            {/* <Pagination/> */}
+            <Pagination/>
           </div>
+          <br />
         </div>
       </div>
     );
