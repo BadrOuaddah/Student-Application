@@ -5,6 +5,7 @@ import ShowEditForm from "../ShowEditForm/ShowEditForm";
 import ShowUpdateForm from "../ShowUpdateForm/ShowUpdateForm";
 import Pagination from "../Pagination/Pagination";
 
+
 const baseURL = "http://localhost:8080/api/v1/student";
 
 export default class Student extends Component {
@@ -95,7 +96,7 @@ export default class Student extends Component {
           </div>
           <br />
           <div>
-            <Pagination/>
+          <Pagination/>
           </div>
           <br />
         </div>
