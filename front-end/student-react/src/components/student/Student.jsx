@@ -5,7 +5,6 @@ import ShowEditForm from "../ShowEditForm/ShowEditForm";
 import ShowUpdateForm from "../ShowUpdateForm/ShowUpdateForm";
 import Pagination from "../Pagination/Pagination";
 
-
 const baseURL = "http://localhost:8080/api/v1/student";
 
 export default class Student extends Component {
@@ -13,9 +12,6 @@ export default class Student extends Component {
     super(props);
     this.state = {
       students: [],
-      pageSize: 5,
-      currentPage: 1,
-      totalPages: 0
     };
   }
 
@@ -37,17 +33,17 @@ export default class Student extends Component {
     });
   }
 
-  updateStudent(newStudent,id) {
-    axios.put(`${baseURL}/${id}`, newStudent)
-    .then(response => {
-      console.log(response);
-      this.getStudents();
-    })
-    .catch(error => {
-      console.log(error);
-    });
+  updateStudent(newStudent, id) {
+    axios
+      .put(`${baseURL}/${id}`, newStudent)
+      .then((response) => {
+        console.log(response);
+        this.getStudents();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
-  
 
   render() {
     return (
@@ -84,11 +80,15 @@ export default class Student extends Component {
                         </button>
                       </div>
                       <br />
-                      <ShowUpdateForm {...student}  onUpdate={(updatedStudent,id) =>
-                         this.updateStudent(updatedStudent,id)} />
+                      <ShowUpdateForm
+                        {...student}
+                        onUpdate={(updatedStudent, id) =>
+                          this.updateStudent(updatedStudent, id)
+                        }
+                      />
+                      <br />
                     </ul>
-                    <h3>Item #{student.id}</h3>
-                    <br />
+                    
                   </div>
                 );
               })}
@@ -96,7 +96,7 @@ export default class Student extends Component {
           </div>
           <br />
           <div>
-          <Pagination/>
+            <Pagination/>
           </div>
           <br />
         </div>
