@@ -1,41 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import "./Pagination.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from 'react-paginate';
 
-
-// Example items, to simulate fetching from another resources.
-const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-
-function Items({ currentItems }) {
-  return (
-    <>
-      {currentItems &&
-        currentItems.map((item) => (
-          <div>
-            <h3>Item #{item}</h3>
-          </div>
-        ))}
-    </>
-  );
-}
-
-export default function PaginatedItems({ itemsPerPage }) {
-  // Here we use item offsets; we could also use page offsets
-  // following the API or data you're working with.
+export default function Pagination(students) {
+  const studentIds = students.students.map((student,index) => student.id);
+  console.log(studentIds);
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 3;
 
-  // Simulate fetching items from another resources.
-  // (This could be items from props; or items loaded in a local state
-  // from an API endpoint with useEffect and useState)
-  const endOffset = itemOffset + itemsPerPage;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-  const currentItems = items.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(items.length / itemsPerPage);
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    setCurrentItems(studentIds.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(studentIds.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage ,studentIds]);
 
-  // Invoke when user click to request another page.
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
+    const newOffset = (event.selected * itemsPerPage) % studentIds.length;
     console.log(
       `User requested page number ${event.selected}, which is offset ${newOffset}`
     );
@@ -44,14 +26,24 @@ export default function PaginatedItems({ itemsPerPage }) {
 
   return (
     <>
-      <Items currentItems={currentItems} />
       <ReactPaginate
-        breakLabel="..."
         nextLabel="next >"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
         pageCount={pageCount}
         previousLabel="< previous"
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakLabel="..."
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        containerClassName="pagination"
+        activeClassName="active"
         renderOnZeroPageCount={null}
       />
     </>

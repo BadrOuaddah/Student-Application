@@ -88,7 +88,6 @@ export default class Student extends Component {
                       />
                       <br />
                     </ul>
-                    
                   </div>
                 );
               })}
@@ -96,7 +95,7 @@ export default class Student extends Component {
           </div>
           <br />
           <div>
-            <Pagination/>
+            <Pagination students={this.state.students} />
           </div>
           <br />
         </div>
