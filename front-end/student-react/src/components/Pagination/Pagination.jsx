@@ -3,6 +3,8 @@ import ReactPaginate from "react-paginate";
 import ShowUpdateForm from "../ShowUpdateForm/ShowUpdateForm";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
 
+
+
 export default function Pagination({ students }) {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
@@ -24,16 +26,6 @@ export default function Pagination({ students }) {
     <>
       <div className="container">
         <div className="col card row bg-transparent solid-gray">
-          <div className="card-body">
-            <h4 style={{ textAlign: "center" }} className="card-title">
-              List of students
-            </h4>
-            <br />
-            <div>
-              <ShowEditForm />
-            </div>
-            <hr />
-          </div>
           <ul className="list-group list-group-flush">
             {currentItems &&
               currentItems.map((student) => (
@@ -44,22 +36,6 @@ export default function Pagination({ students }) {
                     <li>Email : {student.email}</li>
                     <li>Date of birthday : {student.dob}</li>
                     <li>Age : {student.age}</li>
-                    <br />
-                    <div>
-                      <button
-                        onClick={(e) => this.deleteStudent(student.id, e)}
-                        className="btn btn-danger"
-                      >
-                        <span className="fa fa-trash"></span> DELETE
-                      </button>
-                    </div>
-                    <br />
-                    <ShowUpdateForm
-                      {...student}
-                      onUpdate={(updatedStudent, id) =>
-                        this.updateStudent(updatedStudent, id)
-                      }
-                    />
                     <br />
                   </ul>
                 </li>
