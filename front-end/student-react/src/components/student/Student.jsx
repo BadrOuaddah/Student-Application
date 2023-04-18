@@ -8,6 +8,20 @@ import { useState } from "react";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
+
+function PaginationFunctionComponent(){
+  return(
+    <div>
+      <br />
+      <div>
+        <Pagination students={this.state.students} />
+      </div>
+      <br />
+    </div>
+  );
+}
+
+
 export default function Studentfunction() {
 
     const [isShownStudent, setIsShownStudent] = useState(false);
@@ -21,9 +35,12 @@ export default function Studentfunction() {
 
   return (
     <div>
-         <button className="btn btn-warning" onClick={handleClick}>
-      <span className="fa fa-refresh"></span> Modify 
+      <center>
+      <button className="btn btn-secondary" onClick={handleClick}>
+      <span className="fa fa-gear"></span> Modify 
        </button>
+      </center>
+      <br />
              {isShownStudent && (
        <Student onClose={() => setIsShownStudent(false)} />
        )}
@@ -119,11 +136,11 @@ class Student extends Component {
               })}
             </ul>
           </div>
-          <br />
+          {/* <br />
           <div>
             <Pagination students={this.state.students} />
           </div>
-          <br />
+          <br /> */}
         </div>
       </div>
     );
