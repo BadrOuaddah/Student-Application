@@ -4,10 +4,55 @@ import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
 import ShowUpdateForm from "../ShowUpdateForm/ShowUpdateForm";
 import Pagination from "../Pagination/Pagination";
+import { useState } from "react";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
-export default class Student extends Component {
+function PaginationFunctionComponent() {
+  return (
+    <div>
+      <br />
+      <div>
+        <Pagination />
+      </div>
+      <br />
+    </div>
+  );
+}
+
+export default function Studentfunction() {
+  const [isShownStudent, setIsShownStudent] = useState(false);
+  const [isConfirmed, setIsConfirmed] = useState(false);
+  const [isPaginationVisible, setIsPaginationVisible] = useState(true);
+
+  const handleClick = (event) => {
+    if (!isConfirmed) {
+      setIsShownStudent(true);
+      setIsPaginationVisible(false);
+    }
+  };
+  const handleClose = (event) => {
+    console.log("handleClose is working !")
+      // setIsShownStudent(false);
+      // setIsPaginationVisible(true);
+  };
+
+  return (
+    <div>
+      <center>
+        <button className="btn btn-secondary" onClick={handleClick}>
+          <span className="fa fa-gear"></span> Modify
+        </button>
+      </center>
+      <br />
+      {isShownStudent && (<Student onClose={handleClose} />)}
+      <br />
+      {isPaginationVisible && (<PaginationFunctionComponent/>)}
+    </div>
+  );
+}
+
+class Student extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -93,11 +138,6 @@ export default class Student extends Component {
               })}
             </ul>
           </div>
-          <br />
-          <div>
-            <Pagination students={this.state.students} />
-          </div>
-          <br />
         </div>
       </div>
     );

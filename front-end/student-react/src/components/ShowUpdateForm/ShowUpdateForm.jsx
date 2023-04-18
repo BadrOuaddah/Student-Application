@@ -5,16 +5,14 @@ import { useState } from "react";
 export default function ShowUpdateForm({ id, name, email, dob, age, onUpdate }) {
   const [isShown, setIsShown] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
+  console.log(setIsConfirmed);
  
-
   const handleClick = (event) => {
     if (!isConfirmed) {
       setIsShown((current) => !current);
     }
   };
   
-  
-
 
   return (
     <div>
