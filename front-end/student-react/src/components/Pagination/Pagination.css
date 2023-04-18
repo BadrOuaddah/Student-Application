@@ -3,3 +3,6 @@
   justify-content: center;
   margin-top: 20px;
 }
+.wihtout-black-dot {
+  list-style-type: none;
+}

@@ -27,9 +27,14 @@ export default function Studentfunction() {
 
   const handleClick = (event) => {
     if (!isConfirmed) {
-      setIsShownStudent((current) => !current);
+      setIsShownStudent(true);
       setIsPaginationVisible(false);
     }
+  };
+  const handleClose = (event) => {
+    console.log("handleClose is working !")
+      // setIsShownStudent(false);
+      // setIsPaginationVisible(true);
   };
 
   return (
@@ -40,9 +45,9 @@ export default function Studentfunction() {
         </button>
       </center>
       <br />
-      {isShownStudent && <Student onClose={() => setIsShownStudent(false)} />}
+      {isShownStudent && (<Student onClose={handleClose} />)}
       <br />
-      {isPaginationVisible && <PaginationFunctionComponent />}
+      {isPaginationVisible && (<PaginationFunctionComponent/>)}
     </div>
   );
 }

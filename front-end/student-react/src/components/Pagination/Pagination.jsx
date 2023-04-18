@@ -37,10 +37,10 @@ export default function Pagination() {
     <>
       <div className="container">
         <div className="col card row bg-transparent solid-gray">
-          <ul className="list-group list-group-flush">
+          <li className="list-group list-group-flush">
             {currentItems &&
               currentItems.map((student) => (
-                <li key={student.id}>
+                <li className="wihtout-black-dot" key={student.id}>
                   <ul className="list-group-item list-group-item-action list-group-item-secondary">
                     <li>Id : {student.id}</li>
                     <li>Name : {student.name}</li>
@@ -51,7 +51,7 @@ export default function Pagination() {
                   </ul>
                 </li>
               ))}
-          </ul>
+          </li>
         </div>
       </div>
       <ReactPaginate
