@@ -4,10 +4,36 @@ import axios from "axios";
 import ShowEditForm from "../ShowEditForm/ShowEditForm";
 import ShowUpdateForm from "../ShowUpdateForm/ShowUpdateForm";
 import Pagination from "../Pagination/Pagination";
+import { useState } from "react";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
-export default class Student extends Component {
+export default function Studentfunction() {
+
+    const [isShownStudent, setIsShownStudent] = useState(false);
+      const [isConfirmed, setIsConfirmed] = useState(false);
+
+    const handleClick = (event) => {
+    if (!isConfirmed) {
+      setIsShownStudent((current) => !current);
+    }
+  };
+
+  return (
+    <div>
+         <button className="btn btn-warning" onClick={handleClick}>
+      <span className="fa fa-refresh"></span> Modify 
+       </button>
+             {isShownStudent && (
+       <Student onClose={() => setIsShownStudent(false)} />
+       )}
+    </div>
+  )
+}
+
+
+
+class Student extends Component {
   constructor(props) {
     super(props);
     this.state = {
