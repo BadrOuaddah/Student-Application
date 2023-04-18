@@ -8,47 +8,44 @@ import { useState } from "react";
 
 const baseURL = "http://localhost:8080/api/v1/student";
 
-
-function PaginationFunctionComponent(){
-  return(
+function PaginationFunctionComponent() {
+  return (
     <div>
       <br />
       <div>
-        <Pagination students={this.state.students} />
+        <Pagination />
       </div>
       <br />
     </div>
   );
 }
 
-
 export default function Studentfunction() {
+  const [isShownStudent, setIsShownStudent] = useState(false);
+  const [isConfirmed, setIsConfirmed] = useState(false);
+  const [isPaginationVisible, setIsPaginationVisible] = useState(true);
 
-    const [isShownStudent, setIsShownStudent] = useState(false);
-      const [isConfirmed, setIsConfirmed] = useState(false);
-
-    const handleClick = (event) => {
+  const handleClick = (event) => {
     if (!isConfirmed) {
       setIsShownStudent((current) => !current);
+      setIsPaginationVisible(false);
     }
   };
 
   return (
     <div>
       <center>
-      <button className="btn btn-secondary" onClick={handleClick}>
-      <span className="fa fa-gear"></span> Modify 
-       </button>
+        <button className="btn btn-secondary" onClick={handleClick}>
+          <span className="fa fa-gear"></span> Modify
+        </button>
       </center>
       <br />
-             {isShownStudent && (
-       <Student onClose={() => setIsShownStudent(false)} />
-       )}
+      {isShownStudent && <Student onClose={() => setIsShownStudent(false)} />}
+      <br />
+      {isPaginationVisible && <PaginationFunctionComponent />}
     </div>
-  )
+  );
 }
-
-
 
 class Student extends Component {
   constructor(props) {
@@ -136,11 +133,6 @@ class Student extends Component {
               })}
             </ul>
           </div>
-          {/* <br />
-          <div>
-            <Pagination students={this.state.students} />
-          </div>
-          <br /> */}
         </div>
       </div>
     );

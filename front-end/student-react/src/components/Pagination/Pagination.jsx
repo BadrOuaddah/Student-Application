@@ -1,17 +1,28 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
-import ShowUpdateForm from "../ShowUpdateForm/ShowUpdateForm";
-import ShowEditForm from "../ShowEditForm/ShowEditForm";
+import axios from 'axios';
+import './Pagination.css';
+const baseURL = "http://localhost:8080/api/v1/student";
 
 
 
-export default function Pagination({ students }) {
+export default function Pagination() {
+  const [students, setStudents] = useState([]);
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 3;
 
+  
+
   useEffect(() => {
+    axios.get(baseURL)
+    .then(response => {
+      setStudents(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(students.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(students.length / itemsPerPage));
@@ -44,6 +55,7 @@ export default function Pagination({ students }) {
         </div>
       </div>
       <ReactPaginate
+      className="pagination"
         nextLabel="next >"
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
