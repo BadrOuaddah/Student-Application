@@ -22,7 +22,7 @@ function PaginationFunctionComponent() {
 
 export default function Studentfunction() {
   const [isShownStudent, setIsShownStudent] = useState(false);
-  const [isConfirmed, setIsConfirmed] = useState(false);
+  const [isConfirmed] = useState(false);
   const [isPaginationVisible, setIsPaginationVisible] = useState(true);
 
   const handleClick = (event) => {
@@ -32,9 +32,8 @@ export default function Studentfunction() {
     }
   };
   const handleClose = (event) => {
-    console.log("handleClose is working !")
-      // setIsShownStudent(false);
-      // setIsPaginationVisible(true);
+    setIsShownStudent(false);
+    setIsPaginationVisible(true);
   };
 
   return (
@@ -45,9 +44,15 @@ export default function Studentfunction() {
         </button>
       </center>
       <br />
-      {isShownStudent && (<Student onClose={handleClose} />)}
+      <center>
+        <button className="btn btn-danger" onClick={handleClose}>
+          <span className="fa fa-times"></span> Cancel
+        </button>
+      </center>
       <br />
-      {isPaginationVisible && (<PaginationFunctionComponent/>)}
+      {isShownStudent && <Student />}
+      <br />
+      {isPaginationVisible && <PaginationFunctionComponent />}
     </div>
   );
 }
