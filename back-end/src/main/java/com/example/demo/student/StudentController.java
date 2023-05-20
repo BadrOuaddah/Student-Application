@@ -28,7 +28,7 @@ public class StudentController {
         return studentService.findStudentById(id);
     }
 
-    @PostMapping(path = "/students")
+    @PostMapping(path = "/student")
     public void registerNewStudent(@RequestBody Student student){
     studentService.addNewStudent(student);
     }
