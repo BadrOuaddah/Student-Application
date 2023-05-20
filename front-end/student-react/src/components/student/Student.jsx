@@ -6,7 +6,7 @@ import ShowUpdateForm from "../ShowUpdateForm/ShowUpdateForm";
 import Pagination from "../Pagination/Pagination";
 import { useState } from "react";
 
-const baseURL = "http://localhost:8080/api/v1/student";
+const baseURL = "http://localhost:8080/api/v1/students";
 
 function PaginationFunctionComponent() {
   return (
