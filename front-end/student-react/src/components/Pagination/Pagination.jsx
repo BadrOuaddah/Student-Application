@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import axios from 'axios';
 import './Pagination.css';
-const baseURL = "http://localhost:8080/api/v1/student";
+const baseURL = "http://localhost:8080/api/v1/students";
 
 
 

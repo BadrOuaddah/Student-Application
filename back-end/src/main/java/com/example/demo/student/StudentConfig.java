@@ -91,7 +91,7 @@ public class StudentConfig {
 
             );
             repository.saveAll(
-                    List.of(mariam, alex, youssef, ali, zakaria, ahmed, mohammed, ayman, yassine, yahya )
+                    List.of()
             );
         };
     }

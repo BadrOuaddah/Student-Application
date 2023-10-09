@@ -8,7 +8,7 @@ import { Student } from "../models/student";
 })
 export class StudentServiceService {
 
-  apiUrlSpring = "http://localhost:8080/api/v1/student";
+  apiUrlSpring = "http://localhost:8080/api/v1/students";
 
   constructor(private http: HttpClient) { }
   private _index: number;

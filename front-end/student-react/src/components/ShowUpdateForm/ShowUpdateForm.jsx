@@ -121,7 +121,8 @@ class UpdateStudent extends Component {
                   />
                 </div>
               </div>
-              <br /># {this.state.id} <br />
+              <br />
+              <br />
               <ul style={{ listStyle: "initial" }}>
                 <li>
                   <b>

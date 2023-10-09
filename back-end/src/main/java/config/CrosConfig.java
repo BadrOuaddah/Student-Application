@@ -16,7 +16,7 @@ public class CrosConfig {
                 registry.addMapping("/api/**")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*")
-                        .allowedOrigins("http://localhost:4200");
+                        .allowedOrigins("http://localhost:4200", "http://localhost:3000");
             }
         };
     }

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Component} from "react";
 import './ShowEditForm.css';
 
-const baseURL = "http://localhost:8080/api/v1/student";
+const baseURL = "http://localhost:8080/api/v1/students";
 
 export default class ShowEditForm extends Component {
   constructor(props) {
