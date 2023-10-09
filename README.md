@@ -17,6 +17,8 @@ This project is a simple application about managing students:
 
 ### React ⚛️ [link](https://github.com/BadrOuaddah/Student-Application/tree/master/front-end/student-react)
 
+![react](https://github.com/BadrOuaddah/Student-Application/assets/119801735/0e1a7844-5ea2-438b-b0d8-7ae0909439cc)
+
 # Architecture 📐✏️ :
 
 ![App](https://github.com/BadrOuaddah/Student-Application/assets/119801735/ee067223-e2e6-46fb-a54d-9cbd3a1f28ca)
