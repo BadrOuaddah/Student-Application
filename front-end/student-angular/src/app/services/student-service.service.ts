@@ -8,7 +8,8 @@ import { Student } from "../models/student";
 })
 export class StudentServiceService {
 
-  apiUrlSpring = "http://localhost:8080/api/v1/students";
+  apiUrlSpringStudents = "http://localhost:8080/api/v1/students";
+  apiUrlSpringStudent = "http://localhost:8080/api/v1/student";
 
   constructor(private http: HttpClient) { }
   private _index: number;
@@ -22,24 +23,24 @@ export class StudentServiceService {
   }
 
   findAll() {
-    return this.http.get(this.apiUrlSpring);
+    return this.http.get(this.apiUrlSpringStudents);
   }
 
   findStudentById(id: number) {
-    return this.http.get(this.apiUrlSpring + '/' + id);
+    return this.http.get(this.apiUrlSpringStudent + '/' + id);
   }
 
 
   deleteById(id: number) {
-    return this.http.delete(this.apiUrlSpring + '/' + id);
+    return this.http.delete(this.apiUrlSpringStudent + '/' + id);
   }
 
   addNewStudent(student: any) {
-    return this.http.post<Student>(this.apiUrlSpring, student);
+    return this.http.post<Student>(this.apiUrlSpringStudent, student);
   }
 
   putStudent(id: number, student: any) {
-    return this.http.put(`${this.apiUrlSpring}/${id}`, student);
+    return this.http.put(`${this.apiUrlSpringStudent}/${id}`, student);
   }
 
 }
