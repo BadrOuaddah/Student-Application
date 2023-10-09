@@ -59,23 +59,7 @@ public class StudentService {
         }
     }
 
-//    @Query("SELECT s FROM Student s WHERE s.id = ?1")
     public Student findStudentById(long id) {
         return studentRepository.findStudentById(id);
     }
-    //README
-        //Tools
-        //Spring
-        //Java
-        //IntelliJ idea
-        //How to install
-        //Example each method + body
-
-    //UML Diagram
-    //Delete
-    //Put
-    //Get
-    //Post
-
-
 }
