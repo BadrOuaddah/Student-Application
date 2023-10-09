@@ -7,6 +7,7 @@ import Pagination from "../Pagination/Pagination";
 import { useState } from "react";
 
 const baseURL = "http://localhost:8080/api/v1/students";
+const baseURLStudent = "http://localhost:8080/api/v1/student";
 
 function PaginationFunctionComponent() {
   return (
@@ -77,7 +78,7 @@ class Student extends Component {
   }
 
   deleteStudent(id, e) {
-    axios.delete(`${baseURL}/${id}`).then((response) => {
+    axios.delete(`${baseURLStudent}/${id}`).then((response) => {
       console.log(response);
       this.getStudents();
     });
@@ -85,7 +86,7 @@ class Student extends Component {
 
   updateStudent(newStudent, id) {
     axios
-      .put(`${baseURL}/${id}`, newStudent)
+      .put(`${baseURLStudent}/${id}`, newStudent)
       .then((response) => {
         console.log(response);
         this.getStudents();

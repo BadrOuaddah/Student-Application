@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { Component} from "react";
 import './ShowEditForm.css';
 
-const baseURL = "http://localhost:8080/api/v1/students";
+const baseURLStudent = "http://localhost:8080/api/v1/student";
+
 
 export default class ShowEditForm extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ export default class ShowEditForm extends Component {
   submitHandler = (event) => {
     event.preventDefault();
     console.log(this.state);
-    axios.post(baseURL, this.state);
+    axios.post(baseURLStudent, this.state);
     window.location.reload(false);
   };
 
