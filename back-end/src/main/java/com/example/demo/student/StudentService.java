@@ -27,8 +27,6 @@ public class StudentService {
 
     }
 
-    //TODO: add new method named findByIdStudent()
-
     public void addNewStudent(Student student) {
         Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
         if (studentOptional.isPresent()) {
